@@ -1,3 +1,5 @@
+import {getStorageSync, setStorageSync} from "./index";
+
 const app = getApp()
 const user = require('../../utils/user');
 const util = require('../../utils/util.js');
@@ -7,17 +9,29 @@ Page({
         navBarHeight: app.globalData.navBarHeight,
         menuHeight: app.globalData.menuHeight,
         menuTop: app.globalData.menuTop,
+        userInfo: {
+
+        },
+        isLogin: false,
     },
     onLoad: function (options) {
-
+        wx.setStorageSync("isLogin",true)
+    },
+    onShow: function(){
+      const isLogin = wx.getStorageSync("isLogin");
+      this.setData({
+          isLogin
+      })
     },
     login: function(){
 
     },
     navigatorTo: function(){
-        const {} = this.data;
+        const {isLogin} = this.data;
         console.log();
         if(isLogin){
+
+        }else{
 
         }
 
@@ -32,22 +46,16 @@ Page({
                 Terminal: 4,
             }).then(res => {
                 console.log("res====",res)
-                const {token,openId,WechatSessionKey} = res;
-                // wx.setStorageSync('openid', data.data.openid);
+                const {token,openId,WechatSessionKey,...userInfo} = res;
+                console.log("userInfo",userInfo);
+                this.setData({
+                    userInfo,
+                    isLogin: true,
+                });
+                wx.setStorageSync('token', token);
+                wx.setStorageSync("isLogin",true);
                 // wx.setStorageSync('sessionkey', data.data.sessionKey);
                 // wx.setStorageSync('unionid', data.data.unionid)
-
-                util.request(api.oneClickLoginForMinApp, {
-                    sessionKey: wx.getStorageSync('sessionkey'),
-                    iv: detail.iv,
-                    encryptedData: detail.encryptedData,
-                    regionName:wx.getStorageSync('dingwei').name,
-                    referer,
-                }).then((res)=>{
-                    const {user,token} = res.data;
-                    wx.setStorageSync('userInfo', user);
-                    wx.setStorageSync('token', token);
-                })
             })
         }).catch((res)=>{
             wx.showToast({

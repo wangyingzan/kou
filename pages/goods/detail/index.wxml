@@ -100,7 +100,11 @@
         <image class="icon" src="/static/images/icon_car_02.png"/>
         <text>购物车</text>
     </navigator>
-    <van-button color="#FFAA44" style="margin-right: 16rpx">加入购物车</van-button>
-    <van-button color="#05C160" >立即购买</van-button>
+    <van-button color="#FFAA44" bindtap="showModal" data-type="1" style="margin-right: 16rpx">加入购物车</van-button>
+    <van-button color="#05C160" bindtap="showModal" data-type="2">立即购买</van-button>
 </view>
+
+<van-popup show="{{ show }}" bind:close="onClose">
+
+</van-popup>
 

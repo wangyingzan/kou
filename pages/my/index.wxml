@@ -5,10 +5,16 @@
             <view class="title" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">个人中心</view>
         </view>
     </van-sticky>
-    <view class="login">
+    <view class="login" wx:if="{{isLogin}}">
         <image src="/static/images/myBg.png" class="avatar" />
         <view class="log" bindtap="wxLogin">
             立即登录 >
+        </view>
+    </view>
+    <view class="login" wx:else>
+        <image src="{{userInfo.headImg}}" class="avatar" />
+        <view class="log" bindtap="wxLogin">
+           {{userInfo.nickName}}
         </view>
     </view>
     <image src="/static/images/myBg.png" class="headerBg"/>
@@ -21,7 +27,7 @@
             <navigator class="right">全部订单></navigator>
         </view>
         <view class="tabs">
-            <view data-url="" bind:tap="navigatorTo" class="item">
+            <view data-url="" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_01.png" class="icon" />
                 <view>待支付</view>
             </view>

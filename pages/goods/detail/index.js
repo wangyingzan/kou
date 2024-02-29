@@ -40,5 +40,22 @@ Page({
             })
         })
     },
-
+    showModal: function({currentTarget:{dataset:{type}}}){
+        console.log("type",type)
+      this.setData({
+          addType: type,
+          modalFlag: true
+      })
+    },
+    addCard: function(){
+        const { goodsId }=this.data;
+        utils.request(api.addCart,{
+            GoodsId: goodsId,
+            Count: 1
+        }).then((res)=>{
+            this.setData({
+                guestList: res.list
+            })
+        })
+    },
 });

@@ -19,6 +19,8 @@ module.exports = {
 
     /** 删除订单 */
     DeleteOrder: 'Applets.OrderList.DeleteOrder',
+    addCart: 'Applets.ShoppingCart.Add', //添加商品到购物车
+    // DeleteOrder: 'Applets.OrderList.DeleteOrder',
 
     /*end 基础数据 end*/
 };
