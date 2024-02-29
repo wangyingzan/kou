@@ -1,0 +1,106 @@
+
+
+
+<swiper class="swiperBox"   circular >
+    <swiper-item wx:for='{{goods.imgData}}' wx:key="index">
+        <image src="{{item}}" class="banner"/>
+    </swiper-item>
+</swiper>
+<view class="container">
+    <view class="priceBox">
+        <view class="price">
+            <view class="sign">￥</view>
+            <view class="priceText">{{goods.salePrice}}</view>
+            <view class="oldPrice deleted">原价{{goods.marketPrice}}</view>
+        </view>
+        <view class="right">
+            <view class="title">专享价</view>
+            <view>{{goods.freeShippingDesc}}</view>
+        </view>
+    </view>
+
+    <view class="header">
+        <view class="title">{{goods.goodsName}}</view>
+        <text class="vipPrice">会员价：￥{{goods.vipPrice}}</text>
+        <view class="subtitle">{{goods.remark}}</view>
+        <view class="rich">
+            <rich-text nodes="{{goods.description}}"></rich-text>
+        </view>
+
+    </view>
+
+    <view class="other">
+        <view class="row">
+            <view class="title">配送</view>
+            <view class="text">
+                {{goods.deliveryDesc}}
+            </view>
+        </view>
+        <view class="row">
+            <view class="title">服务</view>
+            <view class="text">
+                {{goods.serviceDesc}}
+            </view>
+        </view>
+    </view>
+
+    <view class="evaluates" wx:if="{{goods.commentInfo}}">
+        <view class="head">
+            <view class="left">
+                评价 <text>({{goods.commentCount}})</text>
+            </view>
+            <navigator url="/pages/goods/evaluates/index?goodsId={{goodsId}}" class="right">查看全部 ></navigator>
+        </view>
+        <view class="evaluate" >
+            <view class="userInfo">
+                <image class="avatar" src="{{goods.commentInfo.headImg}}"/>
+                <view class="user">
+                    <view class="username">{{goods.commentInfo.nickName}}</view>
+                    <van-rate
+                            value="{{ goods.commentInfo.overallRating }}"
+                            size="{{8}}"
+                            gutter="{{2}}"
+                            readonly
+                            class="grade"
+                            color="#FFBB05"
+                            void-icon="star"
+                            void-color="#D8D8D8"
+                    />
+                </view>
+
+            </view>
+            <view class="content line2">
+                {{goods.commentInfo.commentText}}
+            </view>
+            <view class="imgs" wx:if="{{goods.commentInfo.imgData.length}}">
+                <image class="img" wx:for="{{goods.commentInfo.imgData}}" wx:for-item="img" wx:key="index" src="{{img}}"/>
+            </view>
+        </view>
+    </view>
+    <view class="listTitle">猜你喜欢</view>
+    <view class="list">
+        <Goods wx:for="{{guestList}}" wx:key="goodsId" data="{{item}}" />
+    </view>
+</view>
+
+<view class="base">
+    我是有底限的~
+</view>
+
+<view class="tabBar" >
+    <navigator open-type="switchTab" url="/pages/home/index" class="item">
+        <image class="icon" src="/static/images/icon_home.png"/>
+        <text>回首页</text>
+    </navigator>
+    <view class="item">
+        <image class="icon" src="/static/images/icon_share.png"/>
+        <text>分享</text>
+    </view>
+    <navigator open-type="switchTab" url="/pages/cart/index" class="item">
+        <image class="icon" src="/static/images/icon_car_02.png"/>
+        <text>购物车</text>
+    </navigator>
+    <van-button color="#FFAA44" style="margin-right: 16rpx">加入购物车</van-button>
+    <van-button color="#05C160" >立即购买</van-button>
+</view>
+

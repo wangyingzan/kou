@@ -1,0 +1,70 @@
+page{
+    background: #fff;
+}
+.container{
+    padding: 40rpx 25rpx;
+}
+.head .searchBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80rpx;
+    border: 2rpx solid #CCCCCC;
+    border-radius: 8rpx;
+}
+.search{
+    flex: 1;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 28rpx;
+}
+.place{
+    color: #CCCCCC;
+}
+.searchBox .icon{
+    padding-left: 24rpx;
+    margin-right: 12rpx;
+}
+.searchBox .btn{
+    position: relative;
+    width: 104rpx;
+    font-weight: bold;
+    text-align: center;
+    color: #05C160;
+    font-size: 28rpx;
+    padding: 0;
+    background: #fff;
+
+}
+.searchBox .btn:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0,-50%);
+    width: 2rpx;
+    height: 26rpx;
+    background: #C7C7C7;
+}
+
+
+.historyTitle{
+    padding-top: 50rpx;
+    padding-bottom: 20rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #222222;
+}
+.historyBox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20rpx;
+
+}
+.historyBox .item{
+    color: #222222;
+    font-size: 24rpx;
+    padding: 15rpx 20rpx;
+    border-radius: 8rpx;
+    border: 2rpx solid rgba(0, 0, 0, 0.1);
+}

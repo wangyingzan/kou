@@ -1,0 +1,41 @@
+
+<van-sticky >
+    <view class="header" >
+        <view class="navTitle" style="height:{{navBarHeight}}px;padding-top:{{menuTop}}px">
+            <view class="title" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">购物车(3)</view>
+        </view>
+    </view>
+</van-sticky>
+
+<view class="container">
+    <van-checkbox-group value="{{ result }}" bind:change="selectedGoods">
+        <view class="goods" wx:for="{{5}}">
+            <van-checkbox name="a"  checked-color="#05C160"></van-checkbox>
+            <image class="goodsImg" src="/static/images/goodsImg.png" />
+            <view class="content">
+                <view class="name line1">臻享实惠套餐5-6人餐</view>
+                <view class="subtitle line1">鱼香肉丝+香芹炒肉+宫保鸡...</view>
+                <text class="vipPrice">会员价:￥78.7</text>
+                <view class="price">￥0.01</view>
+            </view>
+            <van-stepper class="stepper" integer value="{{ goodsNum }}" async-change bind:change="goodsNumChange" />
+
+
+        </view>
+    </van-checkbox-group>
+
+</view>
+
+<view class="footerBox">
+    <view class="moneyBox">
+        <van-checkbox value="{{allGoods}}" class="allCheckbox" bind:change="allGoodsChange" checked-color="#05C160">全选</van-checkbox>
+        <view class="money">
+            <view>合计: <text>￥156.41</text></view>
+            <view class="des">满59元免配送费</view>
+        </view>
+    </view>
+
+    <view class="button">
+        立即支付(3)
+    </view>
+</view>

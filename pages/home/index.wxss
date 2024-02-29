@@ -1,0 +1,167 @@
+page{
+    background: #f5f5f5;
+}
+.container{
+    background: #f5f5f5;
+}
+.header{
+    position: relative;
+    height: 406rpx;
+    margin-bottom: -150rpx;
+
+}
+.header .navTitle{
+    position: relative;
+    z-index: 10;
+}
+.header .navTitle .title{
+    font-size: 36rpx;
+    text-align: center;
+    color: #222222;
+}
+.header .headerBg{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 406rpx;
+}
+
+.searchBox{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 26rpx;
+    z-index: 100;
+    margin-top: 20rpx;
+}
+.searchBox .search{
+    width: 630rpx;
+    height: 80rpx;
+    padding: 0 23rpx;
+    display: flex;
+    color: #999999;
+    align-items: center;
+    border-radius: 12rpx;
+    background: rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
+    border: 2rpx solid rgba(255, 255, 255, 0.6);
+}
+
+.searchBox .search .iconSearch{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
+
+
+
+.searchBox .scan{
+    width: 43rpx;
+    height: 43rpx;
+}
+
+
+.swiperBox{
+    height: 315rpx;
+}
+.swiperBox .banner{
+    display: block;
+    height: 315rpx;
+    width: 698rpx;
+    border-radius: 20rpx;
+}
+
+
+.informBox{
+    width: 698rpx;
+    height: 80rpx;
+    display: flex;
+    flex-direction: row;
+    font-family: PingFang SC;
+    align-items: center;
+    line-height: 80rpx;
+    font-size: 24rpx;
+    color: #023B1D;
+    padding: 0 26rpx;
+    border-radius: 12rpx;
+    margin: 0 26rpx;
+    margin-top: 26rpx;
+    background: rgba(213, 233, 223, 0.4);
+}
+.informBox .item{
+    flex: 1;
+    height: 80rpx;
+}
+.informBox .icon{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+
+}
+.informBox text{
+
+}
+
+
+.tabs{
+    display: flex;
+    align-items: center;
+    font-family: PingFang SC;
+    margin-top: 46rpx;
+    margin-bottom: 40rpx;
+}
+.tabs .tab{
+    position: relative;
+    line-height: 44rpx;
+    margin-right: 32rpx;
+    font-size: 32rpx;
+    color: #333333;
+}
+.tabs .tab.active{
+    background: linear-gradient(108deg, #E65727 16%, #E69027 86%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.tabs .tab .icon{
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: -8rpx;
+    width: 44rpx;
+    height: 8rpx;
+    transform: translate(-50%, 0);
+}
+.tabs .tab.active .icon{
+    display: block;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    gap:20rpx 18rpx;
+    flex-wrap: wrap;
+    padding-bottom: 20rpx;
+}
+
+
+.service{
+    position: fixed;
+    right: 30rpx;
+    bottom: 254rpx;
+    width: 80rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding:0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.service image{
+    width: 45rpx;
+    height: 45rpx;
+}

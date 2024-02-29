@@ -1,0 +1,17 @@
+<view class="container">
+    <form catchsubmit="searchClick" >
+        <view class="head">
+            <view class='searchBox'>
+                <icon type="search" class="icon" color="#999999" size="29rpx" />
+                <input class="search" name="keyword" placeholder-class="place" auto-focus placeholder="输入商品名称" />
+                <button formType="submit" class="btn" >搜索</button>
+            </view>
+        </view>
+    </form>
+    <view class="historyTitle">
+       搜索历史
+    </view>
+    <view class="historyBox">
+        <navigator url="./list?keyword={{123}}"  class="item" wx:for="{{10}}">实惠套餐5-6人餐</navigator>
+    </view>
+</view>

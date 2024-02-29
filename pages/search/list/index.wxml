@@ -1,0 +1,14 @@
+<view class="container">
+    <view class="head">
+        <view class='searchBox'>
+            <icon type="search" class="icon" color="#999999" size="29rpx" />
+            <input class="search" placeholder-class="place" auto-focus placeholder="输入商品名称"/>
+            <view class="btn" bind:tap="search" >搜索</view>
+        </view>
+    </view>
+    <view class="list">
+        <view class="goods">
+            <Goods wx:for="{{guestList}}" wx:key="goodsId" data="{{item}}" />
+        </view>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "Goods": "/component/goods/index",
+    "van-sticky": "@vant/weapp/sticky/index"
+  }
+}

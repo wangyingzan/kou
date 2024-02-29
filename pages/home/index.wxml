@@ -1,0 +1,50 @@
+
+<view class="header" >
+<!--    <van-sticky >-->
+        <view class="navTitle" style="height:{{navBarHeight}}px;padding-top:{{menuTop}}px">
+            <view class="title" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">口福侠会员店</view>
+        </view>
+<!--    </van-sticky>-->
+    <view class="searchBox">
+        <navigator url="/pages/search/index" class="search">
+            <image class="iconSearch" src="/static/images/icon_search.png" />
+            <text>儿童套餐A</text>
+        </navigator>
+        <image class="scan" bindtap="scanCode" src="/static/images/icon_scan.png" />
+    </view>
+    <image src="/static/images/headerBg.png" class="headerBg"/>
+</view>
+<swiper class="swiperBox" interval="3000" previous-margin="26rpx" circular autoplay="true">
+    <swiper-item wx:for='{{homeData.bannerData}}' data-item="{{item}}" wx:key="index">
+        <image src="{{item.icoUrl}}" class="banner"/>
+    </swiper-item>
+</swiper>
+<view class="informBox">
+    <image class="icon" src="/static/images/icon_info.png" />
+    <swiper interval="3000" vertical autoplay="true" class="item">
+        <swiper-item wx:for='{{homeData.noticeData}}' data-item="{{item}}" wx:key="index" >
+            <view class="line1">{{item}}</view>
+        </swiper-item>
+    </swiper>
+</view>
+
+<view class="container">
+    <view class="tabs">
+        <view class="tab {{cateId === 0 ? 'active':''}}" data-id="{{0}}" bindtap="tabsChange" >
+           推荐菜品
+            <image class="icon" src="/static/images/icon_tab.png"></image>
+        </view>
+        <view class="tab {{cateId === item.cateId?'active':''}}" wx:for="{{cateList}}" wx:key="cateId" data-id="{{item.cateId}}" bindtap="tabsChange" >
+            {{item.cateName}}
+            <image class="icon" src="/static/images/icon_tab.png"></image>
+        </view>
+    </view>
+    <view class="list">
+        <Goods wx:for="{{list}}" wx:key="goodsId"  data="{{item}}" />
+    </view>
+</view>
+
+
+<button class="service" openType="contact">
+    <image class="serviceImg" src="/static/images/icon_phone_02.png" />
+</button>

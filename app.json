@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/store/index",
+    "pages/my/index",
+    "pages/cart/index",
+    "pages/goods/detail/index",
+    "pages/store/detail/index",
+    "pages/store/evaluates/index",
+    "pages/goods/evaluates/index",
+    "pages/search/index",
+    "pages/search/list/index"
+  ],
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "selectedColor": "#023B1D",
+    "color": "#000",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/images/tabBar/home.png",
+        "selectedIconPath": "static/images/tabBar/home@selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/store/index",
+        "iconPath": "static/images/tabBar/store.png",
+        "selectedIconPath": "static/images/tabBar/store@selected.png",
+        "text": "共享店"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "iconPath": "static/images/tabBar/car.png",
+        "selectedIconPath": "static/images/tabBar/car@selected.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "static/images/tabBar/my.png",
+        "selectedIconPath": "static/images/tabBar/my@selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

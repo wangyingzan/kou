@@ -1,0 +1,74 @@
+
+<view class="header" >
+    <van-sticky >
+        <view class="navTitle" style="height:{{navBarHeight}}px;padding-top:{{menuTop}}px">
+            <view class="title" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">个人中心</view>
+        </view>
+    </van-sticky>
+    <view class="login">
+        <image src="/static/images/myBg.png" class="avatar" />
+        <view class="log" bindtap="wxLogin">
+            立即登录 >
+        </view>
+    </view>
+    <image src="/static/images/myBg.png" class="headerBg"/>
+</view>
+<view class="container">
+
+    <view class="mine">
+        <view class="mineHeader">
+            <view>我的订单</view>
+            <navigator class="right">全部订单></navigator>
+        </view>
+        <view class="tabs">
+            <view data-url="" bind:tap="navigatorTo" class="item">
+                <image src="/static/images/icon_order_01.png" class="icon" />
+                <view>待支付</view>
+            </view>
+            <navigator class="item">
+                <image src="/static/images/icon_order_02.png" class="icon" />
+                <view>待发货</view>
+            </navigator>
+            <navigator class="item">
+                <image src="/static/images/icon_order_03.png" class="icon" />
+                <view>待收货</view>
+            </navigator>
+            <navigator class="item">
+                <image src="/static/images/icon_order_04.png" class="icon" />
+                <view>待评价</view>
+            </navigator>
+        </view>
+    </view>
+
+    <view class="other">
+        <navigator class="item">
+            <image src="/static/images/icon_other_01.png" class="icon" />
+            <view>会员共享店</view>
+        </navigator>
+        <navigator class="item">
+            <image src="/static/images/icon_other_02.png" class="icon" />
+            <view>到店记录</view>
+        </navigator>
+        <navigator class="item">
+            <image src="/static/images/icon_other_03.png" class="icon" />
+            <view>联系客服</view>
+        </navigator>
+        <navigator class="item">
+            <image src="/static/images/icon_other_04.png" class="icon" />
+            <view>更换手机号</view>
+        </navigator>
+        <navigator class="item">
+            <image src="/static/images/icon_other_05.png" class="icon" />
+            <view>退出登录</view>
+        </navigator>
+    </view>
+</view>
+
+<view class="myBottom">
+    <view class="title">
+        口福侠会员店
+    </view>
+    <view>
+        客服热线：4000-918-365
+    </view>
+</view>

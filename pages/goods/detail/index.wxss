@@ -1,0 +1,315 @@
+page{
+    background: #f0f0f0;
+    padding-bottom: calc(98rpx + constant(safe-area-inset-bottom) ) ;/* ios < 11.2*/
+    padding-bottom: calc(98rpx + env(safe-area-inset-bottom)) ; /* ios >= 11.2*/
+}
+
+
+.swiperBox{
+    height: 750rpx;
+}
+.swiperBox .banner{
+    display: block;
+    height: 750rpx;
+    width: 750rpx;
+}
+
+.container{
+    margin-top: -46rpx;
+}
+
+.priceBox{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 166rpx;
+    color: #fff;
+    border-radius: 20rpx;
+    padding: 0 48rpx 28rpx 24rpx;
+    background: linear-gradient(90deg, #E65727 0%, #FFAA44 100%);
+    margin-bottom: -40rpx;
+}
+.priceBox .price{
+
+    display: flex;
+    align-items: baseline;
+    z-index: 1;
+}
+.priceBox .price .sign{
+    font-size: 40rpx;
+    font-weight: bold;
+    margin-right: 8rpx;
+}
+.priceBox .price .priceText{
+    font-size: 64rpx;
+    font-weight: bold;
+    margin-right: 16rpx;
+}
+.priceBox .price .oldPrice{
+    font-size: 24rpx;
+}
+.priceBox .right{
+    font-size: 24rpx;
+    text-align: right;
+}
+.priceBox .right .title{
+    font-weight: bold;
+    font-size: 34rpx;
+    margin-bottom: 5rpx;
+}
+
+
+.header{
+    position: relative;
+    padding: 42rpx 28rpx 32rpx 28rpx;
+    border-radius: 20rpx;
+    background: #FFFFFF;
+    margin-bottom: 20rpx;
+}
+.header .title{
+    font-size: 36rpx;
+    color: #222222;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+
+.vipPrice{
+    height: 36rpx;
+    width: auto;
+    padding: 0 4rpx;
+    line-height: 32rpx;
+    border: 2rpx solid #FF7900;
+    font-size: 20rpx;
+    color: #FF7900;
+    background: rgba(255, 121, 0, .05);
+    border-radius: 2rpx;
+
+}
+.subtitle{
+    font-size: 24rpx;
+    color: #666666;
+    margin-top: 18rpx;
+    margin-bottom: 20rpx;
+}
+.header .content{
+    display: flex;
+    padding: 0 40rpx;
+    align-items: center;
+    height: 130rpx;
+    border-radius: 12rpx;
+    background: #F5F7F6;
+}
+.header .content .item{
+    position: relative;
+    flex: 1;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999999;
+}
+.header .content .item:after{
+    position: absolute;
+    content: '';
+    width: 2rpx;
+    height: 60rpx;
+    background: #ccc;
+    top: 50%;
+    right: 0;
+    transform: translate(0,-50%);
+}
+.header .content .item:last-child:after{
+    display: none;
+}
+.header .content .item .text{
+    font-size: 28rpx;
+    color: #012110;
+    font-weight: bold;
+    margin-bottom: 16rpx;
+}
+
+.other{
+    padding: 20rpx 28rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+.other .row{
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    margin-top: 12rpx;
+}
+.other .row .title{
+    white-space: nowrap;
+    color: #999999;
+    margin-right: 20rpx;
+}
+.other .row .text{
+    color: #222222;
+}
+
+.evaluates{
+    border-radius: 20rpx;
+    background: #fff;
+    padding: 28rpx;
+    padding-top: 16rpx;
+    margin-bottom: 60rpx;
+}
+
+.evaluates .head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12rpx;
+
+}
+.evaluates .head .left{
+    font-size: 28rpx;
+    color: #222222;
+}
+.evaluates .head .left text{
+    font-size: 20rpx;
+    color: #999999;
+}
+
+.evaluates .head .right{
+    font-size: 24rpx;
+    color: #666666;
+}
+
+.evaluate .userInfo{
+    height: 66rpx;
+    display: flex;
+    align-items: center;
+}
+.evaluate .userInfo .avatar{
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    margin-right: 14rpx;
+}
+.evaluate .userInfo .user{
+    font-size: 24rpx;
+    color: #222222;
+    font-weight: bold;
+}
+.evaluate .content{
+    font-size: 24rpx;
+    color: #222222;
+    margin-top: 10rpx;
+    margin-bottom: 18rpx;
+}
+.evaluate .imgs{
+    display: flex;
+    gap: 0 24rpx
+}
+.evaluate .imgs .img{
+    width: 144rpx;
+    height: 144rpx;
+    border-radius: 12rpx;
+    opacity: 1;
+}
+
+.listTitle{
+    font-size: 32rpx;
+    text-align: center;
+    color: #012110;
+    padding-bottom: 24rpx;
+}
+.listTitle:before{
+    content: "\2022";
+    color: #05C160;
+    font-size: 1.2em;
+    margin-right: 0.3em;
+}
+.listTitle:after{
+    content: "\2022";
+    color: #05C160;
+    font-size: 1.2em;
+    margin-left: 0.3em;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    gap:20rpx 18rpx;
+    flex-wrap: wrap;
+    padding-bottom: 20rpx;
+}
+
+.base{
+    font-size: 24rpx;
+    text-align: center;
+    color: #999999;
+    padding: 23rpx 0;
+}
+
+.tabBar{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 12rpx 24rpx 6rpx 24rpx;
+    background: #fff;
+    padding-bottom: calc(6rpx + constant(safe-area-inset-bottom) ) ;/* ios < 11.2*/
+    padding-bottom: calc(6rpx + env(safe-area-inset-bottom)) ; /* ios >= 11.2*/
+
+
+}
+.tabBar .item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24rpx;
+    color: #666666;
+    margin-right: 30rpx;
+}
+.tabBar .item .icon{
+    display: block;
+    width: 48rpx;
+    height: 48rpx;
+    margin-bottom: 5rpx;
+}
+.tabBar button{
+    width: 200rpx;
+    height: 80rpx;
+    padding: 0;
+}
+
+
+
+
+/* 富文本 */
+rich-text{
+    width: 100%;
+    margin: 16rpx auto;
+    position: relative;
+    display: block;
+    word-break: break-all;
+    white-space: pre-warp;
+}
+rich-text image,rich-text img{
+    width: 100% !important;
+}
+rich-text table{
+    width: 100% !important;
+}
+rich-text .span_class{
+
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+
+}
+
+rich-text .p_class{
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+rich-text .img_class{
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+}
+/* 富文本 */

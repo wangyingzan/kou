@@ -1,0 +1,48 @@
+.box{
+    height: 500rpx;
+    background: #fff;
+    position: relative;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+.banner{
+    width: 340rpx;
+    height: 320rpx;
+    background: #fff;
+}
+.content{
+    width: 340rpx;
+    height: 180rpx;
+    padding: 0rpx 28rpx;
+}
+.title{
+    font-size: 28rpx;
+    color: #333333;
+    margin-bottom: 6rpx;
+}
+.vipPrice{
+    height: 36rpx;
+    width: auto;
+    padding: 0 4rpx;
+    line-height: 32rpx;
+    border: 2rpx solid #FF7900;
+    font-size: 20rpx;
+    color: #FF7900;
+    background: rgba(255, 121, 0, .05);
+    border-radius: 2rpx;
+}
+.price{
+    font-size: 40rpx;
+    font-weight: bold;
+    line-height: normal;
+    color: #F73A3A;
+    margin-top: 6rpx;
+}
+.cart{
+    position: absolute;
+    right: 26rpx;
+    bottom: 24rpx;
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 8rpx;
+}

@@ -1,0 +1,88 @@
+
+
+<swiper class="swiperBox" circular >
+    <swiper-item wx:for='{{2}}' wx:key="index">
+        <image src="/static/images/storeDetail.png" class="storeImg"/>
+    </swiper-item>
+</swiper>
+<view class="container">
+    <view class="box">
+        <view class="storeNameBox">
+
+            <view class="storeName">
+                <view class="tag">共享会员店</view>店铺名称
+            </view>
+            <view class="rateBox">
+                <van-rate
+                        value="{{ 2 }}"
+                        size="{{12}}"
+                        gutter="{{2}}"
+                        readonly
+                        color="#FFBB05"
+                        void-icon="star"
+                        void-color="#D8D8D8"
+                        bind:change="onChange"
+                />
+                <view class="rateNum">36人评价</view>
+            </view>
+            <view class="goPhone">
+                <image src="/static/images/icon_phone.png" class="icon"/>
+                电话</view>
+        </view>
+
+
+        <view class="time">
+            <image src="/static/images/icon_time.png" class="iconTime"/>
+            营业时间：周一到周日 8：00-18：00
+        </view>
+        <view class="addressBox">
+            <image src="/static/images/icon_location.png" class="iconLocation"/>
+            <view class="addressDetail">
+                <view class="addressName">延吉市绅士花园12栋4单元2304室</view>
+                <view class="address">距地铁2号线北国商城站A口步行200ｍ</view>
+            </view>
+
+            <view class="goMap">
+                <image src="/static/images/icon_map.png" class="icon"/>
+                去这里</view>
+        </view>
+    </view>
+    <view class="vipBox">
+        <image src="/static/images/vip_bg.png" class="bg"/>
+        <view class="title">会员店内用餐消费后可享</view>
+        <view class="discount">8.5折优惠</view>
+    </view>
+    <view class="evaluates">
+        <view class="head">
+            <view class="left">
+                店铺评价 <text>(26条)</text>
+            </view>
+        </view>
+        <view class="evaluate" wx:for="{{1}}">
+            <view class="userInfo">
+                <image class="avatar" src="/static/images/avatar.png"/>
+                <view class="user">
+                    <view class="username">飞翔的企鹅</view>
+                    <van-rate
+                            value="{{ 2 }}"
+                            size="{{8}}"
+                            gutter="{{2}}"
+                            readonly
+                            class="grade"
+                            color="#FFBB05"
+                            void-icon="star"
+                            void-color="#D8D8D8"
+                            bind:change="onChange"
+                    />
+                </view>
+
+            </view>
+            <view class="content line2">
+                很满意的一次购物体验，食材很棒很新鲜，拿到手以后直接烹饪就可以，方便美味，价格也非常合适，不会做菜的宝...
+            </view>
+        </view>
+        <navigator url="/pages/store/evaluates/index" class="footer">
+            查看全部评价
+        </navigator>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "共享店",
+  "usingComponents": {
+    "van-sticky": "@vant/weapp/sticky/index"
+  }
+}

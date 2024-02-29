@@ -1,0 +1,33 @@
+/**app.wxss**/
+
+view, image, text, navigator {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+.container {
+    height: 100%;
+    padding: 0 26rpx;
+    box-sizing: border-box;
+}
+
+
+.deleted {
+    text-decoration: line-through;
+}
+
+.line1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.line2 {
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
