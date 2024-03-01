@@ -4,10 +4,13 @@ const api = require("../../../config/api.js")
 Page({
     data: {
         goodsId: '',
+        goodsNum: 1,
         goods:{
             imgData:[],
         },
         guestList: [],
+        addType: undefined, //1加入购物车 2立即购买
+        modalFlag: false,
     },
     onLoad: function (options) {
         const{ goodsId } = options;
@@ -30,6 +33,9 @@ Page({
             })
         })
     },
+    goodsNumChange: function(e){
+        this.setData({ goodsNum:e.detail });
+    },
     getGuestList: function(){
         const { goodsId }=this.data;
         utils.request(api.getGuestList,{
@@ -47,15 +53,33 @@ Page({
           modalFlag: true
       })
     },
+    confirmOrder: function(){
+        const { addType }=this.data;
+        if(addType === '1'){
+            this.addCard()
+        }else{
+            this.buy()
+        }
+    },
+    modalClose: function (){
+        this.setData({
+            modalFlag: false
+        })
+    },
     addCard: function(){
-        const { goodsId }=this.data;
+        const { goodsId,goodsNum }=this.data;
         utils.request(api.addCart,{
             GoodsId: goodsId,
             Count: 1
         }).then((res)=>{
-            this.setData({
-                guestList: res.list
+            wx.showToast({
+                title: ''
             })
+            this.modalClose()
         })
     },
+    /** 立即购买 */
+    buy: function(){
+
+    }
 });

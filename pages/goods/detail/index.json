@@ -4,6 +4,7 @@
     "Goods": "/component/goods/index",
     "van-button": "@vant/weapp/button/index",
     "van-rate": "@vant/weapp/rate/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-stepper": "@vant/weapp/stepper/index"
   }
 }

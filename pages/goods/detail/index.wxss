@@ -313,3 +313,80 @@ rich-text .img_class{
     height: auto !important;
 }
 /* 富文本 */
+
+
+
+.goodsBox{
+    padding: 56rpx  40rpx 16rpx 40rpx;
+}
+.goods{
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-radius: 12rpx;
+    background: #fff;
+    margin-bottom: 42rpx;
+}
+.goodsBox .goodsNum{
+    display: flex;
+    align-items: center;
+    margin-bottom: 80rpx;
+}
+.goods .goodsImg{
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 12rpx 12rpx 0rpx 0rpx;
+    margin-right: 28rpx;
+    border: 2rpx solid #F1F1F1;
+}
+
+.goods .vipPrice{
+    height: 36rpx;
+    width: auto;
+    padding: 0 4rpx;
+    line-height: 32rpx;
+    border: 2rpx solid #FF7900;
+    font-size: 20rpx;
+    color: #FF7900;
+    background: rgba(255, 121, 0, .05);
+    border-radius: 2rpx;
+}
+.goods .price{
+    display: flex;
+    align-items: center;
+}
+.goods .sign{
+    color: #F73A3A;
+    font-weight: bold;
+    font-size: 28rpx;
+}
+.goods .price .priceText{
+    font-size: 28rpx;
+    font-weight: bold;
+    line-height: normal;
+    color: #F73A3A;
+    margin-right: 12rpx;
+}
+.goods .price .oldPrice{
+    font-size: 20rpx;
+    color: #999;
+}
+.goods .name{
+    font-size: 28rpx;
+    color: #333333;
+    margin-bottom: 10rpx;
+}
+.goods .subtitle{
+    font-size: 24rpx;
+    color: #666;
+    margin-bottom: 10rpx;
+}
+.goods .stepper{
+    position: absolute;
+    bottom: 32rpx;
+    right: 28rpx;
+}
+.goodsBox .confirmBtn{
+    width: 100%;
+}

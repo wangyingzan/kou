@@ -8,15 +8,15 @@
 </van-sticky>
 
 <view class="container">
-    <van-checkbox-group value="{{ result }}" bind:change="selectedGoods">
-        <view class="goods" wx:for="{{5}}">
-            <van-checkbox name="a"  checked-color="#05C160"></van-checkbox>
-            <image class="goodsImg" src="/static/images/goodsImg.png" />
+    <van-checkbox-group value="{{ goodsListFlag }}" bind:change="selectedGoods">
+        <view class="goods" wx:for="{{goodsList}}" wx:key="goodsId">
+            <van-checkbox name="{{item.goodsId}}"  checked-color="#05C160"></van-checkbox>
+            <image class="goodsImg" src="{{item.goodsImg}}" />
             <view class="content">
-                <view class="name line1">臻享实惠套餐5-6人餐123123</view>
-                <view class="subtitle line1">鱼香肉丝+香芹炒肉+宫保鸡...</view>
-                <text class="vipPrice">会员价:￥78.7</text>
-                <view class="price">￥0.01</view>
+                <view class="name line1">{{item.goodsName}}</view>
+                <view class="subtitle line1">{{item.packageDesc}}</view>
+                <text class="vipPrice">会员价:￥{{item.vipPrice}}</text>
+                <view class="price">￥{{item.salePrice}}</view>
             </view>
             <van-stepper class="stepper" integer value="{{ goodsNum }}" async-change bind:change="goodsNumChange" />
         </view>
@@ -25,14 +25,14 @@
 
 <view class="footerBox">
     <view class="moneyBox">
-        <van-checkbox value="{{allGoods}}" class="allCheckbox" bind:change="allGoodsChange" checked-color="#05C160">全选</van-checkbox>
+        <van-checkbox value="{{allGoodsFlag}}" class="allCheckbox" bind:change="allGoodsChange" checked-color="#05C160">全选</van-checkbox>
         <view class="money">
-            <view>合计: <text>￥156.41</text></view>
+            <view>合计: <text>￥{{allGoodsMoney}}</text></view>
             <view class="des">满59元免配送费</view>
         </view>
     </view>
 
     <view class="button">
-        立即支付(3)
+        立即支付({{goodsListFlag.length}})
     </view>
 </view>
