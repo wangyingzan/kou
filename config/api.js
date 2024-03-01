@@ -21,6 +21,8 @@ module.exports = {
     DeleteOrder: 'Applets.OrderList.DeleteOrder',
     addCart: 'Applets.ShoppingCart.Add', //添加商品到购物车
     getCartList: 'Applets.ShoppingCart.List', // 获取购物车列表
+    cartNumChange: 'Applets.ShoppingCart.ModifyGoodsCount', // 修改购物车商品数量
+    delCart: 'Applets.ShoppingCart.Delete', // 修改购物车商品数量
     // DeleteOrder: 'Applets.OrderList.DeleteOrder',
 
     /*end 基础数据 end*/

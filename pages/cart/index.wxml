@@ -18,7 +18,7 @@
                 <text class="vipPrice">会员价:￥{{item.vipPrice}}</text>
                 <view class="price">￥{{item.salePrice}}</view>
             </view>
-            <van-stepper class="stepper" integer value="{{ goodsNum }}" async-change bind:change="goodsNumChange" />
+            <van-stepper class="stepper" data-goods="{{item}}" min="0" data-index="{{index}}" integer value="{{ item.count }}" async-change bind:change="goodsNumChange" />
         </view>
     </van-checkbox-group>
 </view>
@@ -32,7 +32,9 @@
         </view>
     </view>
 
-    <view class="button">
-        立即支付({{goodsListFlag.length}})
+    <view class="button" bindtap="onPay">
+        立即支付({{selectedGoodsNum}})
     </view>
 </view>
+
+<van-dialog id="van-dialog" />
