@@ -1,8 +1,8 @@
 
 
 <swiper class="swiperBox" circular >
-    <swiper-item wx:for='{{2}}' wx:key="index">
-        <image src="/static/images/storeDetail.png" class="storeImg"/>
+    <swiper-item wx:for='{{data.interiorImg}}' wx:key="index">
+        <image src="{{item}}" class="storeImg"/>
     </swiper-item>
 </swiper>
 <view class="container">
@@ -10,11 +10,11 @@
         <view class="storeNameBox">
 
             <view class="storeName">
-                <view class="tag">共享会员店</view>店铺名称
+                <view class="tag">共享会员店</view>{{data.storeName}}
             </view>
             <view class="rateBox">
                 <van-rate
-                        value="{{ 2 }}"
+                        value="{{ data.overallRating }}"
                         size="{{12}}"
                         gutter="{{2}}"
                         readonly
@@ -23,9 +23,9 @@
                         void-color="#D8D8D8"
                         bind:change="onChange"
                 />
-                <view class="rateNum">36人评价</view>
+                <view class="rateNum">{{data.totalPeoples}}人评价</view>
             </view>
-            <view class="goPhone">
+            <view class="goPhone" bintap="goPhone">
                 <image src="/static/images/icon_phone.png" class="icon"/>
                 电话</view>
         </view>
@@ -33,13 +33,13 @@
 
         <view class="time">
             <image src="/static/images/icon_time.png" class="iconTime"/>
-            营业时间：周一到周日 8：00-18：00
+            营业时间：{{data.businessHours}}
         </view>
         <view class="addressBox">
             <image src="/static/images/icon_location.png" class="iconLocation"/>
             <view class="addressDetail">
-                <view class="addressName">延吉市绅士花园12栋4单元2304室</view>
-                <view class="address">距地铁2号线北国商城站A口步行200ｍ</view>
+                <view class="addressName">{{data.address}}</view>
+                <view class="address">{{data.description}}</view>
             </view>
 
             <view class="goMap">
@@ -50,21 +50,21 @@
     <view class="vipBox">
         <image src="/static/images/vip_bg.png" class="bg"/>
         <view class="title">会员店内用餐消费后可享</view>
-        <view class="discount">8.5折优惠</view>
+        <view class="discount">{{data.rate}}折优惠</view>
     </view>
     <view class="evaluates">
         <view class="head">
             <view class="left">
-                店铺评价 <text>(26条)</text>
+                店铺评价 <text>({{data.totalCommentCount}}条)</text>
             </view>
         </view>
-        <view class="evaluate" wx:for="{{1}}">
+        <view class="evaluate">
             <view class="userInfo">
-                <image class="avatar" src="/static/images/avatar.png"/>
+                <image class="avatar" src="{{data.commentInfo.headImg}}"/>
                 <view class="user">
-                    <view class="username">飞翔的企鹅</view>
+                    <view class="username">{{data.commentInfo.nickName}}</view>
                     <van-rate
-                            value="{{ 2 }}"
+                            value="{{data.commentInfo.score}}"
                             size="{{8}}"
                             gutter="{{2}}"
                             readonly
@@ -78,10 +78,10 @@
 
             </view>
             <view class="content line2">
-                很满意的一次购物体验，食材很棒很新鲜，拿到手以后直接烹饪就可以，方便美味，价格也非常合适，不会做菜的宝...
+                {{data.commentInfo.content}}
             </view>
         </view>
-        <navigator url="/pages/store/evaluates/index" class="footer">
+        <navigator url="/pages/store/evaluates/index?id={{id}}" class="footer">
             查看全部评价
         </navigator>
     </view>

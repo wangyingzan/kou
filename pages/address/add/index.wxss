@@ -1,0 +1,60 @@
+page{
+    padding-top: 24rpx;
+}
+.formBox{
+    background: #fff;
+    padding: 0 36rpx;
+}
+.formBox .item{
+    display: flex;
+    align-items: center;
+    height: 92rpx;
+    color: #222222;
+    font-size: 28rpx;
+    line-height: 92rpx;
+    border-bottom: 2rpx solid #EEEEEE;
+}
+.formBox .item .left{
+    width: 144rpx;
+    flex: none;
+}
+.formBox .item.address{
+    align-items: flex-start;
+    padding-top: 18rpx;
+    height: 188rpx;
+}
+.formBox .item.address .left{
+    height: 40rpx;
+    line-height: 40rpx;
+}
+.formBox .item.address textarea{
+    height: 160rpx;
+    line-height: 40rpx;
+}
+
+.defaultBox{
+    display: flex;
+    align-items: center;
+    height: 92rpx;
+    padding: 0 36rpx;
+    font-size: 28rpx;
+    color: #222;
+    justify-content: space-between;
+    background: #fff;
+    margin-top: 24rpx;
+}
+
+.footer{
+    margin-top: 120rpx;
+    padding: 0 24rpx;
+}
+.footer .btn{
+    width: 100%;
+    line-height: 84rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 32rpx;
+    background: #05C160;
+    border-radius: 8rpx;
+    margin-top: 80rpx;
+}

@@ -23,7 +23,28 @@ module.exports = {
     getCartList: 'Applets.ShoppingCart.List', // 获取购物车列表
     cartNumChange: 'Applets.ShoppingCart.ModifyGoodsCount', // 修改购物车商品数量
     delCart: 'Applets.ShoppingCart.Delete', // 修改购物车商品数量
+    getDefaultAddress: 'Member.Address.Default', // 获取默认地址
+    confirmOrder: 'Applets.OrderSubmit.NormalSubmitConfirm', // 直接购买确认订单
+    confirmCartOrder: 'Applets.OrderSubmit.ShoppingCartConfirm', // 购物车确认订单
+    getAddressList: 'Member.Address.List', // 获取所有地址
+    delAddress: 'Member.Address.Remove', // 删除地址
+    addAddress: 'Member.Address.Submit', // 新增地址
+    getAddressDetail: 'Member.Address.Detail', // 地址详情
+
+
+
+
+
+    getStoreList: 'Applets.StoreInfo.List', // 店铺列表
+    getStoreDetail: 'Applets.StoreInfo.Detail', // 店铺详情
+    getStoreCommentList: 'Applets.StoreComment.List', // 店铺评价列表
+    getStoreCommentHome: 'Applets.StoreComment.Home', // 店铺评价首页
+    getStoreLog: 'Applets.StoreHome.ArrivalRecord', // 会员到店记录
+    getStoreHome: 'Applets.StoreHome.Home', // 店铺首页
     // DeleteOrder: 'Applets.OrderList.DeleteOrder',
+
+
+
 
     /*end 基础数据 end*/
 };

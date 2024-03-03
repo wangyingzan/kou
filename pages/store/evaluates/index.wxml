@@ -1,0 +1,30 @@
+<view class="evaluates">
+    <view class="head">
+        <view class="left">
+            店铺评价 <text>({{commentTotal}}条)</text>
+        </view>
+    </view>
+    <view class="evaluate" wx:for="{{list}}" wx:key="memberId">
+        <view class="userInfo">
+            <image class="avatar" src="{{item.headImg}}"/>
+            <view class="user">
+                <view class="username">{{item.nickName}}</view>
+                <van-rate
+                        value="{{item.score}}"
+                        size="{{8}}"
+                        gutter="{{2}}"
+                        readonly
+                        class="grade"
+                        color="#FFBB05"
+                        void-icon="star"
+                        void-color="#D8D8D8"
+                        bind:change="onChange"
+                />
+            </view>
+
+        </view>
+        <view class="content line2">
+            {{item.content}}
+        </view>
+    </view>
+</view>

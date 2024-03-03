@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "新增收获地址",
+  "usingComponents": {
+    "van-switch": "@vant/weapp/switch/index"
+  }
+}

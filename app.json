@@ -9,7 +9,10 @@
     "pages/store/evaluates/index",
     "pages/goods/evaluates/index",
     "pages/search/index",
-    "pages/search/list/index"
+    "pages/search/list/index",
+    "pages/order/index",
+    "pages/address/index",
+    "pages/address/add/index"
   ],
   "tabBar": {
     "backgroundColor": "#fff",

@@ -1,5 +1,6 @@
 page{
     padding-bottom: 50rpx;
+    background: #fff;
 }
 .container{
     padding: 0 26rpx;
@@ -52,34 +53,14 @@ page{
 }
 
 .filterBox{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24rpx 106rpx 20rpx 66rpx;
     background: #fff;
 }
-.filterBox .item{
-    position: relative;
-    line-height: 40rpx;
-    font-size: 28rpx;
-    color: #666666;
+
+
+.filterBox .van-dropdown-menu {
+    box-shadow: none;
 }
 
-.filterBox .item:before{
-    content: "";
-    position: absolute;
-    top: 15rpx;
-    right: -40rpx;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 10rpx solid transparent;
-    border-right: 10rpx solid transparent;
-    border-top: 15rpx solid #999;
-}
-.filterBox .item.selected:before{
-    border-top-color: #4DC185
-}
 
 .list .store{
     position: relative;

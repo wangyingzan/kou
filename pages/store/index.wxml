@@ -9,9 +9,11 @@
             </view>
         </view>
         <view class="filterBox">
-            <view class="item selected">区域</view>
-            <view class="item">排序</view>
-            <view class="item">筛选</view>
+            <van-dropdown-menu active-color="#F23D3D">
+                <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+                <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+                <van-dropdown-item value="{{ value3 }}" options="{{ option3 }}" />
+            </van-dropdown-menu>
         </view>
     </view>
 
@@ -19,15 +21,15 @@
 <view class="container">
 
     <view class="list">
-        <navigator url="/pages/store/detail/index" class="store" wx:for="{{10}}" >
-            <image class="img" src="/static/images/img.png"/>
+        <navigator url="/pages/store/detail/index?id={{item.storeId}}" class="store" wx:for="{{list}}" wx:key="storeId">
+            <image class="img" src="{{item.storeImg}}"/>
             <view class="info">
-                <view class="name">店铺名称</view>
+                <view class="name">{{item.storeName}}</view>
                 <view >营业时间：8：00-18：00</view>
-                <view >会员折扣：<text style="color: #FF7900">8.5折</text></view>
-                <view >福建省福州市石门桥镇元普鹰村2条8号</view>
+                <view >会员折扣：<text style="color: #FF7900">{{item.rate}}折</text></view>
+                <view >{{item.address}}</view>
             </view>
-            <view class="distance"> <image class="icon" src="/static/images/icon_dis.png"/> 500m</view>
+            <view class="distance"> <image class="icon" src="/static/images/icon_dis.png"/> {{item.distance}}</view>
             <image src="/static/images/icon_arrow.png" class="arrow" > > </image>
         </navigator>
     </view>

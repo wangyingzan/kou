@@ -115,8 +115,9 @@ Page({
                     goodsList.splice(index,1);
                     this.setData({
                         goodsList
+                    },()=>{
+                        this.countAmount()
                     })
-                    this.countAmount()
                 })
             }).catch()
     },
@@ -124,69 +125,9 @@ Page({
 
     },
     onPay: function(){
-
-        utils.request(api.getCartList).then((res)=>{
-            const {cartData:goodsList} = res;
-            this.setData({
-                goodsList
-                // emptyFlag: !list.length
-            })
-            if(initFlag){
-                this.data.initFlag = false
-                this.initCart()
-            }
-
-        })
-
-
-        wx.requestPayment({
-            nonceStr: prePayTn.nonceStr + '',
-            package: prePayTn.package,
-            paySign: prePayTn.paySign,
-            timeStamp: prePayTn.timeStamp + '',
-            signType: prePayTn.signType,
-            success: function (res) {
-                console.log(res);
-                if (res.errMsg == "requestPayment:ok") {
-                    wx.showToast({
-                        title: '支付成功',
-                        mask: true,
-                        duration: 3000
-                    })
-                    var reqData = that.data.reqData;
-                    reqData.status = 1;
-                    that.setData({
-                        reqData: reqData
-                    })
-                    that.setData({
-                        note: '支付成功'
-                    })
-                } else {
-                    var reqData = that.data.reqData;
-                    reqData.status = 2;
-                    that.setData({
-                        reqData: reqData
-                    })
-                    wx.showToast({
-                        title: '支付失败',
-                        mask: true,
-                        duration: 3000
-                    })
-                    that.setData({
-                        note: '支付失败'
-                    })
-                }
-            },
-            fail: function (res) {
-                var reqData = that.data.reqData;
-                reqData.status = 2;
-                that.setData({
-                    reqData: reqData
-                })
-                that.setData({
-                    note: '支付失败'
-                })
-            }
+        const { goodsListFlag } = this.data;
+        wx.navigateTo({
+            url: '/pages/order/index?goodsIds=' + goodsListFlag.join(',')
         })
     },
 });

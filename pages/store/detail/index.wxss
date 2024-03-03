@@ -95,8 +95,8 @@ page{
 .addressBox{
     position: relative;
     display: flex;
-    padding-top: 24rpx;
-    height: 148rpx;
+    padding: 24rpx 0;
+    /*height: 148rpx;*/
 }
 .addressBox .goMap{
     display: flex;
@@ -148,12 +148,14 @@ page{
 .vipBox .title{
     position: relative;
     font-size: 28rpx;
+    font-weight: bold;
     color: #5C5143;
     margin-bottom: 14rpx;
 }
 .vipBox .discount{
     position: relative;
     font-size: 40rpx;
+    font-weight: bold;
     color: #B9571D;
 }
 .vipBox .bg{

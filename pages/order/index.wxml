@@ -1,0 +1,82 @@
+<view class="container">
+    <view class="box">
+        <view class="addressBox" wx:if="{{address.addressId}}">
+            <view class="address">
+                {{address.areaInfo}}
+            </view>
+            <view class="addressName">{{address.detail}}</view>
+            <view class="userInfo">
+                <text class="username">{{address.contactName}}</text>
+                <text class="phone">{{address.contactPhone}}</text>
+            </view>
+            <view class="btn">修改</view>
+        </view>
+        <view class="emptyAddress" wx:else>
+            <navigator url="/pages/address/index" class="item">选择收获地址</navigator>
+            <view class="item">获取微信地址</view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="goodsInfo">
+            <view class="title">
+                <image class="icon" src="/static/images/icon_store.png" />
+                口福侠品牌自营
+            </view>
+            <view class="goods" wx:for="{{2}}">
+                <image src="" class="img"/>
+                <view class="goodsInfo">
+                    <view class="name"></view>
+                    <view class="info">鱼香肉丝+香芹炒肉+宫保鸡 丁+孜然肉片+金汤酸菜鱼</view>
+                    <view class="spec">规格：<text class="num">×1</text></view>
+                    <view class="tips">
+                        <view class="tip">官方正品</view>
+                        <view class="tip">24小时内发货</view>
+                    </view>
+
+                </view>
+                <view class="goodsMoney">¥112.4</view>
+            </view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="orderInfo">
+            <view class="item">
+                <view>实付款</view>
+                <view class="money">￥112.5</view>
+            </view>
+            <view class="item">
+                <view>订单运费</view>
+                <view class="right">￥112.5</view>
+            </view>
+            <view class="item">
+                <view>发货时间</view>
+                <view class="right">￥112.5</view>
+            </view>
+            <view class="item">
+                <view>下单时间</view>
+                <view class="right">￥112.5</view>
+            </view>
+            <view class="item">
+                <view>订单编号</view>
+                <view class="right">1686131383151351313</view>
+            </view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="payBox">
+            <view class="wechat">
+                <image class="icon" src="/static/images/icon_wechat.png" />
+                <view>微信</view>
+            </view>
+            <icon class="icon-box-img" type="success" size="22" color="#05C160" />
+        </view>
+
+    </view>
+</view>
+
+<view class="footer">
+    <view class="allMoney">
+        合计：<text class="money">￥112.4</text>
+    </view>
+    <view class="btn">立即支付</view>
+</view>

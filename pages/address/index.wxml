@@ -1,0 +1,33 @@
+<view class="container" >
+    <van-radio-group value="{{ goodsListFlag }}" bind:change="selectedAddress">
+        <view class="addressBox" wx:for="{{list}}" wx:key="goodsId">
+            <view class="addressItem">
+                <van-radio name="{{item.addressId}}"  checked-color="#05C160" />
+                <view class="addressInfo">
+                    <view class="address">
+                        {{item.areaInfo}}12321312
+                    </view>
+                    <view class="addressName">{{address.detail}}123213</view>
+                    <view class="userInfo">
+                        <text class="username">{{address.contactName}}123213</text>
+                        <text class="phone">{{address.contactPhone}}123213</text>
+                    </view>
+                </view>
+                <image src="/static/images/icon_edit.png" class="icon"></image>
+            </view>
+            <view class="addressFooter">
+                <view>设为默认地址</view>
+                <view class="del">删除</view>
+            </view>
+        </view>
+
+    </van-radio-group>
+    <navigator url="/pages/address/add/index" class="publicBtn" >新增地址</navigator>
+</view>
+
+
+<view class="emptyBox" wx:if="{{false}}">
+    <image class="img" src="/static/images/icon_empty.png" />
+    <view class="text">您还没有添加过地址哦</view>
+    <navigator url="/pages/address/add/index" class="publicBtn" >添加一个收获地址</navigator>
+</view>

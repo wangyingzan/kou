@@ -1,0 +1,27 @@
+<form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="formBox">
+        <view class="item">
+            <view class="left">收货人</view>
+            <input placeholder="收货人姓名" name="ContactName"/>
+        </view>
+        <view class="item">
+            <view class="left">联系电话</view>
+            <input placeholder="收货人电话" name="ContactPhone"/>
+        </view>
+        <view class="item">
+            <view class="left">选择地区</view>
+            <input placeholder="省、市、区、街道" name="Detail"/>
+        </view>
+        <view class="item address">
+            <view class="left">详细地址</view>
+            <textarea placeholder="街道、小区、楼牌号等" />
+        </view>
+    </view>
+    <view class="defaultBox">
+        <view class="left">设为默认地址</view>
+        <van-switch checked="{{ isDefault }}" inactive-color="#D8D8D8" active-color="#05C160" size="24px" bind:change="defaultChange" />
+    </view>
+    <view class="footer">
+        <button class="btn" >保存并使用</button>
+    </view>
+</form>

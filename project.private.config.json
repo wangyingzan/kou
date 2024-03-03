@@ -8,6 +8,48 @@
     "miniprogram": {
       "list": [
         {
+          "name": "店铺评价",
+          "pathName": "pages/store/evaluates/index",
+          "query": "id=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/store/detail/index",
+          "pathName": "pages/store/detail/index",
+          "query": "id=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "店铺列表",
+          "pathName": "pages/store/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "添加收获地址",
+          "pathName": "pages/address/add/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "收获地址",
+          "pathName": "pages/address/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "确认订单",
+          "pathName": "pages/order/index",
+          "query": "goodsIds=27",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "搜索结果",
           "pathName": "pages/search/list/index",
           "query": "",
