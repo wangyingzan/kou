@@ -42,7 +42,7 @@
                 <view class="address">{{data.description}}</view>
             </view>
 
-            <view class="goMap">
+            <view class="goMap" bindtap="goMap">
                 <image src="/static/images/icon_map.png" class="icon"/>
                 去这里</view>
         </view>

@@ -1,16 +1,37 @@
 const utils = require("../../utils/util.js")
 const api = require("../../config/api.js")
 Page({
-    data: {},
+    data: {
+        logs: []
+    },
     onLoad: function (options) {
         this.setData({
 
         })
     },
+    onShow() {
+       const logs =  wx.getStorageSync('goodsLogs')
+        if(logs.length){
+            this.setData({
+                logs
+            })
+        }
+    },
     searchClick: function ({detail:{value:{keyword}}}){
-        wx.navigateTo({
-            url: '/pages/search/list/index？keyword=' + keyword
-        })
+        if(keyword){
+            const { logs } = this.data;
+            logs.unshift(keyword)
+            wx.setStorageSync('goodsLogs',logs.slice(0,50))
+            wx.navigateTo({
+                url: '/pages/search/list/index?keyword=' + keyword
+            })
+        }else{
+            wx.showToast({
+                title: '请输入商品名称',
+                icon: 'none'
+            })
+        }
+
     },
     getList: function(){
         const { page, size,keyword} = this.data;

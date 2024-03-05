@@ -19,20 +19,27 @@ Page({
     },
     onShow: function(){
       const isLogin = wx.getStorageSync("isLogin");
+      const userInfo = wx.getStorageSync("userInfo");
       this.setData({
-          isLogin
+          isLogin,
+          userInfo
       })
     },
     login: function(){
 
     },
-    navigatorTo: function(){
+    navigatorTo: function({currentTarget:{dataset:{url}}}){
         const {isLogin} = this.data;
         console.log();
         if(isLogin){
-
+            wx.navigateTo({
+                url: url
+            })
         }else{
-
+            wx.showToast({
+                title: '请先登录',
+                icon: 'none'
+            })
         }
 
     },
@@ -54,7 +61,7 @@ Page({
                 });
                 wx.setStorageSync('token', token);
                 wx.setStorageSync("isLogin",true);
-                // wx.setStorageSync('sessionkey', data.data.sessionKey);
+                wx.setStorageSync('userInfo', userInfo);
                 // wx.setStorageSync('unionid', data.data.unionid)
             })
         }).catch((res)=>{

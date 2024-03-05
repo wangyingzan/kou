@@ -1,0 +1,50 @@
+<van-tabs active="{{ status }}" bind:change="onStatusChange" class="tabs">
+
+    <van-tab title="全部订单" :name="0" dot/>
+    <van-tab title="待支付" :name="1" />
+    <van-tab title="待发货" :name="2" info="2" />
+    <van-tab title="待收货" :name="3" />
+    <van-tab title="待评价" :name="4" />
+</van-tabs>
+<view class="list">
+    <view class="goodsInfo">
+        <view class="title">
+            <image class="icon" src="/static/images/icon_store.png" />
+            口福侠品牌自营
+        </view>
+        <view class="goods" wx:for="{{2}}">
+            <image src="" class="img"/>
+            <view class="goodsInfo">
+                <view class="name">123213</view>
+                <view class="info">鱼香肉丝+香芹炒肉+宫保鸡 丁+孜然肉片+金汤酸菜鱼</view>
+                <view class="spec">规格：<text class="num">×1</text></view>
+                <view class="tips">
+                    <view class="tip">官方正品</view>
+                    <view class="tip">24小时内发货</view>
+                </view>
+
+            </view>
+            <view class="goodsMoney">¥112.4</view>
+        </view>
+        <view class="footer">
+            <!--待支付-->
+            <view class="btn">取消订单</view>
+            <view class="btn">去支付</view>
+            <!--待支付-->
+            <!--待发货-->
+            <view class="btn">催发货</view>
+            <!--待发货-->
+            <!--待收货-->
+            <view class="btn">查看物流</view>
+            <view class="btn">确认收货</view>
+            <!--待收货-->
+            <!--待评价-->
+            <view class="btn">查看物流</view>
+            <view class="btn">评价晒单</view>
+
+            <!--待评价-->
+            <view class="btn">取消订单</view>
+        </view>
+    </view>
+</view>
+

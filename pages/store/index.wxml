@@ -9,10 +9,10 @@
             </view>
         </view>
         <view class="filterBox">
-            <van-dropdown-menu active-color="#F23D3D">
-                <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
-                <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
-                <van-dropdown-item value="{{ value3 }}" options="{{ option3 }}" />
+            <van-dropdown-menu active-color="#F23D3D" >
+                <van-dropdown-item value="{{ districtCode }}" data-name="districtCode" options="{{ option1 }}" bind:change="selectedChange"/>
+                <van-dropdown-item value="{{ sortField }}" data-name="sortField" options="{{ option2 }}" bind:change="selectedChange"/>
+                <van-dropdown-item value="{{ rate }}" data-name="rate" options="{{ option3 }}" bind:change="selectedChange"/>
             </van-dropdown-menu>
         </view>
     </view>
@@ -25,7 +25,7 @@
             <image class="img" src="{{item.storeImg}}"/>
             <view class="info">
                 <view class="name">{{item.storeName}}</view>
-                <view >营业时间：8：00-18：00</view>
+                <view >营业时间：{{item.businessHours}}</view>
                 <view >会员折扣：<text style="color: #FF7900">{{item.rate}}折</text></view>
                 <view >{{item.address}}</view>
             </view>

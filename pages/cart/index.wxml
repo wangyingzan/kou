@@ -2,7 +2,7 @@
 <van-sticky >
     <view class="header" >
         <view class="navTitle" style="height:{{navBarHeight}}px;padding-top:{{menuTop}}px">
-            <view class="title" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">购物车(3)</view>
+            <view class="title" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">购物车({{cart.totalCount}})</view>
         </view>
     </view>
 </van-sticky>

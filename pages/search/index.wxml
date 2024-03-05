@@ -12,6 +12,6 @@
        搜索历史
     </view>
     <view class="historyBox">
-        <navigator url="./list?keyword={{123}}"  class="item" wx:for="{{10}}">实惠套餐5-6人餐</navigator>
+        <navigator url="./list/index?keyword={{item}}"  class="item" wx:for="{{logs}}">{{item}}</navigator>
     </view>
 </view>

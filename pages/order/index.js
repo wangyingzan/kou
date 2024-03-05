@@ -6,6 +6,7 @@ Page({
     data: {
         goodsIds: [],
         goodsNum: undefined,
+        remark: undefined,
         orderData: {
             goodsData: []
         },
@@ -26,11 +27,11 @@ Page({
         console.log("goodsIDs",goodsIds)
         this.data.goodsIds = goodsIds.split(',');
         this.data.goodsNum = goodsNum;
-        // this.createOrder();
-        // this.getAddress();
+        this.createOrder();
+        this.getAddress();
     },
     onShow() {
-        const address = wx.getStorageSync("address");
+        const address = wx.getStorageSync("selectAddress");
         if(address){
            this.setData({
                address
@@ -45,8 +46,10 @@ Page({
                 GoodsId: goodsIds.join(','),
                 Count: goodsNum
             }).then((res)=>{
-                const {cartData:goodsList} = res;
-
+                this.setData({
+                    orderData: res
+                })
+                console.log("order",res);
             })
 
         }else{ //从购物车购买商品
@@ -66,73 +69,80 @@ Page({
             })
         })
     },
+    editAddress: function (){
+        const {address} = this.data
+        wx.setStorageSync('selectAddress',address);
+        wx.navigateTo({
+            url: `/pages/address/index?id=${address.addressId}`
+        })
+    },
     onUnload() {
-        wx.removeStorageSync("address")
+        wx.removeStorageSync("selectAddress")
     },
     onPay: function(){
-
-        utils.request(api.getCartList).then((res)=>{
-            const {cartData:goodsList} = res;
-            this.setData({
-                goodsList
-                // emptyFlag: !list.length
-            })
-            if(initFlag){
-                this.data.initFlag = false
-                this.initCart()
+        const { remark,address,orderData } = this.data;
+        const goodsData = orderData.goodsData.map((item)=>{
+            return {
+                GoodsId: item.goodsId,
+                Count: item.count
             }
-
         })
-
-
-        wx.requestPayment({
-            nonceStr: prePayTn.nonceStr + '',
-            package: prePayTn.package,
-            paySign: prePayTn.paySign,
-            timeStamp: prePayTn.timeStamp + '',
-            signType: prePayTn.signType,
-            success: function (res) {
-                console.log(res);
-                if (res.errMsg == "requestPayment:ok") {
-                    wx.showToast({
-                        title: '支付成功',
-                        mask: true,
-                        duration: 3000
-                    })
-                    var reqData = that.data.reqData;
-                    reqData.status = 1;
-                    that.setData({
-                        reqData: reqData
-                    })
-                    that.setData({
-                        note: '支付成功'
-                    })
-                } else {
-                    var reqData = that.data.reqData;
-                    reqData.status = 2;
-                    that.setData({
-                        reqData: reqData
-                    })
-                    wx.showToast({
-                        title: '支付失败',
-                        mask: true,
-                        duration: 3000
-                    })
-                    that.setData({
-                        note: '支付失败'
-                    })
-                }
-            },
-            fail: function (res) {
-                var reqData = that.data.reqData;
-                reqData.status = 2;
-                that.setData({
-                    reqData: reqData
-                })
-                that.setData({
-                    note: '支付失败'
-                })
+        utils.request(api.submitOrder,{
+            "Remark": remark,      //订单备注信息
+            "AddressId":address.addressId,        //收货地址ID
+            "GoodsData": goodsData
+        }).then((res)=>{
+            const {orderNo,isPay} = res;
+            if(isPay === 1){ //去支付
+                this.pay(orderNo)
             }
         })
     },
+    pay: function(orderNo){
+        utils.request(api.payOrder,{
+            OrderNo: orderNo
+        }).then((res)=>{
+            const { PaySign } = res;
+            if(PaySign){
+                const  prePayTn = JSON.parse(PaySign)
+                wx.requestPayment({
+                    nonceStr: prePayTn.nonceStr,
+                    package: prePayTn.package,
+                    paySign: prePayTn.paySign,
+                    timeStamp: prePayTn.timeStamp,
+                    signType: prePayTn.signType,
+                    success: function (res) {
+                        console.log(res);
+                        if (res.errMsg == "requestPayment:ok") {
+                            wx.showToast({
+                                title: '支付成功',
+                                mask: true,
+                                duration: 3000
+                            })
+                            this.setData({
+                                note: '支付成功'
+                            })
+                        } else {
+
+                            wx.showToast({
+                                title: '支付失败',
+                                mask: true,
+                                duration: 3000
+                            })
+                            this.setData({
+                                note: '支付失败'
+                            })
+                        }
+                    },
+                    fail: function (res) {
+                        this.setData({
+                            note: '支付失败'
+                        })
+                    }
+                })
+            }
+        })
+
+
+    }
 });

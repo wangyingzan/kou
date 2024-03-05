@@ -26,6 +26,8 @@ module.exports = {
     getDefaultAddress: 'Member.Address.Default', // 获取默认地址
     confirmOrder: 'Applets.OrderSubmit.NormalSubmitConfirm', // 直接购买确认订单
     confirmCartOrder: 'Applets.OrderSubmit.ShoppingCartConfirm', // 购物车确认订单
+    submitOrder: 'Applets.OrderSubmit.NormalGoodsSubmit', // 提交订单
+    payOrder: 'Service.Pay.AppletsPay', // 提交订单
     getAddressList: 'Member.Address.List', // 获取所有地址
     delAddress: 'Member.Address.Remove', // 删除地址
     addAddress: 'Member.Address.Submit', // 新增地址

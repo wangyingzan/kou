@@ -1,0 +1,85 @@
+
+
+.tabs  .van-tab__title__info{
+    position: absolute !important;
+    top: 6rpx !important;
+}
+
+.list{
+    padding: 20rpx 24rpx;
+}
+
+.goodsInfo{
+    border-radius: 24rpx;
+    background: #fff;
+    padding: 0 24rpx 24rpx 24rpx;
+    margin-bottom: 24rpx;
+}
+.goodsInfo .title{
+    height: 98rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    font-weight: bold;
+    border-bottom: 2rpx solid #EEEEEE;
+    margin-bottom: 27rpx;
+}
+.goodsInfo .title .icon{
+    width: 31rpx;
+    height: 30rpx;
+    margin-right: 12rpx;
+}
+.goods{
+    display: flex;
+
+}
+.goodsInfo{
+    flex: 1;
+}
+.goodsInfo .img{
+    width: 180rpx;
+    height: 190rpx;
+    flex: none;
+    margin-right: 24rpx;
+}
+.goodsInfo .name{
+    font-size: 28rpx;
+    color: #333333;
+    margin-bottom: 12rpx;
+}
+.goodsInfo .info{
+    font-size: 24rpx;
+    color: #666666;
+    margin-bottom: 12rpx;
+}
+.goodsInfo .spec{
+    font-size: 24rpx;
+    color: #333333;
+    margin-bottom: 12rpx;
+}
+.goodsInfo .spec .num{
+    font-size: 28rpx;
+}
+.goodsInfo .tips{
+    display: flex;
+    gap: 0 24rpx;
+}
+.goodsInfo .tips .tip{
+    padding: 0 5rpx;
+    line-height: 28rpx;
+    font-size: 20rpx;
+    border-radius: 5rpx;
+    color: #E6A23C;
+    border: 2rpx solid #E6A23C;
+
+}
+.goodsInfo .tips .tip:nth-child(2){
+    color: #05C160;
+    border: 2rpx solid #05C160;
+}
+.goodsMoney{
+    flex: none;
+    font-size: 36rpx;
+    color: #012110;
+    text-align: right;
+}

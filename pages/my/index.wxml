@@ -5,7 +5,7 @@
             <view class="title" style="height:{{menuHeight}}px;line-height:{{menuHeight}}px">个人中心</view>
         </view>
     </van-sticky>
-    <view class="login" wx:if="{{isLogin}}">
+    <view class="login" wx:if="{{!isLogin}}">
         <image src="/static/images/myBg.png" class="avatar" />
         <view class="log" bindtap="wxLogin">
             立即登录 >
@@ -20,29 +20,28 @@
     <image src="/static/images/myBg.png" class="headerBg"/>
 </view>
 <view class="container">
-
     <view class="mine">
         <view class="mineHeader">
             <view>我的订单</view>
             <navigator class="right">全部订单></navigator>
         </view>
         <view class="tabs">
-            <view data-url="" bindtap="navigatorTo" class="item">
+            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_01.png" class="icon" />
                 <view>待支付</view>
             </view>
-            <navigator class="item">
+            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_02.png" class="icon" />
                 <view>待发货</view>
-            </navigator>
-            <navigator class="item">
+            </view>
+            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_03.png" class="icon" />
                 <view>待收货</view>
-            </navigator>
-            <navigator class="item">
+            </view>
+            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_04.png" class="icon" />
                 <view>待评价</view>
-            </navigator>
+            </view>
         </view>
     </view>
 

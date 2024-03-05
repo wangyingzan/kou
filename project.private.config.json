@@ -8,6 +8,27 @@
     "miniprogram": {
       "list": [
         {
+          "name": "收货地址",
+          "pathName": "pages/address/index",
+          "query": "id=2286",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "确认订单",
+          "pathName": "pages/order/index",
+          "query": "goodsIds=27&goodsNum=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的订单",
+          "pathName": "pages/order/list/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "店铺评价",
           "pathName": "pages/store/evaluates/index",
           "query": "id=1",
@@ -30,7 +51,7 @@
         },
         {
           "name": "添加收获地址",
-          "pathName": "pages/address/add/index",
+          "pathName": "pages/address/addEdit/index",
           "query": "",
           "launchMode": "default",
           "scene": null

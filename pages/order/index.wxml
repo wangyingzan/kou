@@ -9,7 +9,7 @@
                 <text class="username">{{address.contactName}}</text>
                 <text class="phone">{{address.contactPhone}}</text>
             </view>
-            <view class="btn">修改</view>
+            <view bindtap="editAddress" class="btn" >修改</view>
         </view>
         <view class="emptyAddress" wx:else>
             <navigator url="/pages/address/index" class="item">选择收获地址</navigator>
@@ -20,21 +20,20 @@
         <view class="goodsInfo">
             <view class="title">
                 <image class="icon" src="/static/images/icon_store.png" />
-                口福侠品牌自营
+                {{orderData.storeName}}
             </view>
-            <view class="goods" wx:for="{{2}}">
-                <image src="" class="img"/>
+            <view class="goods" wx:for="{{orderData.goodsData}}" wx:key="goodsId">
+                <image src="{{item.goodsImg}}" class="img"/>
                 <view class="goodsInfo">
-                    <view class="name"></view>
-                    <view class="info">鱼香肉丝+香芹炒肉+宫保鸡 丁+孜然肉片+金汤酸菜鱼</view>
-                    <view class="spec">规格：<text class="num">×1</text></view>
+                    <view class="name">{{item.goodsName}}</view>
+                    <view class="info">{{item.packageDesc}}</view>
+                    <view class="spec">规格：<text class="num">×{{item.count}}</text></view>
                     <view class="tips">
                         <view class="tip">官方正品</view>
                         <view class="tip">24小时内发货</view>
                     </view>
-
                 </view>
-                <view class="goodsMoney">¥112.4</view>
+                <view class="goodsMoney">¥{{item.totalAmount}}</view>
             </view>
         </view>
     </view>
@@ -42,23 +41,24 @@
         <view class="orderInfo">
             <view class="item">
                 <view>实付款</view>
-                <view class="money">￥112.5</view>
+                <view class="money">￥{{orderData.totalAmount}}</view>
             </view>
             <view class="item">
                 <view>订单运费</view>
-                <view class="right">￥112.5</view>
+                <view class="right" wx:if="{{orderData.freightAmount != 0}}">￥{{orderData.freightAmount}}</view>
+                <view class="right" wx:else>免运费</view>
             </view>
             <view class="item">
                 <view>发货时间</view>
-                <view class="right">￥112.5</view>
+                <view class="right">{{orderData.fahuoDate}}</view>
             </view>
             <view class="item">
                 <view>下单时间</view>
-                <view class="right">￥112.5</view>
+                <view class="right">{{orderData.orderDate}}</view>
             </view>
-            <view class="item">
+            <view class="item" wx:if="{{orderData.orderNo}}">
                 <view>订单编号</view>
-                <view class="right">1686131383151351313</view>
+                <view class="right" >{{orderData.orderNo}}</view>
             </view>
         </view>
     </view>
@@ -76,7 +76,7 @@
 
 <view class="footer">
     <view class="allMoney">
-        合计：<text class="money">￥112.4</text>
+        合计：<text class="money">￥{{orderData.totalAmount}}</text>
     </view>
-    <view class="btn">立即支付</view>
+    <view class="btn" bindtap="onPay">立即支付</view>
 </view>

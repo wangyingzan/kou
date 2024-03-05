@@ -80,6 +80,9 @@ Page({
     },
     /** 立即购买 */
     buy: function(){
-
+        const { goodsId ,goodsNum} = this.data;
+        wx.navigateTo({
+            url: `/pages/order/index?goodsIds=${goodsId}&goodsNum=${goodsNum}`
+        })
     }
 });

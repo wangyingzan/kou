@@ -19,9 +19,9 @@
     </view>
     <view class="defaultBox">
         <view class="left">设为默认地址</view>
-        <van-switch checked="{{ isDefault }}" inactive-color="#D8D8D8" active-color="#05C160" size="24px" bind:change="defaultChange" />
+        <van-switch checked="{{ isDefault }}" active-value="{{1}}" inactive-value="{{0}}" inactive-color="#D8D8D8" active-color="#05C160" size="24px" bind:change="defaultChange" />
     </view>
     <view class="footer">
-        <button class="btn" >保存并使用</button>
+        <button class="btn" form-type="submit">保存并使用</button>
     </view>
 </form>

@@ -1,7 +1,30 @@
+
+<view class="header">
+    <view class="left">
+        <view class="title">综合评分</view>
+        <view class="grade">{{data.overallRating}} <text>分</text> </view>
+        <van-rate
+                value="{{data.overallRating}}"
+                size="{{12}}"
+                gutter="{{2}}"
+                readonly
+                color="#FFBB05"
+                void-icon="star"
+                void-color="#D8D8D8"
+                bind:change="onChange"
+        />
+        <view class="other">共有{{data.totalPeoples}}人参与评价</view>
+    </view>
+    <view class="right">
+        <view class="item" wx:for="{{data.featuresData}}" wx:key="index" >{{item.features}}({{item.count}})</view>
+    </view>
+</view>
+
+
 <view class="evaluates">
     <view class="head">
         <view class="left">
-            店铺评价 <text>({{commentTotal}}条)</text>
+            全部评价 <text>({{commentTotal}}条)</text>
         </view>
     </view>
     <view class="evaluate" wx:for="{{list}}" wx:key="memberId">
@@ -11,7 +34,7 @@
                 <view class="username">{{item.nickName}}</view>
                 <van-rate
                         value="{{item.score}}"
-                        size="{{8}}"
+                        size="{{12}}"
                         gutter="{{2}}"
                         readonly
                         class="grade"
@@ -25,6 +48,10 @@
         </view>
         <view class="content line2">
             {{item.content}}
+        </view>
+        <view class="imgs">
+            <image class="img" wx:for="{{item.imgs}}" wx:for-item="img" wx:key="img" src="{{img}}"/>
+
         </view>
     </view>
 </view>

@@ -15,9 +15,10 @@ Page({
         })
         this.getList();
     },
-    search: function (){
+    search: function ({detail:{value:{keyword}}}){
         this.setData({
             page: 1,
+            keyword
         })
         this.getList()
     },

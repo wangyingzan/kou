@@ -3,22 +3,22 @@ const api = require("../../config/api.js")
 Page({
     data: {
         option1: [
-            { text: '全市', value: 0 },
-            { text: '新款商品', value: 1 },
-            { text: '活动商品', value: 2 },
+            { text: '全市', value: '' },
+            { text: '长安区', value: 1 },
+            { text: '桥西区', value: 2 },
         ],
         option2: [
-            { text: '默认', value: 'a' },
-            { text: '好评优先', value: 'b' },
+            { text: '默认', value: 0 },
+            { text: '好评优先', value: 1 },
         ],
         option3: [
-            { text: '全部', value: 'a' },
-            { text: '9折以下', value: 'b' },
-            { text: '7折以下', value: 'c' },
+            { text: '全部', value: 0 },
+            { text: '9折以下', value: 9 },
+            { text: '7折以下', value: 7 },
         ],
-        value1: 0,
-        value2: 'a',
-        value3: 'a',
+        districtCode: '', //SortField
+        sortField: 0,
+        rate: 0,
         list: [],
         page: 1,
         size: 10,
@@ -27,11 +27,14 @@ Page({
         this.getList();
     },
     getList: function () {
-        const {page, size, cateId} = this.data;
+        const {page, size, cateId,sortField,rate,districtCode } = this.data;
         utils.request(api.getStoreList, {
             PageIndex: page,
             PageSize: size,
             Keywords: '',
+            SortField: sortField,
+            DistrictCode: districtCode,
+            Rate: rate,
             CateId: cateId,
         }).then((res) => {
             let list = this.data.list;
@@ -45,6 +48,12 @@ Page({
                 // emptyFlag: !list.length
             })
         })
+    },
+    selectedChange: function({detail,currentTarget:{dataset:{name}}}){
+        this.setData({
+            [ `${name}` ]: detail
+        })
+        this.getList()
     },
     /**
      * 页面上拉触底事件的处理函数

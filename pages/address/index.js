@@ -2,13 +2,38 @@ const utils = require("../../utils/util.js")
 const api = require("../../config/api.js")
 Page({
     data: {
-        list: [{
+        list: [],
+        address:{
 
-        },{}],
-        currentAddress: '',
+        },
+        currentAddress: undefined,
+        defaultId: undefined, //当前地址
     },
     onLoad: function (options) {
-        // this.getList()
+        const {id} = options
+        if(id){
+            this.setData({
+                currentAddress: Number(id)
+            })
+        }
+    },
+    onShow: function () {
+       const address =  wx.getStorageSync('selectAddress')
+        this.setData({
+            address
+        })
+        this.getList()
+    },
+    onUnload() {
+        const { list,currentAddress } = this.data;
+        let address = {};
+        list.map((item)=>{
+            if(item.addressId === currentAddress){
+                address = item;
+            }
+        })
+        console.log("address",address);
+        wx.setStorageSync('selectAddress',address)
     },
     selectedAddress: function(event){
         this.setData({
