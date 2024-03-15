@@ -22,8 +22,11 @@
     "pages/store/cityList/index",
     "pages/store/log/index",
     "pages/store/log/detail/index",
+    "pages/my/store/log/index",
+    "pages/my/store/log/detail/index",
     "pages/order/evaluates/index",
-    "pages/order/success/index"
+    "pages/order/success/index",
+    "pages/my/store/index"
   ],
   "tabBar": {
     "backgroundColor": "#fff",

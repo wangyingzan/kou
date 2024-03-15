@@ -68,7 +68,8 @@ module.exports = {
 
     // DeleteOrder: 'Applets.OrderList.DeleteOrder',
 
-
+    /* 我的店铺 */
+    getMyStoreDetail: 'Applets.StoreHome.Home', // 我的店铺详情
 
 
     /*end 基础数据 end*/

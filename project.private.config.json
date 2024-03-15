@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "我的店铺",
+          "pathName": "pages/my/store/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "支付成功",
           "pathName": "pages/order/success/index",
           "query": "",

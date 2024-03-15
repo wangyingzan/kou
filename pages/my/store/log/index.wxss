@@ -1,0 +1,57 @@
+.container {
+    padding: 24rpx;
+}
+
+.box {
+    border-radius: 12rpx;
+    background: #FFFFFF;
+    margin-bottom: 20rpx;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 22rpx;
+}
+
+.item .avatar {
+    width: 90rpx;
+    height: 90rpx;
+    flex: none;
+    border-radius: 50%;
+    margin-right: 22rpx;
+}
+.item .info{
+    flex: 1
+}
+.item .name{
+    flex: 1;
+    font-size: 28rpx;
+    color: #222222;
+    margin-bottom: 16rpx;
+}
+.item .btn{
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 50rpx;
+    border-radius: 144px;
+    padding: 0 20rpx;
+    border: 2rpx solid;
+}
+
+
+.item .time{
+    font-size: 24rpx;
+    color: #666666;
+}
+
+.primaryBtn {
+    color: #4DC185;
+    border-color: #4DC185;
+}
+
+.defaultBtn {
+    color: #999;
+    border-color: #999;
+
+}

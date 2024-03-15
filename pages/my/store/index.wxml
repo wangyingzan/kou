@@ -1,0 +1,49 @@
+<view class="container">
+    <view class="box">
+        <view class="storeBox">
+            <image class="img" src="{{data.storeImg}}"/>
+            <view class="info">
+                <view class="name">{{data.storeName}}</view>
+                <view class="time">营业时间:{{data.businessHours}}</view>
+                <view class="address">{{data.address}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="otherBox">
+            <view class="title">常用工具</view>
+            <view class="item">
+                <image class="icon" src="/static/images/icon_store_01.png"/>
+                <view class="right">
+                    <view class="name">会员验证二维码</view>
+                    <view class="info">会员通过扫描此码验证其身份</view>
+                    <image class="arrow" src="/static/images/icon_arrow.png"/>
+                </view>
+            </view>
+            <view class="item">
+                <image class="icon" src="/static/images/icon_store_02.png"/>
+                <view class="right">
+                    <view class="name">会员到店记录</view>
+                    <view class="info">查看到店验证消费后的会员信息</view>
+                    <image class="arrow" src="/static/images/icon_arrow.png"/>
+                </view>
+            </view>
+            <view class="item">
+                <image class="icon" src="/static/images/icon_store_03.png"/>
+                <view class="right">
+                    <view class="name">基本信息修改</view>
+                    <view class="info">修改店铺基本信息，此项需审核</view>
+                    <image class="arrow" src="/static/images/icon_arrow.png"/>
+                </view>
+            </view>
+            <view class="item">
+                <image class="icon" src="/static/images/icon_store_04.png"/>
+                <view class="right">
+                    <view class="name">折扣优惠修改</view>
+                    <view class="info">修改折扣额度，当前折扣为：<text style="color: #FF7900">{{data.storeRate}}折</text></view>
+                    <image class="arrow" src="/static/images/icon_arrow.png"/>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

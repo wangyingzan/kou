@@ -15,7 +15,6 @@ Page({
         isLogin: false,
     },
     onLoad: function (options) {
-        // wx.setStorageSync("isLogin", true)
     },
     onShow: function () {
         const isLogin = wx.getStorageSync("isLogin");
@@ -29,14 +28,14 @@ Page({
             this.getHomeInfo()
         }
     },
-    login: function () {
-
-    },
     goInfo: function ({currentTarget: {dataset: {type}}}) {
         const {isLogin} = this.data;
         if (isLogin) {
             switch (type) {
                 case 'store_member': //共享会员店
+                    wx.navigateTo({
+                        url: '/pages/my/store/index'
+                    })
                     break;
                 case 'store_history': //到店记录
                     wx.navigateTo({
@@ -133,6 +132,7 @@ Page({
             }
         })
     },
+
     unLogin: function () {
         Dialog.confirm({
             title: '退出登录',
@@ -155,6 +155,7 @@ Page({
             });
 
     },
+
     onChangePhone: function () {
         const {phoneNumber} = this.data.userInfo;
         if (phoneNumber) {

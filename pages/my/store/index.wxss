@@ -1,0 +1,81 @@
+.container{
+    padding: 25rpx;
+}
+.box{
+    padding: 24rpx;
+    border-radius: 12rpx;
+    margin-bottom: 40rpx;
+    background: #FFFFFF;
+}
+.storeBox{
+    display: flex;
+}
+.storeBox .img{
+    flex: none;
+    width: 136rpx;
+    height: 136rpx;
+    border-radius: 12rpx;
+    margin-right: 24rpx;
+}
+.storeBox .right .name{
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 12rpx;
+}
+.storeBox .right .time{
+    font-size: 24rpx;
+    color: #222222;
+    margin-bottom: 12rpx;
+}
+.storeBox .right .address{
+    font-size: 24rpx;
+    color: #666;
+}
+
+
+.otherBox{
+    /*display: flex;*/
+}
+.otherBox .title{
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 14rpx;
+}
+.otherBox .item{
+    display: flex;
+    align-items: center;
+}
+
+.otherBox .item .icon{
+    flex: none;
+    width: 55rpx;
+    height: 55rpx;
+    margin-right: 26rpx;
+}
+.otherBox .item .right{
+    position: relative;
+    padding: 24rpx 0;
+    flex: 1;
+    border-bottom: 2rpx solid #EEEEEE;
+}
+.otherBox .item .right .name{
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 8rpx;
+}
+.otherBox .item .right .info{
+    font-size: 24rpx;
+    color: #999999;
+}
+
+.otherBox .item .right .arrow{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0,-50%);
+    width: 14rpx;
+    height: 28rpx;
+}
