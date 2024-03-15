@@ -1,22 +1,41 @@
 const utils = require("../../../utils/util.js")
 const api = require("../../../config/api.js")
 import WxValidate from '../../../utils/WxValidate';
+const app = getApp();
 Page({
     data: {
         isDefault: 0,
         id: 0,
-        cityId: '130424'
+        region: [],
+        data: {},
+        customItem: '全部'
     },
     onLoad: function (options) {
+        const { id }=options;
+        if(id){
+            this.setData({
+                id
+            })
+            this.getData()
+        }
+
         this.initValidate();
     },
+    getData: function(){
+        const { id } = this.data;
+        utils.request(api.getAddressDetail,{AddressId:id}).then((res)=>{
+            this.setData({
+                data: res,
+                isDefault: res.isDefault,
+                region: res.areaInfo.split(' ')
+            })
+        })
+    },
     defaultChange: function({detail}){
-        console.log("d",detail);
         this.setData({ isDefault: detail });
     },
     formSubmit({detail:{value}}) {
-        console.log('form发生了submit事件，携带数据为：', value)
-        const { isDefault,id,cityId } = this.data;
+        const { isDefault,id,cityId,region } = this.data;
             //校验表单
             if (!this.WxValidate.checkForm(value)) {
                 const error = this.WxValidate.errorList[0]
@@ -27,19 +46,30 @@ Page({
                 })
                 return false
             }else{
+                if( region.length < 3 ){
+                    wx.showToast({
+                        icon: 'none',
+                        title: '请选择省市区'
+                    })
+                    return
+                }
                 utils.request(api.addAddress,{
                     IsDefault: isDefault,
                     AddressId: id,
                     CountyCode:cityId,
+                    ProvinceName: region[0],
+                    CityName: region[1],
+                    CountyName: region[2],
                     ...value
                 }).then((res)=>{
                     wx.showToast({
                         title: '添加成功',
                         icon: "none",
                         duration: 1000
-                    },()=>{
-                        wx.navigateBack()
                     })
+                    setTimeout(()=>{
+                        wx.navigateBack()
+                    },1000)
 
                 })
             }
@@ -75,4 +105,18 @@ Page({
         }
         this.WxValidate = new WxValidate(rules, messages)
     },
+    bindRegionChange: function (e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+            region: e.detail.value
+        })
+    },
+    openMap: function(){
+       app.getCurrentCity().then(res=>{
+           const { provinceName,cityName,zoneName } = res;
+           this.setData({
+               region: [provinceName,cityName,zoneName]
+           })
+       })
+    }
 });

@@ -2,9 +2,9 @@
 <van-sticky >
     <view>
         <view class="head">
-            <view class="location">石家庄</view>
+            <navigator class="location" url="/pages/store/cityList/index" hover-class="none">{{currentCity.name}}</navigator>
             <view class='searchBox'>
-                <input class="search" placeholder-class="place" auto-focus placeholder="输入店铺名称"/>
+                <input class="search" placeholder-class="place" bindinput="storeNameChange" placeholder="输入店铺名称"/>
                 <icon type="search" color="#4DC185" size="29rpx" />
             </view>
         </view>

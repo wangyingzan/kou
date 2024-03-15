@@ -1,0 +1,25 @@
+.container{
+    padding: 20rpx 18rpx;
+    background: #f5f5f5;
+}
+
+input{
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 28rpx;
+    padding: 0 28rpx;
+    border-radius: 8rpx;
+    margin-bottom: 36rpx;
+    background: #fff;
+}
+
+.submitBtn{
+    text-align: center;
+    line-height: 84rpx;
+    border-radius: 8rpx;
+    font-size: 32rpx;
+    color: #FFFFFF;
+    background: #05C160;
+    margin-top: 80rpx;
+}
+

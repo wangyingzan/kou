@@ -55,6 +55,7 @@ page{
     margin-bottom: 32rpx;
 }
 .mine .mineHeader{
+    position: relative;
     display: flex;
     justify-content: space-between;
     height: 86rpx;
@@ -97,10 +98,16 @@ page{
     background: #fff;
 }
 .other .item{
+    padding: 0;
     width: 140rpx;
+    line-height: 28rpx;
     font-size: 28rpx;
     text-align: center;
     color: #222222;
+    background: #fff;
+}
+.other .item:after{
+    border: none;
 }
 .other .item .icon{
     display: inline-block;

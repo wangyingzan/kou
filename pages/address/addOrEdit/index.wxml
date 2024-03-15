@@ -2,19 +2,32 @@
     <view class="formBox">
         <view class="item">
             <view class="left">收货人</view>
-            <input placeholder="收货人姓名" name="ContactName"/>
+            <input placeholder="收货人姓名" value="{{data.contactName}}" name="ContactName"/>
         </view>
         <view class="item">
             <view class="left">联系电话</view>
-            <input placeholder="收货人电话" name="ContactPhone"/>
+            <input placeholder="收货人电话" value="{{data.contactPhone}}" name="ContactPhone"/>
         </view>
-        <view class="item">
-            <view class="left">选择地区</view>
-            <input placeholder="省、市、区、街道" name="Detail"/>
-        </view>
+
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+<!--            <view class="picker">-->
+<!--                当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}-->
+<!--            </view>-->
+            <view class="item" style="padding-right: 90rpx">
+                <view class="left">选择地区</view>
+                <block wx:if="{{region.length}}">
+                    {{region[0]}}，{{region[1]}}，{{region[2]}}
+                </block>
+                <text wx:else style="color: #666">省、市、区、街道</text>
+                <view class="map" catchtap="openMap">
+                    <image src="/static/images/icon_location.png" class="iconLocation"/>
+                    定位
+                </view>
+            </view>
+        </picker>
         <view class="item address">
             <view class="left">详细地址</view>
-            <textarea placeholder="街道、小区、楼牌号等" />
+            <textarea placeholder="街道、小区、楼牌号等" name="Detail" value="{{data.detail}}"/>
         </view>
     </view>
     <view class="defaultBox">

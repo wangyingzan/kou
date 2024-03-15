@@ -1,0 +1,10 @@
+<view class="container">
+    <form catchsubmit="onSubmit" >
+        <input class="phone" name="phone" type="number" placeholder-class="place" auto-focus placeholder="输入新手机号" bindinput="phoneChange"/>
+        <view class='codeBox'>
+            <input class="code" name="code" type="number" maxlength="6" placeholder-class="place" placeholder="请输入验证码" />
+            <button class="btn" bindtap="getCode">{{code}}</button>
+        </view>
+        <button formType="submit" class="submitBtn">{{userInfo.phoneNumber? '确定更换': '绑定手机'}}</button>
+    </form>
+</view>

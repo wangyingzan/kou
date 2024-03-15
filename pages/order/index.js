@@ -38,9 +38,30 @@ Page({
            })
         }
     },
+    getWxAddress: function(){
+        wx.chooseAddress({
+            success: (res)=> {
+                const {cityName,countyName,provinceName,userName,telNumber,detailInfo } = res;
+                utils.request(api.addAddress,{
+                    IsDefault: 0,
+                    AddressId: 0,
+                    ProvinceName: provinceName,
+                    CityName: cityName,
+                    CountyName: countyName,
+                    ContactName: userName,
+                    ContactPhone: telNumber,
+                    Detail: detailInfo,
+                }).then((res)=>{
+                    this.setData({
+                        address: res.list[0]
+                    })
+
+                })
+            }
+        })
+    },
     createOrder: function(){
         const { goodsIds,goodsNum } = this.data;
-        console.log("ccon",goodsIds.join(','));
         if(goodsNum){ //直接购买商品
             utils.request(api.confirmOrder,{
                 GoodsId: goodsIds.join(','),
@@ -102,9 +123,9 @@ Page({
         utils.request(api.payOrder,{
             OrderNo: orderNo
         }).then((res)=>{
-            const { PaySign } = res;
-            if(PaySign){
-                const  prePayTn = JSON.parse(PaySign)
+            const { wePaySign } = res;
+            if(wePaySign){
+                const  prePayTn = JSON.parse(wePaySign)
                 wx.requestPayment({
                     nonceStr: prePayTn.nonceStr,
                     package: prePayTn.package,
@@ -114,30 +135,34 @@ Page({
                     success: function (res) {
                         console.log(res);
                         if (res.errMsg == "requestPayment:ok") {
-                            wx.showToast({
-                                title: '支付成功',
-                                mask: true,
-                                duration: 3000
+                            wx.navigateTo({
+                                url: `/pages/order/success/index?orderNo=${orderNo}`
                             })
-                            this.setData({
-                                note: '支付成功'
-                            })
-                        } else {
 
+                        } else {
                             wx.showToast({
                                 title: '支付失败',
                                 mask: true,
                                 duration: 3000
                             })
-                            this.setData({
-                                note: '支付失败'
-                            })
+                            setTimeout(()=>{
+                                wx.navigateTo({
+                                    url: `/pages/order/detail/index?orderNo=${orderNo}`
+                                })
+                            },1000)
                         }
                     },
                     fail: function (res) {
-                        this.setData({
-                            note: '支付失败'
+
+                        wx.showToast({
+                            title: '支付失败',
+                            icon: 'none'
                         })
+                        setTimeout(()=>{
+                            wx.navigateTo({
+                                url: `/pages/order/detail/index?orderNo=${orderNo}`
+                            })
+                        },1000)
                     }
                 })
             }

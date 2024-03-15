@@ -1,0 +1,52 @@
+page{
+    background: #fff;
+}
+.container{
+    padding: 0 66rpx;
+}
+.content{
+    padding-top: 400rpx;
+    text-align: center;
+}
+.img{
+    width: 136rpx;
+    height: 136rpx;
+    margin-bottom: 28rpx;
+}
+.title{
+    font-size: 44rpx;
+    font-weight: bold;
+    text-align: center;
+    color: #222222;
+    margin-bottom: 32rpx;
+}
+.subtitle{
+    font-size: 28rpx;
+    margin-bottom: 80rpx;
+
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
+.primaryBtn{
+    width: 300rpx;
+    line-height: 84rpx;
+    color: #fff;
+    text-align: center;
+    padding: 0 25rpx;
+    font-size: 28rpx;
+    border-radius: 12rpx;
+    background: #05C160;
+}
+.btn{
+    width: 300rpx;
+    line-height: 84rpx;
+    color: #222222;
+    text-align: center;
+    padding: 0 25rpx;
+    font-size: 28rpx;
+    border-radius: 12rpx;
+    border: 2rpx solid #DDDDDD;
+}

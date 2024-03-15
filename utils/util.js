@@ -54,22 +54,16 @@ function request(Method, data = {},) {
             case "Success" :
               resolve(res.data.body);
               break;
-            case 10020 : //未登录
+            case "UserNotLogin" : //未登录
               if(!expireTime || nowTime - parseInt(expireTime) > 5000){
                 wx.setStorageSync("canNavigate",nowTime);
-                try {
-                  wx.removeStorageSync('userInfo');
-                  wx.removeStorageSync('token');
-                } catch (e) {
-                  // Do something when catch error
-                }
-                const pages=getCurrentPages();
-                if(pages[pages.length-1].route !== 'pages/auth/login/login'){
-                  // 切换到登录页面
-                  wx.navigateTo({
-                    url: '/pages/auth/login/login'
-                  });
-                }
+                wx.removeStorageSync('userInfo');
+                wx.removeStorageSync('token');
+                wx.removeStorageSync('isLogin');
+                // 切换到登录页面
+                wx.switchTab({
+                  url: '/pages/my/index',
+                });
               }
               break;
             case 10021 : //token过期

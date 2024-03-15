@@ -1,0 +1,132 @@
+<view class="container">
+    <view class="box" wx:if="{{orderData.orderStatusCode === 1}}">
+        <view class="addressBox" wx:if="{{address.addressId}}">
+            <view class="address">
+                {{address.areaInfo}}
+            </view>
+            <view class="addressName">{{address.detail}}</view>
+            <view class="userInfo">
+                <text class="username">{{address.contactName}}</text>
+                <text class="phone">{{address.contactPhone}}</text>
+            </view>
+            <view bindtap="editAddress" class="btn" >修改</view>
+        </view>
+        <view class="emptyAddress" wx:else>
+            <navigator url="/pages/address/index" class="item">选择收获地址</navigator>
+            <view class="item" bindtap="getWxAddress">获取微信地址</view>
+        </view>
+    </view>
+    <view class="box" wx:if="{{logisticsData.length}}">
+
+        <view class="logisticsBox">
+            <view class="logisticsTitle">
+                <text>{{orderData.orderStatusDesc}}</text>
+                <text bindtap="goLogisticsDetail" class="del">查看详细 ></text>
+            </view>
+            <van-steps steps="{{ logisticsData }}" direction="vertical" active="{{ logisticsData.length -1 }}" />
+        </view>
+    </view>
+    <view class="box">
+        <view class="goodsInfo">
+            <view class="title">
+                <view class="left">
+                    <image class="icon" src="/static/images/icon_store.png" />
+                    {{orderData.shopName}}
+                </view>
+
+                <!--1-待付款；2-待发货；3-待收货；4-待评价；5-已完成；6-退款中；7-已退款；8-已取消；9-待自提-->
+                <view class="status red" wx:if="{{orderData.orderStatusCode === 1}}" >待付款</view>
+                <view class="status red" wx:elif="{{orderData.orderStatusCode === 2}}" >待发货</view>
+                <view class="status red" wx:elif="{{orderData.orderStatusCode === 3}}">卖家已发货</view>
+                <view class="status red" wx:elif="{{orderData.orderStatusCode === 4}}">待评价</view>
+                <view class="status" wx:elif="{{orderData.orderStatusCode === 5}}">已完成</view>
+                <view class="status" wx:elif="{{orderData.orderStatusCode === 6}}">退款中</view>
+                <view class="status" wx:elif="{{orderData.orderStatusCode === 7}}">已退款</view>
+                <view class="status" wx:elif="{{orderData.orderStatusCode === 8}}">已取消</view>
+                <view class="status" wx:elif="{{orderData.orderStatusCode === 9}}">待自提</view>
+
+
+            </view>
+            <view class="goods" wx:for="{{orderData.itemData}}" wx:key="goodsId">
+                <image src="{{item.goodsImg}}" class="img"/>
+                <view class="goodsInfo">
+                    <view class="name">{{item.goodsName}}</view>
+                    <view class="info">{{item.packageDesc}}</view>
+                    <view class="spec">规格：<text class="num">×{{item.count}}</text></view>
+                    <view class="tips">
+                        <view class="tip">官方正品</view>
+                        <view class="tip">24小时内发货</view>
+                    </view>
+                </view>
+                <view class="goodsMoney">¥{{item.totalAmount}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="orderInfo">
+            <view class="item">
+                <view>商品总价</view>
+                <view class="money">￥{{orderData.payAmount}}</view>
+            </view>
+            <view class="item">
+                <view>订单运费</view>
+                <view class="right" wx:if="{{orderData.shippingAmount != 0}}">￥{{orderData.shippingAmount}}</view>
+                <view class="right" wx:else>免运费</view>
+            </view>
+            <view class="item">
+                <view>发货时间</view>
+                <view class="right">{{orderData.deliveryTime}}</view>
+            </view>
+            <view class="item">
+                <view>下单时间</view>
+                <view class="right">{{orderData.submitTime}}</view>
+            </view>
+<!--            <view class="item" wx:if="{{orderData.orderNo}}">-->
+<!--                <view>订单备注</view>-->
+<!--                <view class="right" >{{orderData.orderNo}}</view>-->
+<!--            </view>-->
+            <view class="item" wx:if="{{orderData.orderNo}}">
+                <view>订单编号</view>
+                <view class="right" >{{orderData.orderNo}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="box">
+        <view class="payBox">
+            <view class="wechat">
+                <image class="icon" src="/static/images/icon_wechat.png" />
+                <view>微信</view>
+            </view>
+            <icon class="icon-box-img" type="success" size="22" color="#05C160" />
+        </view>
+
+    </view>
+</view>
+
+<view class="footer">
+    <!--待支付-->
+    <block wx:if="{{orderData.orderStatusCode === 1}}">
+        <view class="defaultBtn" bindtap="cancelOrder">取消订单</view>
+        <view class="primaryBtn" bindtap="pay">去支付</view>
+    </block>
+    <!--待支付-->
+    <!--待发货-->
+    <block wx:elif="{{orderData.orderStatusCode === 2}}">
+        <view class="defaultBtn" bindtap="urgeReceipt">催发货</view>
+    </block>
+    <!--待发货-->
+    <!--待收货-->
+    <block wx:elif="{{orderData.orderStatusCode === 3}}">
+        <view class="defaultBtn" bindtap="lookLogistics">查看物流</view>
+        <view class="primaryBtn" bindtap="confirmReceipt">确认收货</view>
+    </block>
+    <!--待收货-->
+    <!--待评价-->
+
+    <block wx:elif="{{orderData.orderStatusCode === 4}}">
+        <view class="defaultBtn" bindtap="goDetail">再来一单</view>
+        <view class="primaryBtn" >评价晒单</view>
+    </block>
+    <!--待评价-->
+</view>
+<van-dialog id="van-dialog" />

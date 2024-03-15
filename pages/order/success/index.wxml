@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="content">
+        <image src="/static/images/icon_succes.png" class="img" />
+        <view class="title">支付成功</view>
+        <view class="subtitle">您已经完成支付，感谢您的购买</view>
+        <view class="btns">
+            <navigator url="/pages/order/success/index?orderNo={{orderNo}}" class="btn">查看订单</navigator>
+            <navigator open-type="switchTab" url="/pages/home/index" class="primaryBtn">回首页</navigator>
+        </view>
+    </view>
+
+</view>

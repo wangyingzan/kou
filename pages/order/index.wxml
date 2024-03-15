@@ -10,10 +10,11 @@
                 <text class="phone">{{address.contactPhone}}</text>
             </view>
             <view bindtap="editAddress" class="btn" >修改</view>
+
         </view>
         <view class="emptyAddress" wx:else>
             <navigator url="/pages/address/index" class="item">选择收获地址</navigator>
-            <view class="item">获取微信地址</view>
+            <view class="item" bindtap="getWxAddress">获取微信地址</view>
         </view>
     </view>
     <view class="box">

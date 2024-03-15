@@ -16,15 +16,27 @@
         <view class="right">
             <view class="title">专享价</view>
             <view>{{goods.freeShippingDesc}}</view>
+            <image src="/static/images/detailbg01.png" class="rightBg"/>
         </view>
     </view>
 
     <view class="header">
         <view class="title">{{goods.goodsName}}</view>
-        <text class="vipPrice">会员价：￥{{goods.vipPrice}}</text>
+        <text class="vipPrice">会员价:￥{{goods.vipPrice}}</text>
         <view class="subtitle">{{goods.remark}}</view>
-        <view class="rich">
-            <rich-text nodes="{{goods.description}}"></rich-text>
+        <view class="tabs">
+            <view class="item">
+                <view class="name">冷藏</view>
+                <view class="des">储存条件</view>
+            </view>
+            <view class="item">
+                <view class="name">口服下</view>
+                <view class="des">品牌</view>
+            </view>
+            <view class="item">
+                <view class="name">开袋既烹</view>
+                <view class="des">食用方式</view>
+            </view>
         </view>
 
     </view>
@@ -43,7 +55,6 @@
             </view>
         </view>
     </view>
-
     <view class="evaluates" wx:if="{{goods.commentInfo}}">
         <view class="head">
             <view class="left">
@@ -77,10 +88,10 @@
             </view>
         </view>
     </view>
-    <view class="listTitle">猜你喜欢</view>
-    <view class="list">
-        <Goods wx:for="{{guestList}}" wx:key="goodsId" data="{{item}}" />
+    <view class="rich">
+        <rich-text nodes="{{goods.description}}"></rich-text>
     </view>
+    <Like goodsId="{{goods.goodsId}}" />
 </view>
 
 <view class="base">
@@ -92,16 +103,16 @@
         <image class="icon" src="/static/images/icon_home.png"/>
         <text>回首页</text>
     </navigator>
-    <view class="item">
+    <button open-type="share" class="item">
         <image class="icon" src="/static/images/icon_share.png"/>
         <text>分享</text>
-    </view>
+    </button>
     <navigator open-type="switchTab" url="/pages/cart/index" class="item">
         <image class="icon" src="/static/images/icon_car_02.png"/>
         <text>购物车</text>
     </navigator>
-    <van-button color="#FFAA44" bindtap="showModal" data-type="1" style="margin-right: 16rpx">加入购物车</van-button>
-    <van-button color="#05C160" bindtap="showModal" data-type="2">立即购买</van-button>
+    <view bindtap="showModal" class="warningBtn" data-type="1" style="margin-right: 16rpx">加入购物车</view>
+    <view bindtap="showModal" class="primaryBtn" data-type="2">立即购买</view>
 </view>
 
 <van-popup show="{{ modalFlag }}" round closeable position="bottom" bind:close="modalClose">
@@ -109,14 +120,14 @@
         <view class="goods">
             <image class="goodsImg" src="/static/images/goodsImg.png" />
             <view class="content">
-                <view class="name line1">臻享实惠套餐5-6人餐123123</view>
-                <view class="subtitle line1">鱼香肉丝+香芹炒肉+宫保鸡...</view>
+                <view class="name line1">{{goods.goodsName}}</view>
+                <view class="subtitle line1">{{goods.remark}}</view>
                 <view class="price">
                     <view class="sign">￥</view>
                     <view class="priceText">{{goods.salePrice}}</view>
                     <view class="oldPrice deleted">原价{{goods.marketPrice}}</view>
                 </view>
-                <text class="vipPrice">会员价:￥78.7</text>
+                <text class="vipPrice">会员价:￥{{goods.vipPrice}}</text>
             </view>
         </view>
         <view class="goodsNum">

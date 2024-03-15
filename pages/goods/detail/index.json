@@ -2,6 +2,7 @@
   "navigationBarTitleText": "商品详情",
   "usingComponents": {
     "Goods": "/component/goods/index",
+    "Like": "/component/like/index",
     "van-button": "@vant/weapp/button/index",
     "van-rate": "@vant/weapp/rate/index",
     "van-popup": "@vant/weapp/popup/index",

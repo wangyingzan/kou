@@ -54,6 +54,33 @@ App({
       })
     })
   },
+  getCurrentCity(){
+    return new Promise((resolve, reject)=>{
+      wx.getLocation({
+        type: 'wgs84',
+        success: ({longitude,latitude})=>{
+          util.request(api.getCityInfo, {GpsLng: longitude, GpsLat:latitude}).then(res => {
+            const {cityName,gpsLng,gpsLat} = res;
+            wx.setStorageSync('dingwei',{
+              name: cityName,
+              lat: gpsLat,
+              lng: gpsLng
+            });
+            resolve(res);
+          });
+        },
+        fail:(res)=> {
+          wx.showToast({
+              title: '位置信息获取失败',
+              icon: 'none',
+              duration: 1000
+          })
+          console.log("======",res);
+          reject(res);
+        }
+      })
+    })
+  },
   login:function(){
     return  new Promise((resolve, reject)=>{
       // wx.login({

@@ -1,9 +1,9 @@
-<view class="container" >
+<view class="container"  wx:if="{{list.length}}">
     <van-radio-group value="{{ currentAddress }}" bind:change="selectedAddress">
         <view class="addressBox" wx:for="{{list}}" wx:key="goodsId">
             <view class="addressItem">
                 <van-radio name="{{item.addressId}}"  checked-color="#05C160" />
-                <view class="addressInfo">
+                <view class="addressInfo" data-id="{{item.addressId}}" bindtap="onClick">
                     <view class="address">
                         {{item.areaInfo}}
                     </view>
@@ -13,11 +13,12 @@
                         <text class="phone">{{item.contactPhone}}</text>
                     </view>
                 </view>
-                <image src="/static/images/icon_edit.png" class="icon"></image>
+                <image src="/static/images/icon_edit.png" class="icon" bindtap="editAddress" data-id="{{item.addressId}}"></image>
             </view>
             <view class="addressFooter">
-                <view>设为默认地址</view>
-                <view class="del">删除</view>
+                <view wx:if="{{item.isDefault === 1}}" style="color: #05C160">默认地址</view>
+                <view wx:else bindtap="setDefault" data-id="{{item.addressId}}">设为默认地址</view>
+                <view class="del" bindtap="delAddress" data-id="{{item.addressId}}">删除</view>
             </view>
         </view>
 
@@ -26,7 +27,7 @@
 </view>
 
 
-<view class="emptyBox" wx:if="{{false}}">
+<view class="emptyBox" wx:else>
     <image class="img" src="/static/images/icon_empty.png" />
     <view class="text">您还没有添加过地址哦</view>
     <navigator url="/pages/address/addOrEdit/index" class="publicBtn" >添加一个收获地址</navigator>

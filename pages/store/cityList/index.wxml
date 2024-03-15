@@ -1,0 +1,18 @@
+
+<view class="header">
+    <view class="left">当前定位城市： <text>{{currentCity.name}}</text></view>
+    <view class="right" bindtap="resetCity">重新定位</view>
+</view>
+
+
+<view class="cityTitle">热门城市</view>
+<view class="cityList">
+    <view class="city" data-code="{{item.code}}" data-name="{{item.name}}" wx:for="{{hotCity}}" bind:tap="onClick" wx:key="code">{{item.name}}</view>
+</view>
+<view class="cityTitle">全部城市</view>
+<van-index-bar>
+    <view wx:for="{{cityList}}" wx:key="index" wx:for-item="city">
+        <van-index-anchor index="{{index}}" />
+        <van-cell title="{{item.name}}" data-code="{{item.code}}" data-name="{{item.name}}" wx:for="{{city}}" bind:tap="onClick" wx:key="code"/>
+    </view>
+</van-index-bar>

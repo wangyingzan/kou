@@ -6,12 +6,12 @@ page{
     padding: 0 36rpx;
 }
 .formBox .item{
+    position: relative;
     display: flex;
     align-items: center;
     height: 92rpx;
     color: #222222;
     font-size: 28rpx;
-    line-height: 92rpx;
     border-bottom: 2rpx solid #EEEEEE;
 }
 .formBox .item .left{
@@ -31,6 +31,22 @@ page{
     height: 160rpx;
     line-height: 40rpx;
 }
+.formBox .item .map{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    color: #222222;
+    font-size: 28rpx;
+    transform: translate(0,-50%);
+}
+.formBox .item .map .iconLocation{
+    width: 27rpx;
+    height: 32rpx;
+    box-sizing: border-box;
+    margin-right: 15rpx;
+ }
 
 .defaultBox{
     display: flex;

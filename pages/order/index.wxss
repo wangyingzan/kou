@@ -46,13 +46,14 @@ page{
     color: #222222;
     font-size: 28rpx;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 8rpx;
     border: 2rpx solid #CCCCCC;
     transform: translate(0,-50%);
 }
 .emptyAddress{
     padding: 6rpx;
     text-align: center;
+    border-radius: 8rpx;
 }
 .emptyAddress .item{
     width: 290rpx;

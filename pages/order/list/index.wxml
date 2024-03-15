@@ -1,50 +1,85 @@
 <van-tabs active="{{ status }}" bind:change="onStatusChange" class="tabs">
 
-    <van-tab title="全部订单" :name="0" dot/>
-    <van-tab title="待支付" :name="1" />
-    <van-tab title="待发货" :name="2" info="2" />
-    <van-tab title="待收货" :name="3" />
-    <van-tab title="待评价" :name="4" />
+    <van-tab title="全部订单" name="0"/>
+    <van-tab title="待支付" name="1" />
+    <van-tab title="待发货" name="2" />
+    <van-tab title="待收货" name="3" />
+    <van-tab title="待评价" name="4" />
 </van-tabs>
 <view class="list">
-    <view class="goodsInfo">
+    <view class="goodsItem" wx:for="{{list}}" wx:key="orderNo">
         <view class="title">
-            <image class="icon" src="/static/images/icon_store.png" />
-            口福侠品牌自营
+            <view class="left">
+                <image class="icon" src="/static/images/icon_store.png" />
+                {{item.shopName}}
+            </view>
+
+            <!--1-待付款；2-待发货；3-待收货；4-待评价；5-已完成；6-退款中；7-已退款；8-已取消；9-待自提-->
+            <view class="status red" wx:if="{{item.orderStatusCode === 1}}" >待付款</view>
+            <view class="status red" wx:elif="{{item.orderStatusCode === 2}}" >待发货</view>
+            <view class="status red" wx:elif="{{item.orderStatusCode === 3}}">卖家已发货</view>
+            <view class="status red" wx:elif="{{item.orderStatusCode === 4}}">待评价</view>
+            <view class="status" wx:elif="{{item.orderStatusCode === 5}}">已完成</view>
+            <view class="status" wx:elif="{{item.orderStatusCode === 6}}">退款中</view>
+            <view class="status" wx:elif="{{item.orderStatusCode === 7}}">已退款</view>
+            <view class="status" wx:elif="{{item.orderStatusCode === 8}}">已取消</view>
+            <view class="status" wx:elif="{{item.orderStatusCode === 9}}">待自提</view>
+
+
+
         </view>
-        <view class="goods" wx:for="{{2}}">
-            <image src="" class="img"/>
+        <navigator hover-class="none" url="/pages/goods/detail/index?goodsId={{goods.goodsId}}" class="goods" wx:for="{{item.itemData}}" wx:key="goodsId" wx:for-item="goods">
+            <image src="{{goods.goodsImg}}" class="img"/>
             <view class="goodsInfo">
-                <view class="name">123213</view>
-                <view class="info">鱼香肉丝+香芹炒肉+宫保鸡 丁+孜然肉片+金汤酸菜鱼</view>
-                <view class="spec">规格：<text class="num">×1</text></view>
+                <view class="name">{{goods.goodsName}}</view>
+                <view class="info">{{goods.packageDesc}}</view>
+                <view class="spec">规格：<text class="num">×{{goods.count}}</text></view>
                 <view class="tips">
                     <view class="tip">官方正品</view>
                     <view class="tip">24小时内发货</view>
                 </view>
-
             </view>
-            <view class="goodsMoney">¥112.4</view>
+            <view class="goodsMoney" wx:if="{{item.itemData.length>1}}">¥{{goods.totalAmount}}</view>
+        </navigator>
+        <view class="allMoney">
+            <view class="allNum" wx:if="{{item.itemData.length>1}}">共{{item.itemData.length}}件商品</view>
+            <text decode="true" class="money" >实付款<text>¥{{item.totalAmount}}</text> </text>
         </view>
         <view class="footer">
             <!--待支付-->
-            <view class="btn">取消订单</view>
-            <view class="btn">去支付</view>
+            <block wx:if="{{item.orderStatusCode === 1}}">
+                <view class="defaultBtn" data-index="{{index}}" data-orderNo="{{item.orderNo}}" bindtap="cancelOrder">取消订单</view>
+                <view class="primaryBtn" data-orderNo="{{item.orderNo}}" bindtap="goPay">去支付</view>
+            </block>
             <!--待支付-->
             <!--待发货-->
-            <view class="btn">催发货</view>
+            <block wx:elif="{{item.orderStatusCode === 2}}">
+                <view class="defaultBtn">催发货</view>
+            </block>
             <!--待发货-->
             <!--待收货-->
-            <view class="btn">查看物流</view>
-            <view class="btn">确认收货</view>
+            <block wx:elif="{{item.orderStatusCode === 3}}">
+                <view class="defaultBtn">查看物流</view>
+                <view class="primaryBtn">确认收货</view>
+            </block>
             <!--待收货-->
             <!--待评价-->
-            <view class="btn">查看物流</view>
-            <view class="btn">评价晒单</view>
 
+            <block wx:elif="{{item.orderStatusCode === 4}}">
+                <view class="defaultBtn">查看物流</view>
+                <navigator url="../evaluates/index?orderNo={{item.orderNo}}" hover-class="none" class="primaryBtn" >评价晒单</navigator>
+            </block>
+<!--            <navigator url="../evaluates/index?orderNo={{item.orderNo}}" hover-class="none" class="primaryBtn" >评价晒单</navigator>-->
             <!--待评价-->
-            <view class="btn">取消订单</view>
+
         </view>
     </view>
+    <view class="empty" wx:if="{{!list.length}}">
+        <Empty title="您当前没有订单哦" />
+    </view>
+    <Like goodsId="0" />
 </view>
+
+<van-dialog id="van-dialog" />
+
 

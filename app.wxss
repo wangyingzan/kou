@@ -6,6 +6,9 @@ view, image, text, navigator {
     margin: 0;
 
 }
+button:after{
+    border: none
+}
 page{
     background: #f5f5f5;
 }
@@ -15,7 +18,9 @@ page{
     box-sizing: border-box;
 }
 
-
+.red{
+    color: #F23D3D !important;
+}
 .deleted {
     text-decoration: line-through;
 }

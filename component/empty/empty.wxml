@@ -1,5 +1,5 @@
 <!--component/moneyInput/moneyInput.wxml-->
 <view class="empty">
-    <image src="{{img}}" alt=""/>
+    <image src="/static/images/icon_empty.png" alt=""/>
     <text>{{title}}</text>
 </view>

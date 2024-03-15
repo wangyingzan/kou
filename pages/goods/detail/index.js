@@ -6,19 +6,24 @@ Page({
         goodsId: '',
         goodsNum: 1,
         goods:{
+            goodsId: undefined,
             imgData:[],
+            goodsName: ''
         },
         guestList: [],
         addType: undefined, //1加入购物车 2立即购买
         modalFlag: false,
     },
     onLoad: function (options) {
-        const{ goodsId } = options;
+        const{ goodsId,inviteCode } = options;
+        if(inviteCode){
+            wx.setStorageSync("inviteCode",inviteCode)
+        }
         this.setData({
             goodsId
         })
+
         this.getData();
-        this.getGuestList()
     },
     getData: function(){
         const { goodsId }=this.data;
@@ -36,16 +41,7 @@ Page({
     goodsNumChange: function(e){
         this.setData({ goodsNum:e.detail });
     },
-    getGuestList: function(){
-        const { goodsId }=this.data;
-        utils.request(api.getGuestList,{
-            GoodsId: goodsId
-        }).then((res)=>{
-            this.setData({
-                guestList: res.list
-            })
-        })
-    },
+
     showModal: function({currentTarget:{dataset:{type}}}){
         console.log("type",type)
       this.setData({
@@ -84,5 +80,17 @@ Page({
         wx.navigateTo({
             url: `/pages/order/index?goodsIds=${goodsId}&goodsNum=${goodsNum}`
         })
+    },
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage: function () {
+        const {goods } = this.data;
+        const { inviteCode } = wx.getStorageSync('userInfo')
+        return {
+            title: goods.goodsName,
+            path: `/pages/goods/detail/index?goodsId=${goods.goodsId}&inviteCode=${inviteCode? inviteCode:''}`,
+            imageUrl: goods.imgData[0]
+        }
     }
 });

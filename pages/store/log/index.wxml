@@ -1,0 +1,14 @@
+<view class="container">
+    <view class="box" wx:for="{{list}}" wx:key="recordId">
+        <view class="item"  >
+            <image src="{{item.storeImg}}" class="avatar"/>
+            <view class="info">
+                <view class="name">{{item.storeName}}</view>
+                <view class="time">{{item.arricalTime}}</view>
+            </view>
+            <navigator url="./detail/index?commentId={{item.commentId}}" class="btn defaultBtn" wx:if="{{item.commentStatus}}" >查看评价</navigator>
+            <navigator url="./detail/index?recordId={{item.recordId}}" class="btn primaryBtn" wx:else>去评价</navigator>
+        </view>
+
+    </view>
+</view>

@@ -1,0 +1,27 @@
+
+.listTitle{
+    font-size: 32rpx;
+    text-align: center;
+    color: #012110;
+    padding-bottom: 24rpx;
+}
+.listTitle:before{
+    content: "\2022";
+    color: #05C160;
+    font-size: 1.2em;
+    margin-right: 0.3em;
+}
+.listTitle:after{
+    content: "\2022";
+    color: #05C160;
+    font-size: 1.2em;
+    margin-left: 0.3em;
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    gap:20rpx 18rpx;
+    flex-wrap: wrap;
+    padding-bottom: 20rpx;
+}

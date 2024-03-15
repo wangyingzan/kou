@@ -1,0 +1,33 @@
+<view class="container">
+    <view class="rate">
+        <van-rate
+                value="{{ rate }}"
+                size="{{20}}"
+                gutter="{{2}}"
+                readonly="{{!!commentId}}"
+                class="grade"
+                color="#FFBB05"
+                void-icon="star"
+                bind:change="onRateChange"
+                void-color="#D8D8D8"
+        />
+    </view>
+    <view class="tabs">
+        <view class="tab {{item.isActive? 'active':''}}" data-index="{{index}}" wx:for="{{tabs}}" bindtap="tabChange">{{item.name}}</view>
+   </view>
+    <form catchsubmit="submitData" >
+        <view class="eval">
+            <textarea name="Content" disabled="{{!!commentId}}" value="{{content}}" maxlength="200" placeholder="请输入你的评价" bindinput="onChange"/>
+            <view class="nums">
+                <text class="num">{{num}}</text>/200
+            </view>
+            <van-uploader file-list="{{ fileList }}" bind:delete="deleteImg" disabled="{{!!commentId}}" multiple max-count="5" bind:after-read="afterRead" />
+            <view class="imgNums">
+                <text class="num">{{fileList.length}}</text>/5
+            </view>
+        </view>
+        <navigator wx:if="{{commentId}}" open-type="navigateBack" class="submitBtn">返回</navigator>
+        <button wx:else formType="submit" class="submitBtn">发表评价</button>
+    </form>
+</view>
+<van-dialog id="van-dialog" />

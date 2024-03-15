@@ -35,6 +35,10 @@ Page({
         console.log("address",address);
         wx.setStorageSync('selectAddress',address)
     },
+    onClick: function({currentTarget:{dataset:{id}}}){
+        this.data.currentAddress = id;
+        wx.navigateBack()
+    },
     selectedAddress: function(event){
         this.setData({
             currentAddress: event.detail,
@@ -45,6 +49,33 @@ Page({
             this.setData({
                 list: res.list,
             })
+        })
+    },
+    setDefault: function({currentTarget:{dataset:{id}}}){
+        utils.request(api.setAddressDefault,{
+            AddressId:id
+        }).then((res)=>{
+            wx.showToast({
+                title: '操作成功',
+                icon: 'none'
+            })
+            this.getList();
+        })
+    },
+    delAddress: function({currentTarget:{dataset:{id}}}){
+        utils.request(api.delAddress,{
+            AddressId:id
+        }).then((res)=>{
+            wx.showToast({
+                title: '操作成功',
+                icon: 'none'
+            })
+            this.getList();
+        })
+    },
+    editAddress: function({currentTarget:{dataset:{id}}}){
+        wx.navigateTo({
+            url: `./addOrEdit/index?id=${id}`
         })
     },
 });

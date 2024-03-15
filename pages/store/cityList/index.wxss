@@ -1,0 +1,47 @@
+page{
+    background: #f5f5f5;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 104rpx;
+    background: #FFFFFF;
+    padding-left: 24rpx;
+    padding-right: 36rpx;
+}
+.header .left{
+    font-size: 28rpx;
+    color: #666666
+}
+.header .left text{
+    color: #222222
+}
+.header .right{
+    line-height: 104rpx;
+    font-size: 28rpx;
+    color: #05C160;
+}
+.cityTitle{
+    padding: 32rpx 24rpx;
+    font-size: 28rpx;
+    color: #222222;
+    font-weight: bold;
+    background: #fff;
+}
+.cityList{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20rpx 16rpx;
+    padding: 0 24rpx;
+    background: #fff;
+}
+.cityList .city{
+    min-width: 120rpx;
+    line-height: 56rpx;
+    color: #666666;
+    font-size: 28rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    background: #F5F5F5;
+}

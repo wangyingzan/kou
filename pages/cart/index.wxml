@@ -9,7 +9,7 @@
 
 <view class="container">
     <van-checkbox-group value="{{ goodsListFlag }}" bind:change="selectedGoods">
-        <view class="goods" wx:for="{{goodsList}}" wx:key="goodsId">
+        <navigator hover-class="none" url="/pages/goods/detail/index?goodsId={{item.goodsId}}" class="goods" wx:for="{{goodsList}}" wx:key="goodsId">
             <van-checkbox name="{{item.goodsId}}"  checked-color="#05C160"></van-checkbox>
             <image class="goodsImg" src="{{item.goodsImg}}" />
             <view class="content">
@@ -18,8 +18,10 @@
                 <text class="vipPrice">会员价:￥{{item.vipPrice}}</text>
                 <view class="price">￥{{item.salePrice}}</view>
             </view>
-            <van-stepper class="stepper" data-goods="{{item}}" min="0" data-index="{{index}}" integer value="{{ item.count }}" async-change bind:change="goodsNumChange" />
-        </view>
+            <view class="stepper" catchtap="{{false}}">
+                <van-stepper  data-goods="{{item}}" min="0" data-index="{{index}}" integer value="{{ item.count }}" async-change bind:change="goodsNumChange" />
+            </view>
+        </navigator>
     </van-checkbox-group>
 </view>
 

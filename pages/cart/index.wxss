@@ -44,6 +44,7 @@ page{
 .goods .vipPrice{
     height: 36rpx;
     width: auto;
+    font-weight: bold;
     padding: 0 4rpx;
     line-height: 32rpx;
     border: 2rpx solid #FF7900;

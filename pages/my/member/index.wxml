@@ -1,0 +1,7 @@
+<view class="container">
+    <form catchsubmit="onSubmit" >
+        <input name="cardno" placeholder="卡号"/>
+        <input name="cardsecret" placeholder="卡密"/>
+        <button formType="submit" class="submitBtn">激活</button>
+    </form>
+</view>

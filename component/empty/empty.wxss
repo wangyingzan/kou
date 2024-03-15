@@ -1,15 +1,16 @@
 .empty{
     text-align: center;
-    padding: 30rpx 0;
+    padding: 50rpx 0;
 }
 .empty image{
-    width: 176rpx;
-    height: 166rpx;
+    width: 396rpx;
+    height: 396rpx;
     margin: auto;
     display: block;
+    margin-bottom: 24rpx;
 }
 .empty text{
-    font-size: 24rpx;
+    font-size: 28rpx;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     color: #999999;

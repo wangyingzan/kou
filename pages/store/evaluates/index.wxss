@@ -119,7 +119,7 @@
 .evaluate .imgs .img{
     width: 136rpx;
     height: 136rpx;
-    border-radius: 8px;
+    border-radius: 8rpx;
 }
 
 

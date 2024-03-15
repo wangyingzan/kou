@@ -1,0 +1,64 @@
+.container{
+    padding: 20rpx 18rpx;
+    background: #f5f5f5;
+}
+.codeBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100rpx;
+    padding-left: 28rpx;
+    border-radius: 8rpx;
+    background: #fff;
+}
+.phone{
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 28rpx;
+    padding: 0 28rpx;
+    border-radius: 8rpx;
+    margin-bottom: 36rpx;
+    background: #fff;
+}
+.code{
+    flex: 1;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 28rpx;
+}
+.place{
+    color: #CCCCCC;
+}
+
+.codeBox .btn{
+    position: relative;
+    width: 200rpx;
+    text-align: center;
+    color: #05C160;
+    font-size: 28rpx;
+    padding: 0;
+    background: #fff;
+
+}
+.codeBox .btn:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0,-50%);
+    width: 1rpx;
+    height: 28rpx;
+    background: #D8D8D8;
+}
+
+
+.submitBtn{
+    text-align: center;
+    line-height: 84rpx;
+    border-radius: 8rpx;
+    font-size: 32rpx;
+    color: #FFFFFF;
+    background: #05C160;
+    margin-top: 80rpx;
+}
+

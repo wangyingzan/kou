@@ -23,22 +23,22 @@
     <view class="mine">
         <view class="mineHeader">
             <view>我的订单</view>
-            <navigator class="right">全部订单></navigator>
+            <view data-url="/pages/order/list/index?status=0" bindtap="navigatorTo" class="right">全部订单></view>
         </view>
         <view class="tabs">
-            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
+            <view data-url="/pages/order/list/index?status=1" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_01.png" class="icon" />
                 <view>待支付</view>
             </view>
-            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
+            <view data-url="/pages/order/list/index?status=2" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_02.png" class="icon" />
                 <view>待发货</view>
             </view>
-            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
+            <view data-url="/pages/order/list/index?status=3" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_03.png" class="icon" />
                 <view>待收货</view>
             </view>
-            <view data-url="/pages/order/list/index" bindtap="navigatorTo" class="item">
+            <view data-url="/pages/order/list/index?status=4" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_04.png" class="icon" />
                 <view>待评价</view>
             </view>
@@ -46,26 +46,17 @@
     </view>
 
     <view class="other">
-        <navigator class="item">
-            <image src="/static/images/icon_other_01.png" class="icon" />
-            <view>会员共享店</view>
-        </navigator>
-        <navigator class="item">
-            <image src="/static/images/icon_other_02.png" class="icon" />
-            <view>到店记录</view>
-        </navigator>
-        <navigator class="item">
-            <image src="/static/images/icon_other_03.png" class="icon" />
-            <view>联系客服</view>
-        </navigator>
-        <navigator class="item">
-            <image src="/static/images/icon_other_04.png" class="icon" />
-            <view>更换手机号</view>
-        </navigator>
-        <navigator class="item">
-            <image src="/static/images/icon_other_05.png" class="icon" />
-            <view>退出登录</view>
-        </navigator>
+        <block wx:for="{{dataInfo.functionData}}" wx:key="icoTitle">
+            <button wx:if="{{item.actionType === 'customer_service'}}" class="item"  openType="contact">
+                <image src="{{item.icoUrl}}" class="icon" />
+                <view>{{item.icoTitle}}</view>
+            </button>
+            <view wx:else class="item"  data-type="{{item.actionType}}" data-prarm="{{item.actionParam}}" bindtap="goInfo">
+                <image src="{{item.icoUrl}}" class="icon" />
+                <view>{{item.icoTitle}}</view>
+            </view>
+
+        </block>
     </view>
 </view>
 
@@ -77,3 +68,6 @@
         客服热线：4000-918-365
     </view>
 </view>
+
+
+<van-dialog id="van-dialog" />

@@ -1,0 +1,76 @@
+page{
+    background: #fff;
+}
+.container{
+    padding: 0 26rpx;
+}
+.rate{
+    padding: 52rpx 0;
+    text-align: center;
+}
+
+.tabs{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24rpx 26rpx ;
+    margin-bottom: 60rpx;
+}
+.tabs .tab{
+    width: 216rpx;
+    line-height: 68rpx;
+    font-size: 28rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    background: #F7F7F7;
+    color: #666666;
+}
+.tabs .tab.active{
+    color: #FFFFFF;
+    /* 主题色/绿 */
+    background: #05C160;
+}
+.eval{
+    position: relative;
+    mine-height: 368rpx;
+    padding: 24rpx 30rpx;
+    border-radius: 12rpx;
+    background: #F3F5F5;
+}
+.eval textarea{
+    width: 100%;
+    font-size: 28rpx;
+    height: 160rpx;
+    line-height: 40rpx;
+    margin-bottom: 30rpx;
+}
+.eval .nums{
+    color: #999999;
+    position: absolute;
+    top: 140rpx;
+    right: 14rpx;
+}
+.eval  .num{
+    color: #222222;
+}
+.eval .imgNums{
+    color: #999999;
+    position: absolute;
+    bottom: 30rpx;
+    right: 14rpx;
+}
+
+.submitBtn{
+    position: fixed;
+    left: 50%;
+    bottom: 40rpx;
+    width: 530rpx;
+    line-height: 96rpx;
+    text-align: center;
+    border-radius: 12rpx;
+    opacity: 1;
+    font-size: 36rpx;
+    color: #FFFFFF;
+    /* 主题色/绿 */
+    background: #05C160;
+    transform: translate(-50%,0) ;
+}

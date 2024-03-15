@@ -1,0 +1,4 @@
+<view class="listTitle">猜你喜欢</view>
+<view class="list">
+    <Goods wx:for="{{guestList}}" wx:key="goodsId" data="{{item}}" />
+</view>

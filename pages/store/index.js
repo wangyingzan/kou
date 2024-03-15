@@ -1,5 +1,6 @@
 const utils = require("../../utils/util.js")
 const api = require("../../config/api.js")
+const app = getApp()
 Page({
     data: {
         option1: [
@@ -22,20 +23,55 @@ Page({
         list: [],
         page: 1,
         size: 10,
+        currentCity: {
+            name: '石家庄'
+        },
+        storeName: ''
     },
     onLoad: function (options) {
+
+    },
+    onShow() {
+        const selectedCity = wx.getStorageSync("selectedCity")
+        const dingwei = wx.getStorageSync("dingwei")
+        if(selectedCity){
+            this.setData({
+                currentCity: selectedCity
+            })
+        }else if(dingwei){
+            this.setData({
+                currentCity: dingwei
+            })
+        }else{
+            app.getCurrentCity().then(res=>{
+                const { cityName } = res;
+                this.setData({
+                    currentCity: { name: cityName}
+                })
+                wx.removeStorageSync('selectedCity')
+            })
+        }
         this.getList();
     },
+    storeNameChange: function({detail:{value}}){
+        this.setData({
+            storeName: value
+        })
+    },
     getList: function () {
-        const {page, size, cateId,sortField,rate,districtCode } = this.data;
+        const {page, size, cateId,sortField,rate,districtCode,currentCity,storeName } = this.data;
+        const {lat=0,lng=0  } = wx.getStorageSync('dingwei')
         utils.request(api.getStoreList, {
             PageIndex: page,
             PageSize: size,
-            Keywords: '',
+            Keywords: storeName,
+            CityName: currentCity.name,
             SortField: sortField,
             DistrictCode: districtCode,
             Rate: rate,
             CateId: cateId,
+            GpsLat:lat,
+            GpsLng:lng,
         }).then((res) => {
             let list = this.data.list;
             if (page === 1) {

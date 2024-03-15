@@ -6,8 +6,7 @@ page{
 }
 .header{
     position: relative;
-    height: 406rpx;
-    margin-bottom: -150rpx;
+    margin-bottom: 24rpx;
 
 }
 .header .navTitle{
@@ -17,6 +16,7 @@ page{
 .header .navTitle .title{
     font-size: 36rpx;
     text-align: center;
+    font-weight: bold;
     color: #222222;
 }
 .header .headerBg{
@@ -109,6 +109,7 @@ page{
     align-items: center;
     font-family: PingFang SC;
     margin-top: 46rpx;
+    font-weight: bold;
     margin-bottom: 40rpx;
 }
 .tabs .tab{

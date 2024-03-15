@@ -25,11 +25,12 @@
     width: auto;
     padding: 0 4rpx;
     line-height: 32rpx;
+    font-weight: bold;
     border: 2rpx solid #FF7900;
     font-size: 20rpx;
     color: #FF7900;
     background: rgba(255, 121, 0, .05);
-    border-radius: 2rpx;
+    border-radius: 4rpx;
 }
 .price{
     font-size: 40rpx;
