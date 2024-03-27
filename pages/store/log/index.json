@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "到店记录",
   "usingComponents": {
+    "FooterLimit": "/component/footerLimit/index"
   }
 }

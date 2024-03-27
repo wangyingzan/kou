@@ -27,7 +27,7 @@
         </picker>
         <view class="item address">
             <view class="left">详细地址</view>
-            <textarea placeholder="街道、小区、楼牌号等" name="Detail" value="{{data.detail}}"/>
+            <textarea placeholder="街道、小区、楼牌号等" placeholder-class="addressHolder" name="Detail" value="{{data.detail}}"/>
         </view>
     </view>
     <view class="defaultBox">

@@ -1,3 +1,5 @@
+
+
 <view class="container">
     <view class="box">
         <view class="addressBox" wx:if="{{address.addressId}}">
@@ -53,10 +55,10 @@
                 <view>发货时间</view>
                 <view class="right">{{orderData.fahuoDate}}</view>
             </view>
-            <view class="item">
-                <view>下单时间</view>
-                <view class="right">{{orderData.orderDate}}</view>
-            </view>
+<!--            <view class="item">-->
+<!--                <view>下单时间</view>-->
+<!--                <view class="right">{{orderData.orderDate}}</view>-->
+<!--            </view>-->
             <view class="item" wx:if="{{orderData.orderNo}}">
                 <view>订单编号</view>
                 <view class="right" >{{orderData.orderNo}}</view>
@@ -75,9 +77,12 @@
     </view>
 </view>
 
-<view class="footer">
-    <view class="allMoney">
-        合计：<text class="money">￥{{orderData.totalAmount}}</text>
+<view class="footerBox">
+    <view class="footer">
+        <view class="allMoney">
+            合计：<text class="money">￥{{orderData.totalAmount}}</text>
+        </view>
+        <view class="btn" bindtap="onPay">立即支付</view>
     </view>
-    <view class="btn" bindtap="onPay">立即支付</view>
 </view>
+

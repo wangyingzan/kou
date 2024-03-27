@@ -54,11 +54,11 @@ Page({
             });
             this.getData();
         } else {
-            wx.showToast({
-                title: '没有更多了',
-                icon: 'none',
-                duration: 2000
-            });
+            // wx.showToast({
+            //     title: '没有更多了',
+            //     icon: 'none',
+            //     duration: 2000
+            // });
             return false;
         }
     },

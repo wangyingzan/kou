@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="dateBox">
+        <view class="time">{{time}}</view>
+        <view class="right">
+            <view class="date">{{date}}</view>
+            <view class="week">{{weekDay}}</view>
+        </view>
+    </view>
+    <view class="verifyInfo">
+        <view class="left">
+            <view class="content">欢迎口福侠会员店会员{{data.nickName}}到店享受<text>{{data.rate}}</text>折消费</view>
+            <view class="voice">
+                <image src="/static/images/icon_info.png" class="icon" />
+                重新播报
+            </view>
+        </view>
+        <view class="right">
+            <image src="/static/images/icon_success_02.png" class="icon" />
+            <view class="status">验证成功</view>
+        </view>
+
+    </view>
+    <view class="btns">
+        <navigator hover-class="none" class="btn" url="/pages/store/log/detail/index?recordId={{data.recordId}}">评价</navigator>
+    </view>
+</view>
+
+<view class="list">
+    <view class="listTitle">猜你喜欢</view>
+    <navigator url="/pages/store/detail/index?id={{item.storeId}}" class="store" wx:for="{{data.storeData}}" wx:key="storeId">
+        <image class="img" src="{{item.storeImg}}"/>
+        <view class="info">
+            <view class="name">{{item.storeName}}</view>
+            <view >营业时间：{{item.businessHours}}</view>
+            <view >会员折扣：<text style="color: #FF7900">{{item.rate}}折</text></view>
+            <view >{{item.address}}</view>
+        </view>
+        <view class="distance"> <image class="icon" src="/static/images/icon_dis.png"/> {{item.distance}}</view>
+        <image src="/static/images/icon_arrow.png" class="arrow" />
+    </navigator>
+</view>

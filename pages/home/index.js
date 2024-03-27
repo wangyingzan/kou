@@ -7,6 +7,7 @@ Page({
         menuHeight: app.globalData.menuHeight,
         menuTop: app.globalData.menuTop,
         list:[],
+        goodsLogList:[],
         homeData:{
             bannerData:[],
         },
@@ -16,10 +17,23 @@ Page({
         cateId: 0, //分类ID，0为所有
         recommend: 0, //推荐商品 1-是；0-否
         total: 0,
+        noticeFlag: false,
+        notice: "",
     },
     onLoad: function (options) {
+        const a = wx.getSystemInfoSync();
+        const height = a.screenHeight - a.windowHeight - a.statusBarHeight -44
+        console.log("=============",height)
         this.getData();
         this.getCateList();
+
+    },
+    onShow() {
+        this.getTabBar().init();
+        this.getGoodsLogList()
+        this.setData({
+            page: 1
+        })
         this.getList();
     },
     getData: function(){
@@ -70,6 +84,26 @@ Page({
             }
         })
     },
+    onShowNotice: function({currentTarget:{dataset:{data}}}){
+        console.log("11111",data)
+        this.setData({
+            noticeFlag: true,
+            notice: data
+        })
+    },
+    hideNotice:function() {
+        this.setData({
+            noticeFlag: false,
+        })
+    },
+    getGoodsLogList:function(){
+        utils.request(api.getGoodsLogList,{}).then((res)=>{
+            console.log("res.list",res.list);
+            this.setData({
+                goodsLogList: res.list
+            })
+        })
+    },
     /**
      * 页面上拉触底事件的处理函数
      */
@@ -81,11 +115,11 @@ Page({
             });
             this.getList();
         } else {
-            wx.showToast({
-                title: '没有更多了',
-                icon: 'none',
-                duration: 2000
-            });
+            // wx.showToast({
+            //     title: '没有更多了',
+            //     icon: 'none',
+            //     duration: 2000
+            // });
             return false;
         }
     },

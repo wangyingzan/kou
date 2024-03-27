@@ -17,6 +17,7 @@ Page({
     onLoad: function (options) {
     },
     onShow: function () {
+        this.getTabBar().init();
         const isLogin = wx.getStorageSync("isLogin");
         const userInfo = wx.getStorageSync("userInfo");
         this.setData({
@@ -28,14 +29,30 @@ Page({
             this.getHomeInfo()
         }
     },
-    goInfo: function ({currentTarget: {dataset: {type}}}) {
+    goInfo: function ({currentTarget: {dataset: {type,param}}}) {
         const {isLogin} = this.data;
         if (isLogin) {
             switch (type) {
                 case 'store_member': //共享会员店
-                    wx.navigateTo({
-                        url: '/pages/my/store/index'
-                    })
+                    const {Step} = param;
+                    switch (Step){
+                        case 1: //去入驻
+                            wx.navigateTo({
+                                url: '/pages/my/store/entry/index',
+                            });
+                            break
+                        case 2: //入驻结果查询
+                            wx.navigateTo({
+                                url: '/pages/my/store/entry/result',
+                            });
+                            break
+                        case 3:
+                            wx.navigateTo({
+                                url: '/pages/my/store/index'
+                            })
+                            break
+                    }
+
                     break;
                 case 'store_history': //到店记录
                     wx.navigateTo({
@@ -43,6 +60,9 @@ Page({
                     })
                     break;
                 case 'member_activate': //会员激活
+                    wx.navigateTo({
+                        url: '/pages/my/member/index'
+                    })
                     break;
                 case 'modify_phone': //更换手机号
                     this.onChangePhone()
@@ -136,6 +156,7 @@ Page({
     unLogin: function () {
         Dialog.confirm({
             title: '退出登录',
+            confirmButtonColor:'#4DC185',
             message: '您当前确认要退出吗？',
         }).then(() => {
             // on confirm

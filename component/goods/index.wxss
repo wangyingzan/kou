@@ -5,6 +5,11 @@
     border-radius: 20rpx;
     overflow: hidden;
 }
+.line1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
 .banner{
     width: 340rpx;
     height: 320rpx;

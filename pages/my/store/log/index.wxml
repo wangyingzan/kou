@@ -4,10 +4,11 @@
             <image src="{{item.storeImg}}" class="avatar"/>
             <view class="info">
                 <view class="name">{{item.storeName}}</view>
-                <view class="time">{{item.arricalTime}}</view>
+                <view class="time">验证日期:{{item.arricalTime}}</view>
             </view>
-            <navigator url="./detail/index?commentId={{item.commentId}}" class="btn defaultBtn" wx:if="{{item.commentStatus}}" >查看评价</navigator>
-            <navigator url="./detail/index?recordId={{item.recordId}}" class="btn primaryBtn" wx:else>去评价</navigator>
+<!--            <navigator url="./detail/index?commentId={{item.commentId}}" class="btn defaultBtn" wx:if="{{item.commentStatus}}" >查看评价</navigator>-->
+<!--            <navigator url="./detail/index?recordId={{item.recordId}}" class="btn primaryBtn" wx:else>去评价</navigator>-->
+            <view class="right">到店消费</view>
         </view>
 
     </view>

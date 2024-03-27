@@ -57,12 +57,13 @@ App({
   getCurrentCity(){
     return new Promise((resolve, reject)=>{
       wx.getLocation({
-        type: 'wgs84',
+        type: 'gcj02',
         success: ({longitude,latitude})=>{
           util.request(api.getCityInfo, {GpsLng: longitude, GpsLat:latitude}).then(res => {
-            const {cityName,gpsLng,gpsLat} = res;
+            const {cityName,gpsLng,gpsLat,zoneCode} = res;
             wx.setStorageSync('dingwei',{
               name: cityName,
+              code: zoneCode.slice(0,4) +'00',
               lat: gpsLat,
               lng: gpsLng
             });

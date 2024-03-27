@@ -22,6 +22,12 @@ Page({
         this.setData({
             address
         })
+       const currentAddressId = wx.getStorageSync("currentAddressId")
+        if(currentAddressId){
+            this.setData({
+                currentAddress: Number(currentAddressId)
+            })
+        }
         this.getList()
     },
     onUnload() {
@@ -32,11 +38,14 @@ Page({
                 address = item;
             }
         })
-        console.log("address",address);
+        wx.removeStorageSync("currentAddressId")
         wx.setStorageSync('selectAddress',address)
     },
     onClick: function({currentTarget:{dataset:{id}}}){
-        this.data.currentAddress = id;
+        // this.data.currentAddress = id;
+        this.setData({
+            currentAddress: id
+        })
         wx.navigateBack()
     },
     selectedAddress: function(event){

@@ -1,5 +1,5 @@
-const utils = require("../../../../utils/util.js")
-const api = require("../../../../config/api.js")
+const utils = require("../../../utils/util.js")
+const api = require("../../../config/api.js")
 import Dialog from '@vant/weapp/dialog/dialog';
 Page({
     data: {
@@ -7,6 +7,8 @@ Page({
         imgNum: 0,
         orderNo: undefined,
         fileList: [],
+        goodsList: [],
+        commentData: [],
         rate: 0,
     },
     onLoad: function (options) {
@@ -20,7 +22,8 @@ Page({
         const { orderNo } = this.data;
         utils.request(api.getOrderGoodsData,{OrderNo:orderNo}).then(res => {
             this.setData({
-                data: res
+                goodsList: res.list,
+                commentData: res.list.map(res=>{return {subOrderId:res.subOrderId,goodsId:res.goodsId,rate: 0,fileList:[],content:'',num:0}})
             })
         })
     },
@@ -31,101 +34,97 @@ Page({
             fileList
         })
     },
-    tabChange: function({currentTarget:{dataset:{index}}}){
-        this.setData({
-            [`tabs[${index}].isActive`]: !this.data.tabs[index].isActive
-        })
-    },
-    submitData: function({detail:{value}}){
-        const { Content } = value;
-        const { rate,tabs,fileList,recordId } = this.data;
-        let features = [],imgs=[];
+    submitData: function(){
+        const { commentData,orderNo } = this.data;
+        let ContentData = [];
+       const flag = commentData.every(res=>{
+            const {rate,fileList,content,goodsId,subOrderId} = res;
+            if(!rate){
+                wx.showToast({
+                    title: '请输入评分！',
+                    icon: 'none'
+                })
 
-        tabs.map(item=>{
-            if(item.isActive){
-                features.push(item.name)
+                return false
+            }else  if(!content){
+                wx.showToast({
+                    title: '请输入评价！',
+                    icon: 'none'
+                })
+                return false
             }
-        })
-        fileList.map(item=>{
-            imgs.push(item.url)
-        })
-        if(!rate){
-            wx.showToast({
-                title: '请输入评分！',
-                icon: 'none'
+            ContentData.push({
+                Mark: rate,
+                GoodsId:goodsId,
+                SubOrderId:subOrderId,
+                Content:content,
+                Images: fileList.map(res=> {return res.url})
             })
-        }else if(!features.length){
-            wx.showToast({
-                title: '请选择店铺特色！',
-                icon: 'none'
-            })
-        }else if(!Content){
-            wx.showToast({
-                title: '请输入评价！',
-                icon: 'none'
+           return true
+        })
+        if(flag){
+            utils.request(api.submitOrderComment,{
+                OrderNo:orderNo,
+                ContentData
+            }).then((res)=>{
+                Dialog.confirm({
+                    title: '评价成功',
+                    confirmButtonColor:'#4DC185',
+                    message: '感谢您的评价',
+                    cancelButtonText: '返回',
+                }).then(() => {
+                    wx.navigateBack()
+                }).catch(()=>{
+                    wx.navigateBack()
+                })
+
             })
         }
-        utils.request(api.submitStoreComment,{
-            RecordId: recordId,
-            Imgs: imgs,
-            Score: rate,
-            Content,
-            Features:features
-        }).then((res)=>{
-            this.setData({
-                commentId: res
-            })
-            Dialog.confirm({
-                title: '评价成功',
-                message: '感谢您的评价',
-                cancelButtonText: '返回',
-            }).then(() => {
 
-            }).catch(()=>{
-                wx.navigateBack()
-            })
-
-        })
 
 
 
     },
-    onRateChange: function({detail}){
+    onRateChange: function({detail,target:{dataset:{index}}}){
         this.setData({
-            rate: detail
+            [`commentData[${index}].rate`]: detail
         })
     },
-    onChange: function({detail:{value}}){
+    onChange: function({detail:{value},target:{dataset:{index}}}){
         this.setData({
-            num: value.length
+            [`commentData[${index}].num`]: value.length,
+            [`commentData[${index}].content`]: value,
         })
     },
-    afterRead(event) {
-        const { file } = event.detail;
+    afterRead({detail:{file},target:{dataset:{index}}}) {
         file.map(res=>{
-            this.uploadFile(res);
+            this.uploadFile(res).then((res)=>{
+                // 上传完成需要更新 fileList
+                let { fileList = [] } = this.data.commentData[index];
+                const {imgDomain ,imgUrl } =res;
+                fileList.push({ ...file, url: imgDomain+imgUrl });
+                this.setData({
+                    [`commentData[${index}].fileList`]: fileList,
+                });
+            });
         })
     },
     uploadFile: function(file){
-        wx.request(({
-            url: file.tempFilePath,
-            method: 'GET',
-            responseType: 'arraybuffer',
-            success: (res)=>{
-                console.log("123213",res.data);
-                const base64 = wx.arrayBufferToBase64(res.data)
-                utils.request(api.uploadUrl,{
-                    "FileName": "图片名称.png",   //图片名称
-                    "ImageType": 2,               //图片类型 0-普通；1-商品；2-评论；3-头像；4-微信头像;8-小程序码
-                    "FileBase": base64               //图片 base64
-                }).then((res)=>{
-                    // 上传完成需要更新 fileList
-                    const { fileList = [] } = this.data;
-                    const {imgDomain ,imgUrl } =res;
-                    fileList.push({ ...file, url: imgDomain+imgUrl });
-                    this.setData({ fileList });
-                })
-            }
-        }))
+        return new Promise((resolve, reject)=>{
+            wx.getFileSystemManager().readFile({
+                filePath: file.tempFilePath,
+                success:(res)=>{
+                    const base64 = wx.arrayBufferToBase64(res.data)
+                    utils.request(api.uploadUrl,{
+                        "FileName": "微信图片.png",   //图片名称
+                        "ImageType": 2,               //图片类型 0-普通；1-商品；2-评论；3-头像；4-微信头像;8-小程序码
+                        "FileBase": base64               //图片 base64
+                    }).then((res)=>{
+                        resolve(res)
+                    })
+                }
+            })
+        })
+
     },
 });

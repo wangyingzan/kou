@@ -21,16 +21,16 @@ page{
 .formBox .item.address{
     align-items: flex-start;
     padding-top: 18rpx;
-    height: 188rpx;
+    height: auto;
 }
 .formBox .item.address .left{
     height: 40rpx;
-    line-height: 40rpx;
+    line-height: 32rpx;
 }
 .formBox .item.address textarea{
     height: 160rpx;
-    line-height: 40rpx;
 }
+
 .formBox .item .map{
     position: absolute;
     top: 50%;
@@ -42,7 +42,7 @@ page{
     transform: translate(0,-50%);
 }
 .formBox .item .map .iconLocation{
-    width: 27rpx;
+    width: 32rpx;
     height: 32rpx;
     box-sizing: border-box;
     margin-right: 15rpx;

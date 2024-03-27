@@ -70,8 +70,8 @@ page{
     transform: translate(0,-50%);
 }
 .storeNameBox .goPhone .icon{
-    width: 20rpx;
-    height: 20rpx;
+    width: 28rpx;
+    height: 28rpx;
     margin-right: 10rpx;
     display: inline-block;
 }
@@ -87,8 +87,8 @@ page{
     border-bottom: 2rpx solid #EEEEEE;
 }
 .time .iconTime{
-    width: 28rpx;
-    height: 28rpx;
+    width: 32rpx;
+    height: 32rpx;
     display: inline-block;
     margin-right: 10rpx;
 }

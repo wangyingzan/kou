@@ -12,34 +12,45 @@
     <view class="box">
         <view class="otherBox">
             <view class="title">常用工具</view>
-            <view class="item">
+            <navigator hover-class="none" url="./code/index?storeId={{data.storeId}}" class="item">
                 <image class="icon" src="/static/images/icon_store_01.png"/>
                 <view class="right">
                     <view class="name">会员验证二维码</view>
                     <view class="info">会员通过扫描此码验证其身份</view>
                     <image class="arrow" src="/static/images/icon_arrow.png"/>
                 </view>
-            </view>
-            <view class="item">
+            </navigator>
+            <navigator hover-class="none" url="./log/index?storeId={{data.storeId}}" class="item">
                 <image class="icon" src="/static/images/icon_store_02.png"/>
                 <view class="right">
                     <view class="name">会员到店记录</view>
                     <view class="info">查看到店验证消费后的会员信息</view>
                     <image class="arrow" src="/static/images/icon_arrow.png"/>
                 </view>
-            </view>
-            <view class="item">
+            </navigator>
+            <view class="item" bindtap="editStore">
                 <image class="icon" src="/static/images/icon_store_03.png"/>
                 <view class="right">
-                    <view class="name">基本信息修改</view>
-                    <view class="info">修改店铺基本信息，此项需审核</view>
+                    <view class="name">
+                        基本信息修改
+                        <view class="status statusWaiting" wx:if="{{data.basicModifyStatus === 1}}">审核中</view>
+                        <view class="status statusSuccess" wx:if="{{data.basicModifyStatus === 2 && !hideBasicStatusFlag}}">已通过</view>
+                        <view class="status statusReject" wx:if="{{data.basicModifyStatus === 3}}">未通过</view>
+                    </view>
+                    <view class="info">修改店铺基本信息</view>
                     <image class="arrow" src="/static/images/icon_arrow.png"/>
+
                 </view>
             </view>
-            <view class="item">
+            <view bindtap="editRate" class="item">
                 <image class="icon" src="/static/images/icon_store_04.png"/>
                 <view class="right">
-                    <view class="name">折扣优惠修改</view>
+                    <view class="name">
+                        折扣优惠修改
+                        <view class="status statusWaiting" wx:if="{{data.rateModifyStatus === 1}}">审核中</view>
+                        <view class="status statusSuccess" wx:if="{{data.rateModifyStatus === 2 && !hideRateStatusFlag}}">已通过</view>
+                        <view class="status statusReject" wx:if="{{data.rateModifyStatus === 3}}">未通过</view>
+                    </view>
                     <view class="info">修改折扣额度，当前折扣为：<text style="color: #FF7900">{{data.storeRate}}折</text></view>
                     <image class="arrow" src="/static/images/icon_arrow.png"/>
                 </view>

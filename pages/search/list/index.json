@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "搜索",
   "usingComponents": {
-    "Goods": "/component/goods/index"
+    "Goods": "/component/goods/index",
+    "FooterLimit": "/component/footerLimit/index"
   }
 }

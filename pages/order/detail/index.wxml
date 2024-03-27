@@ -1,3 +1,10 @@
+<block wx:if="{{orderData.orderStatusCode === 1 && time > 0}}">
+    <view class="timeBox" >
+        <image class="icon" src="/static/images/icon_time_02.png" />
+        剩余支付时间：<van-count-down class="time" time="{{ time }}" format="HH 时 mm 分 ss 秒" bind:finish="timeFinish"/>
+    </view>
+</block>
+
 <view class="container">
     <view class="box" wx:if="{{orderData.orderStatusCode === 1}}">
         <view class="addressBox" wx:if="{{address.addressId}}">
@@ -51,7 +58,7 @@
                 <image src="{{item.goodsImg}}" class="img"/>
                 <view class="goodsInfo">
                     <view class="name">{{item.goodsName}}</view>
-                    <view class="info">{{item.packageDesc}}</view>
+                    <view class="info line2">{{item.packageDesc}}</view>
                     <view class="spec">规格：<text class="num">×{{item.count}}</text></view>
                     <view class="tips">
                         <view class="tip">官方正品</view>
@@ -102,31 +109,34 @@
 
     </view>
 </view>
+<view class="footerBox">
+    <view class="footer" wx:if="{{orderData.orderStatusCode === 1 || orderData.orderStatusCode === 2 ||orderData.orderStatusCode === 3 ||orderData.orderStatusCode === 4}}">
+        <!--待支付-->
+        <block wx:if="{{orderData.orderStatusCode === 1}}">
+            <view class="defaultBtn" bindtap="cancelOrder">取消订单</view>
+            <view class="primaryBtn" bindtap="pay">去支付</view>
+        </block>
+        <!--待支付-->
+        <!--待发货-->
+        <block wx:elif="{{orderData.orderStatusCode === 2}}">
+            <view class="defaultBtn" bindtap="urgeReceipt">催发货</view>
+        </block>
+        <!--待发货-->
+        <!--待收货-->
+        <block wx:elif="{{orderData.orderStatusCode === 3}}">
+            <view class="defaultBtn" bindtap="lookLogistics">查看物流</view>
+            <view class="primaryBtn" bindtap="confirmReceipt">确认收货</view>
+        </block>
+        <!--待收货-->
+        <!--待评价-->
 
-<view class="footer">
-    <!--待支付-->
-    <block wx:if="{{orderData.orderStatusCode === 1}}">
-        <view class="defaultBtn" bindtap="cancelOrder">取消订单</view>
-        <view class="primaryBtn" bindtap="pay">去支付</view>
-    </block>
-    <!--待支付-->
-    <!--待发货-->
-    <block wx:elif="{{orderData.orderStatusCode === 2}}">
-        <view class="defaultBtn" bindtap="urgeReceipt">催发货</view>
-    </block>
-    <!--待发货-->
-    <!--待收货-->
-    <block wx:elif="{{orderData.orderStatusCode === 3}}">
-        <view class="defaultBtn" bindtap="lookLogistics">查看物流</view>
-        <view class="primaryBtn" bindtap="confirmReceipt">确认收货</view>
-    </block>
-    <!--待收货-->
-    <!--待评价-->
+        <block wx:elif="{{orderData.orderStatusCode === 4}}">
+            <view class="defaultBtn" bindtap="moreOrder">再来一单</view>
+            <navigator url="../evaluates/index?orderNo={{orderData.orderNo}}" hover-class="none" class="primaryBtn" >评价晒单</navigator>
+        </block>
+        <!--待评价-->
+        <view class="defaultBtn" bindtap="moreOrder">再来一单</view>
 
-    <block wx:elif="{{orderData.orderStatusCode === 4}}">
-        <view class="defaultBtn" bindtap="goDetail">再来一单</view>
-        <view class="primaryBtn" >评价晒单</view>
-    </block>
-    <!--待评价-->
+    </view>
 </view>
 <van-dialog id="van-dialog" />

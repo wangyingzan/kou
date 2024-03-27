@@ -1,11 +1,35 @@
-<van-tabs active="{{ status }}" bind:change="onStatusChange" class="tabs">
+<!--<van-tabs active="{{ status }}" bind:change="onStatusChange" class="tabs">-->
 
-    <van-tab title="全部订单" name="0"/>
-    <van-tab title="待支付" name="1" />
-    <van-tab title="待发货" name="2" />
-    <van-tab title="待收货" name="3" />
-    <van-tab title="待评价" name="4" />
-</van-tabs>
+<!--    <van-tab title="全部订单" name="0"/>-->
+<!--    <van-tab title="待支付" name="1" />-->
+<!--    <van-tab title="待发货" name="2" />-->
+<!--    <van-tab title="待收货" name="3" />-->
+<!--    <van-tab title="待评价" name="4" />-->
+<!--</van-tabs>-->
+
+
+<view class="tabs" bindtap="onStatusChange">
+    <view class="tab {{status === '0'? 'active': ''}}" data-status="0">
+        全部订单
+<!--        <view class="num" wx:if="{{dataInfo.allOrderCount}}">{{dataInfo.allOrderCount}}</view>-->
+    </view>
+    <view class="tab {{status === '1'? 'active': ''}}" data-status="1">
+        待支付
+        <view class="num" wx:if="{{dataInfo.waitPayCount}}">{{dataInfo.waitPayCount}}</view>
+    </view>
+    <view class="tab {{status === '2'? 'active': ''}}" data-status="2">
+        待发货
+        <view class="num" wx:if="{{dataInfo.waitSendCount}}">{{dataInfo.waitSendCount}}</view>
+    </view>
+    <view class="tab {{status === '3'? 'active': ''}}" data-status="3">
+        待收货
+        <view class="num" wx:if="{{dataInfo.waitReceiveCount}}">{{dataInfo.waitReceiveCount}}</view>
+    </view>
+    <view class="tab {{status === '4'? 'active': ''}}" data-status="4">
+        待评价
+        <view class="num" wx:if="{{dataInfo.waitCommentCount}}">{{dataInfo.waitCommentCount}}</view>
+    </view>
+</view>
 <view class="list">
     <view class="goodsItem" wx:for="{{list}}" wx:key="orderNo">
         <view class="title">
@@ -32,7 +56,7 @@
             <image src="{{goods.goodsImg}}" class="img"/>
             <view class="goodsInfo">
                 <view class="name">{{goods.goodsName}}</view>
-                <view class="info">{{goods.packageDesc}}</view>
+                <view class="info line2">{{goods.packageDesc}}</view>
                 <view class="spec">规格：<text class="num">×{{goods.count}}</text></view>
                 <view class="tips">
                     <view class="tip">官方正品</view>
@@ -54,22 +78,21 @@
             <!--待支付-->
             <!--待发货-->
             <block wx:elif="{{item.orderStatusCode === 2}}">
-                <view class="defaultBtn">催发货</view>
+                <view class="defaultBtn" data-index="{{index}}" data-orderNo="{{item.orderNo}}" bindtap="urgeReceipt">催发货</view>
             </block>
             <!--待发货-->
             <!--待收货-->
             <block wx:elif="{{item.orderStatusCode === 3}}">
-                <view class="defaultBtn">查看物流</view>
-                <view class="primaryBtn">确认收货</view>
+                <view class="defaultBtn" data-index="{{index}}" bindtap="lookLogistics">查看物流</view>
+                <view class="primaryBtn" data-index="{{index}}" data-orderNo="{{item.orderNo}}" bindtap="confirmReceipt">确认收货</view>
             </block>
             <!--待收货-->
             <!--待评价-->
 
             <block wx:elif="{{item.orderStatusCode === 4}}">
-                <view class="defaultBtn">查看物流</view>
+                <view class="defaultBtn" data-index="{{index}}" bindtap="lookLogistics">查看物流</view>
                 <navigator url="../evaluates/index?orderNo={{item.orderNo}}" hover-class="none" class="primaryBtn" >评价晒单</navigator>
             </block>
-<!--            <navigator url="../evaluates/index?orderNo={{item.orderNo}}" hover-class="none" class="primaryBtn" >评价晒单</navigator>-->
             <!--待评价-->
 
         </view>
@@ -78,6 +101,7 @@
         <Empty title="您当前没有订单哦" />
     </view>
     <Like goodsId="0" />
+    <FooterLimit />
 </view>
 
 <van-dialog id="van-dialog" />

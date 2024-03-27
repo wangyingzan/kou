@@ -24,7 +24,6 @@ Page({
     },
     onLoad: function (options) {
         const { goodsIds ,goodsNum} = options
-        console.log("goodsIDs",goodsIds)
         this.data.goodsIds = goodsIds.split(',');
         this.data.goodsNum = goodsNum;
         this.createOrder();

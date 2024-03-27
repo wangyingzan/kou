@@ -1,25 +1,28 @@
 page{
-    background: #fff;
+    padding-top: 20rpx;
+    /*background: #fff;*/
 }
 .container{
     padding: 0 26rpx;
 }
 .box {
-    border-radius: 12rpx;
-    background: #FFFFFF;
+    padding: 54rpx 24rpx 64rpx 24rpx;
+    border-radius: 24rpx;
     margin-bottom: 20rpx;
+    background: #FFFFFF;
 }
 
 .rate{
-    padding: 52rpx 0;
-    text-align: center;
+    font-size: 32rpx;
+    padding: 26rpx 0 58rpx 0;
+    /*text-align: center;*/
 }
 .goods{
     display: flex;
     align-items: center;
-    margin-bottom: 10rpx;
+    /*margin-bottom: 20rpx;*/
 }
-.goodsInfo .img{
+.goods .img{
     width: 180rpx;
     height: 190rpx;
     flex: none;
@@ -66,17 +69,16 @@ page{
 }
 
 .submitBtn{
-    position: fixed;
-    left: 50%;
-    bottom: 40rpx;
     width: 530rpx;
     line-height: 96rpx;
     text-align: center;
     border-radius: 12rpx;
     opacity: 1;
     font-size: 36rpx;
+    margin: auto;
     color: #FFFFFF;
     /* 主题色/绿 */
     background: #05C160;
-    transform: translate(-50%,0) ;
+    margin-top: 80rpx;
+
 }

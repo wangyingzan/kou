@@ -1,0 +1,20 @@
+<!--<canvas canvas-id="myCanvas"  type="2d"></canvas>-->
+<view class="container">
+    <view class="box">
+        <view class="title">共享会员店</view>
+        <image src="{{QRCodeUrl}}" class="code"/>
+        <view class="footer">
+            会员到店扫描此码即可验证身份
+        </view>
+        <view class="after" />
+        <view class="before" />
+    </view>
+    <view class="btn" bindtap="drawCode" >
+        <image src="/static/images/icon_save.png" class="icon"/>
+
+        保存到相册
+    </view>
+</view>
+
+
+

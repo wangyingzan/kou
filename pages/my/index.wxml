@@ -8,7 +8,7 @@
     <view class="login" wx:if="{{!isLogin}}">
         <image src="/static/images/myBg.png" class="avatar" />
         <view class="log" bindtap="wxLogin">
-            立即登录 >
+            立即登录 <image src="/static/images/icon_arrow.png" class="arrow" />
         </view>
     </view>
     <view class="login" wx:else>
@@ -23,24 +23,31 @@
     <view class="mine">
         <view class="mineHeader">
             <view>我的订单</view>
-            <view data-url="/pages/order/list/index?status=0" bindtap="navigatorTo" class="right">全部订单></view>
+            <view data-url="/pages/order/list/index?status=0" bindtap="navigatorTo" class="right">
+                全部订单
+                <image src="/static/images/icon_arrow.png" class="arrow" />
+            </view>
         </view>
         <view class="tabs">
             <view data-url="/pages/order/list/index?status=1" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_01.png" class="icon" />
                 <view>待支付</view>
+                <view class="num" wx:if="{{dataInfo.waitPayCount}}">{{dataInfo.waitPayCount}}</view>
             </view>
             <view data-url="/pages/order/list/index?status=2" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_02.png" class="icon" />
                 <view>待发货</view>
+                <view class="num" wx:if="{{dataInfo.waitSendCount}}">{{dataInfo.waitSendCount}}</view>
             </view>
             <view data-url="/pages/order/list/index?status=3" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_03.png" class="icon" />
                 <view>待收货</view>
+                <view class="num" wx:if="{{dataInfo.waitReceiveCount}}">{{dataInfo.waitReceiveCount}}</view>
             </view>
             <view data-url="/pages/order/list/index?status=4" bindtap="navigatorTo" class="item">
                 <image src="/static/images/icon_order_04.png" class="icon" />
                 <view>待评价</view>
+                <view class="num" wx:if="{{dataInfo.waitCommentCount}}">{{dataInfo.waitCommentCount}}</view>
             </view>
         </view>
     </view>
@@ -51,7 +58,7 @@
                 <image src="{{item.icoUrl}}" class="icon" />
                 <view>{{item.icoTitle}}</view>
             </button>
-            <view wx:else class="item"  data-type="{{item.actionType}}" data-prarm="{{item.actionParam}}" bindtap="goInfo">
+            <view wx:else class="item"  data-type="{{item.actionType}}" data-param="{{item.actionParam}}" data-prarm="{{item.actionParam}}" bindtap="goInfo">
                 <image src="{{item.icoUrl}}" class="icon" />
                 <view>{{item.icoTitle}}</view>
             </view>

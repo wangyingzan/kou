@@ -5,16 +5,41 @@ page{
     padding: 20rpx 24rpx;
     padding-bottom: 200rpx;
 }
-.box{
+.goodsBox{
+    padding: 20rpx 24rpx;
+}
+.swiperBox{
+    width: 702rpx;
     border-radius: 12rpx;
     background: #FFFFFF;
-    margin-bottom: 20rpx;
 }
 
-.goodsInfo{
-    padding:  24rpx;
+.swiperBox{
+    height: 254rpx;
 }
-.goodsInfo .title{
+
+.goods{
+    position: relative;
+    display: flex;
+    margin-bottom: 20rpx;
+}
+.goods .tip{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 156rpx;
+    height: 36rpx;
+    font-size: 22rpx;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 0 12rpx 0 14rpx;
+    /* 辅助色/橙 */
+    background: #FF7900;
+}
+.goods{
+    padding:  22rpx 24rpx;
+}
+.goods .title{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,66 +47,42 @@ page{
     margin-bottom: 27rpx;
 
 }
-.goodsInfo .left{
+.goods .left{
     height: 98rpx;
     display: flex;
     align-items: center;
     font-weight: bold;
 
 }
-.goodsInfo .left .icon{
+.goods .left .icon{
     width: 31rpx;
     height: 30rpx;
     margin-right: 12rpx;
 }
-.goods{
-    display: flex;
-
-}
-.goodsInfo{
-    flex: 1;
-}
-.goodsInfo .img{
+.goods .img{
     width: 180rpx;
-    height: 190rpx;
+    height: 180rpx;
     flex: none;
     margin-right: 24rpx;
 }
-.goodsInfo .name{
+.goods .status{
+    font-size: 32rpx;
+    font-weight: bold;
+    /* 文字/主题文字 */
+    color: #012110;
+    margin-bottom: 12rpx;
+}
+.goods .name{
     font-size: 28rpx;
     color: #333333;
     margin-bottom: 12rpx;
 }
-.goodsInfo .info{
+.goods .info{
     font-size: 24rpx;
     color: #666666;
     margin-bottom: 12rpx;
 }
-.goodsInfo .spec{
-    font-size: 24rpx;
-    color: #333333;
-    margin-bottom: 12rpx;
-}
-.goodsInfo .spec .num{
-    font-size: 28rpx;
-}
-.goodsInfo .tips{
-    display: flex;
-    gap: 0 24rpx;
-}
-.goodsInfo .tips .tip{
-    padding: 0 5rpx;
-    line-height: 28rpx;
-    font-size: 20rpx;
-    border-radius: 5rpx;
-    color: #E6A23C;
-    border: 2rpx solid #E6A23C;
 
-}
-.goodsInfo .tips .tip:nth-child(2){
-    color: #05C160;
-    border: 2rpx solid #05C160;
-}
 
 .goodsMoney{
     flex: none;

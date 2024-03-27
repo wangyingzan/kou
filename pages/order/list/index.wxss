@@ -1,8 +1,49 @@
 
 
-.tabs  .van-tab__title__info{
-    position: absolute !important;
-    top: 6rpx !important;
+.tabs{
+    display: flex;
+    align-items: center;
+    padding: 0 12rpx;
+    background: #fff;
+}
+.tabs .tab{
+    position: relative;
+    width: 156rpx;
+    text-align: center;
+    line-height: 86rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+.tabs .tab.active{
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #222222;
+}
+.tabs .tab.active:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 44rpx;
+    height: 8rpx;
+    border-radius: 40rpx;
+    background: #54B061;
+    transform: translate(-50%,0);
+
+}
+.tabs .tab .num{
+    position: absolute;
+    top: 5rpx;
+    right: -10rpx;
+    width: 32rpx;
+    height: 28rpx;
+    font-weight: bold;
+    line-height: 28rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 20rpx;
+    border-radius: 64rpx;
+    background: #F73A3A;
 }
 
 .list{
@@ -49,6 +90,7 @@
 }
 .goods{
     flex: 1;
+    margin-bottom: 28rpx;
 }
 .goods .img{
     width: 180rpx;
@@ -57,6 +99,7 @@
     margin-right: 24rpx;
 }
 .goodsInfo{
+    flex: 1;
     max-width: 350rpx;
 }
 .goodsInfo .name{

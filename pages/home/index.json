@@ -2,6 +2,8 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "Goods": "/component/goods/index",
-    "van-sticky": "@vant/weapp/sticky/index"
+    "van-sticky": "@vant/weapp/sticky/index",
+    "FooterLimit": "/component/footerLimit/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

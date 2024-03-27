@@ -13,17 +13,29 @@
         <image class="scan" bindtap="scanCode" src="/static/images/icon_scan.png" />
     </view>
     <image src="/static/images/headerBg.png" class="headerBg"/>
+
 </view>
-<swiper class="swiperBox" interval="3000" previous-margin="26rpx" circular autoplay="true">
-    <swiper-item wx:for='{{homeData.bannerData}}' data-item="{{item}}" wx:key="index">
-        <image src="{{item.icoUrl}}" class="banner"/>
-    </swiper-item>
-</swiper>
+<view class="bannerBox">
+    <swiper class="swiperBox" interval="3000" previous-margin="26rpx" circular autoplay="true">
+        <swiper-item wx:for='{{homeData.bannerData}}' data-item="{{item}}" wx:key="index">
+            <image src="{{item.icoUrl}}" class="banner"/>
+        </swiper-item>
+    </swiper>
+    <view class="goodsLogBox">
+        <swiper class="logBox" interval="3000"  vertical autoplay="true">
+            <swiper-item wx:for='{{goodsLogList}}' wx:key="index">
+                <view class="item">{{item}}</view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
+
+
 <view class="informBox">
     <image class="icon" src="/static/images/icon_info.png" />
     <swiper interval="3000" vertical autoplay="true" class="item">
         <swiper-item wx:for='{{homeData.noticeData}}' data-item="{{item}}" wx:key="index" >
-            <view class="line1">{{item}}</view>
+            <view class="line1" data-data="{{item}}" bindtap="onShowNotice">{{item}}</view>
         </swiper-item>
     </swiper>
 </view>
@@ -44,7 +56,22 @@
     </view>
 </view>
 
+<FooterLimit wx:if="{{list.length < (page * size)}}"/>
 
 <button class="service" openType="contact">
     <image class="serviceImg" src="/static/images/icon_phone_02.png" />
 </button>
+
+
+<van-popup show="{{ noticeFlag }}" round custom-style="background: rgba(0,0,0,0)" >
+    <view class="modal">
+        <view class="noticeBox">
+            <view class="title">通知公告</view>
+            <view class="notice">{{notice}}</view>
+            <image class="icon" src="/static/images/icon_notice.png" />
+            <view class="noticeBtn" bindtap="hideNotice" >我知道了</view>
+            <image class="closeBtn" src="/static/images/icon_close.png" bindtap="hideNotice" />
+        </view>
+    </view>
+
+</van-popup>

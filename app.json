@@ -26,9 +26,20 @@
     "pages/my/store/log/detail/index",
     "pages/order/evaluates/index",
     "pages/order/success/index",
-    "pages/my/store/index"
+    "pages/my/store/index",
+    "pages/my/store/entry/index",
+    "pages/my/store/entry/step01",
+    "pages/my/store/entry/step02",
+    "pages/my/store/entry/result",
+    "pages/my/store/edit/rate",
+    "pages/my/store/edit/rateResult",
+    "pages/my/store/edit/store",
+    "pages/my/store/edit/storeResult",
+    "pages/my/store/code/index",
+    "pages/my/code/index"
   ],
   "tabBar": {
+    "custom": true,
     "backgroundColor": "#fff",
     "borderStyle": "white",
     "selectedColor": "#023B1D",
@@ -65,6 +76,8 @@
     "navigationBarTitleText": "Weixin",
     "navigationBarBackgroundColor": "#ffffff"
   },
+   "requiredPrivateInfos":["getLocation","chooseAddress","chooseLocation"],
+
    "permission": {
      "scope.userLocation": {
        "desc": "你的位置信息将用于商品展示"

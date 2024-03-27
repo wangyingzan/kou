@@ -8,8 +8,11 @@ Page({
         logisticsData:[],
         active: 1,
         goodsNum: undefined,
+        timeFlag: false,
         remark: undefined,
+        time: 0,
         orderData: {
+            orderStatusCode: undefined,
             goodsData: []
         },
         address: {
@@ -41,13 +44,33 @@ Page({
             OrderNo: orderNo,
         }).then((res)=>{
             const { addressInfo,logisticsData,...orderData } = res;
+            const createTime = new Date(orderData.submitTime).getTime();
+            const currentTime = new Date().getTime()
+            const time = createTime+ 24*60*60*1000 - currentTime;
+            if( time > 0 ){
+                this.setData({
+                    time
+                })
+            }
             this.setData({
                 orderData,
                 logisticsData: logisticsData.map((item)=>{return {desc:item.info}}),
                 address: addressInfo
             })
-            console.log("order",res);
+            this.setTitle();
         })
+    },
+    setTitle:function(){
+        const {orderData}=this.data;
+        wx.setNavigationBarTitle({
+            title:  {1:'待付款',2:'待发货',3:'待收货',4:'待评价',5:'已完成',6:'退款中',7:'已退款',8:'已取消',9:'待自提'}[orderData.orderStatusCode]
+        })
+    },
+    timeFinish: function(){
+        this.setData({
+            ['orderData.orderStatusCode'] :8
+        })
+        this.setTitle();
     },
     goLogisticsDetail: function(){
         const { logisticsData,orderData } = this.data;
@@ -133,6 +156,7 @@ Page({
         const { orderNo } = this.data;
         Dialog.confirm({
             title: '取消订单',
+            confirmButtonColor:'#4DC185',
             message: '您当前确认取消订单吗？',
         }).then(() => {
             utils.request(api.cancelOrder,{
@@ -142,10 +166,10 @@ Page({
                     title: '取消成功',
                     icon: 'none'
                 })
-
                 this.setData({
                     'orderData.orderStatusCode': 8
                 })
+                this.setTitle();
             })
         }).catch(() => {
             // on cancel
@@ -165,8 +189,9 @@ Page({
     },
     /** 查看物流 */
     lookLogistics: function(){
-        const { logisticsData } = this.data.orderData
+        const { logisticsData,...orderData } = this.data.orderData
         wx.setStorageSync("logisticsData", logisticsData)
+        wx.setStorageSync("orderData", orderData)
         wx.navigateTo({
             url: '/pages/order/logistics/index'
         })
@@ -176,18 +201,32 @@ Page({
         utils.request(api.confirmReceipt,{
             OrderNo: orderNo,
         }).then((res)=>{
-            wx.showToast({
-                title: '操作成功',
-                icon: 'none'
-            })
+            Dialog.confirm({
+                title: '确认收货成功',
+                confirmButtonColor:'#4DC185',
+                message: '快去参与评价吧',
+            }).then(() => {
+                // 去评价
+                wx.navigateTo({
+                    url:`../evaluates/index?orderNo=${orderNo}`
+                })
+            }).catch(() => {
+                // on cancel
+            });
             this.getData()
         })
+
+
     },
-    goDetail: function(){
-        return
-        /* todo 再来一单 */
-        wx.navigateTo({
-            url: '/pages/goods/detail/index?goodsId='
+    moreOrder: function(){
+        const { orderNo } = this.data;
+        utils.request(api.moreOrder,{
+            OrderNo: orderNo,
+        }).then((res)=>{
+            wx.setStorageSync("selectedGoodsIds",res.selectIds)
+            wx.switchTab({
+                url:'/pages/cart/index'
+            })
         })
     },
     getWxAddress: function(){

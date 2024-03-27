@@ -5,6 +5,7 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "Like": "/component/like/index",
     "van-dialog": "@vant/weapp/dialog/index",
-    "Empty": "/component/empty/empty"
+    "Empty": "/component/empty/empty",
+    "FooterLimit": "/component/footerLimit/index"
   }
 }

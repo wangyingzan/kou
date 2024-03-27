@@ -8,6 +8,9 @@ Page({
         list: [],
     },
     onLoad: function (options) {
+        this.setData({
+            storeId: options.storeId
+        })
     },
     onShow() {
         this.data.page =  1;
@@ -15,10 +18,11 @@ Page({
         this.getList();
     },
     getList: function(){
-        const { page, size} = this.data;
-        utils.request(api.myStoreLogList,{
+        const { page, size,storeId} = this.data;
+        utils.request(api.getStoreLogList,{
             PageIndex: page,
             PageSize: size,
+            StoreId: storeId
         }).then((res)=>{
             let list = this.data.list;
             if(page === 1){

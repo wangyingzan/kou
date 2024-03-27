@@ -4,8 +4,8 @@ page{
 
 .header{
     position: relative;
-    height: 495rpx;
-    margin-bottom: -86rpx;
+    /*height: 234rpx;*/
+    /*padding-bottom: 10rpx;*/
 }
 .header .navTitle{
     position: relative;
@@ -13,6 +13,7 @@ page{
 }
 .header .navTitle .title{
     font-size: 36rpx;
+    font-weight: bold;
     text-align: center;
     color: #222222;
 }
@@ -27,7 +28,7 @@ page{
     display: flex;
     align-items: center;
     padding: 0 40rpx;
-
+    padding-bottom: 40rpx;
     color: #222222;
 }
 .header .login .avatar{
@@ -37,13 +38,19 @@ page{
     margin-right: 20rpx;
 }
 .header .login .log{
+    display: flex;
+    align-items: center;
     position: relative;
     font-size: 36rpx;
     font-weight: bold;
     color: #333;
     z-index: 100;
 }
-
+.header .login .log .arrow{
+    width: 12rpx;
+    height: 22rpx;
+    margin-left: 10rpx;
+}
 .container{
     padding: 0 24rpx;
 }
@@ -51,7 +58,6 @@ page{
     padding: 0 25rpx;
     border-radius: 12rpx;
     background: #fff;
-    margin-top: -85rpx;
     margin-bottom: 32rpx;
 }
 .mine .mineHeader{
@@ -67,20 +73,42 @@ page{
 
 }
 .mine .mineHeader .right{
+    display: flex;
+    align-items: center;
     font-weight: normal;
     font-size: 24rpx;
     color: #666666;
 }
+.mine .mineHeader .right .arrow{
+    width: 8rpx;
+    height: 16rpx;
+    margin-left: 10rpx;
+}
 .mine .tabs{
     height: 168rpx;
+    padding: 0 25rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .mine .tabs .item{
+    position: relative;
     font-size: 28rpx;
     text-align: center;
     color: #222222;
+}
+.mine .tabs .num{
+    position: absolute;
+    top: -16rpx;
+    right: -5rpx;
+    width: 32rpx;
+    height: 28rpx;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    font-size: 20rpx;
+    border-radius: 64rpx;
+    background: #F73A3A;
 }
 .mine .tabs .item .icon{
     width: 56rpx;
@@ -92,8 +120,8 @@ page{
 .other{
     display: flex;
     flex-wrap: wrap;
-    gap:30rpx 18rpx;
-    padding: 24rpx 40rpx;
+    gap:36rpx 31rpx;
+    padding: 40rpx 24rpx ;
     border-radius: 12rpx;
     background: #fff;
 }
@@ -106,6 +134,9 @@ page{
     color: #222222;
     background: #fff;
 }
+.other button{
+    margin: 0;
+}
 .other .item:after{
     border: none;
 }
@@ -113,7 +144,7 @@ page{
     display: inline-block;
     width: 56rpx;
     height: 56rpx;
-    margin-bottom: 10rpx;
+    margin-bottom: 16rpx;
 }
 
 

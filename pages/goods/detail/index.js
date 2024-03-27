@@ -66,7 +66,7 @@ Page({
         const { goodsId,goodsNum }=this.data;
         utils.request(api.addCart,{
             GoodsId: goodsId,
-            Count: 1
+            Count: goodsNum
         }).then((res)=>{
             wx.showToast({
                 title: ''

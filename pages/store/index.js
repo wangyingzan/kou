@@ -29,33 +29,55 @@ Page({
         storeName: ''
     },
     onLoad: function (options) {
-
     },
     onShow() {
+        this.getTabBar().init();
         const selectedCity = wx.getStorageSync("selectedCity")
         const dingwei = wx.getStorageSync("dingwei")
         if(selectedCity){
             this.setData({
                 currentCity: selectedCity
             })
+            this.getDistrict()
         }else if(dingwei){
             this.setData({
                 currentCity: dingwei
             })
+            this.getDistrict()
         }else{
             app.getCurrentCity().then(res=>{
                 const { cityName } = res;
                 this.setData({
                     currentCity: { name: cityName}
                 })
+                this.getDistrict()
                 wx.removeStorageSync('selectedCity')
             })
         }
+
         this.getList();
     },
     storeNameChange: function({detail:{value}}){
         this.setData({
             storeName: value
+        })
+    },
+    getDistrict: function(){
+        const { code } = this.data.currentCity
+        utils.request(api.getDistrict, {
+            Code: code
+        }).then((res) => {
+            let option1 = [{ text: '全市', value: '' }]
+            res.list.map(res=>{
+                option1.push({
+                    text: res.name,
+                    value: res.code
+                })
+            })
+            this.setData({
+                option1: option1
+            })
+
         })
     },
     getList: function () {
@@ -102,11 +124,11 @@ Page({
             });
             this.getList();
         } else {
-            wx.showToast({
-                title: '没有更多了',
-                icon: 'none',
-                duration: 2000
-            });
+            // wx.showToast({
+            //     title: '没有更多了',
+            //     icon: 'none',
+            //     duration: 2000
+            // });
             return false;
         }
     },

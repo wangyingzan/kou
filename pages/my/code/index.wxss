@@ -1,0 +1,169 @@
+page{
+    background: #fff;
+    padding-bottom: 100rpx;
+}
+
+.container{
+    padding: 0 80rpx 0 60rpx;
+}
+
+
+.dateBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80rpx 0;
+}
+.dateBox .time{
+
+    font-family: DIN;
+    font-size: 100rpx;
+    font-weight: bold;
+    color: #233623;
+}
+.dateBox .right{
+    font-size: 32rpx;
+    color: #233623;
+}
+.dateBox .right .date{
+    margin-bottom: 8rpx;
+}
+.dateBox .right .week{
+
+}
+
+.verifyInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 75rpx;
+}
+.verifyInfo .left{
+    width: 440rpx;
+    font-size: 40rpx;
+    line-height: 48rpx;
+    color: #233623
+}
+.verifyInfo .left .content{
+    font-weight: bold;
+    font-size: 40rpx;
+    line-height: 48rpx;
+    color: #233623;
+    margin-bottom: 50rpx;
+}
+.verifyInfo .left .voice{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 28rpx;
+    color: #05C160;
+}
+.verifyInfo .left .voice .icon{
+    width: 30rpx;
+    height: 30rpx;
+    display: block;
+    margin-right: 8rpx;
+}
+.verifyInfo .left .content text{
+    color: #F73A3A
+}
+.verifyInfo .right{
+    text-align: center;
+    font-size: 32rpx;
+    line-height: 48rpx;
+    font-weight: bold;
+    /* 主题色/绿 */
+    color: #05C160;
+}
+.verifyInfo .right .icon{
+    display: block;
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 8rpx;
+}
+
+.btns{
+    text-align: center;
+    margin-bottom: 120rpx;
+}
+.btns .btn{
+    width: 268rpx;
+    line-height: 80rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #05C160;
+    border-radius: 296rpx;
+    text-align: center;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border: 2rpx solid #05C160;
+    margin: auto;
+}
+
+.list{
+    padding: 0 26rpx;
+}
+
+.listTitle{
+    font-size: 32rpx;
+    text-align: center;
+    color: #012110;
+    padding-bottom: 24rpx;
+}
+.listTitle:before{
+    content: "\2022";
+    color: #05C160;
+    font-size: 1.2em;
+    margin-right: 0.3em;
+}
+.listTitle:after{
+    content: "\2022";
+    color: #05C160;
+    font-size: 1.2em;
+    margin-left: 0.3em;
+}
+
+.list .store{
+    position: relative;
+    display: flex;
+    padding: 25rpx 0;
+    border-bottom: 2rpx solid #EEEEEE;
+}
+.list .store .img{
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 12rpx;
+    margin-right: 16rpx;
+}
+.list .store .info{
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #666666;
+}
+.list .store .info .name{
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #222222;
+}
+
+.list .store .distance{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 24rpx;
+    right: 0;
+    font-size: 24rpx;
+    color: #4DC185
+}
+.list .store .distance .icon{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 8rpx;
+}
+
+.list .store .arrow{
+    position: absolute;
+    bottom: 33rpx;
+    right: 0;
+    width: 12rpx;
+    height: 22rpx;
+}

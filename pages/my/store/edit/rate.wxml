@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="box">
+        <view class="boxTitle">折扣优惠</view>
+        <view class="rateBox" bindtap="rateFocus">
+            <view class="text">请选择</view>
+            <view class="rate">{{m1.rateFilter(rate,0)}}</view>
+            <view class="dot" />
+            <view class="rate">{{m1.rateFilter(rate,2)}}</view>
+            <view class="rate">{{m1.rateFilter(rate,3)}}</view>
+            <view class="text">折</view>
+            <wxs module="m1">
+                var rateFilter = function(rate,num) {
+                    return rate.slice(num,num+1);
+                }
+                module.exports.rateFilter = rateFilter;
+            </wxs>
+        </view>
+        <view class="hint">折扣说明：折扣优惠可选区间为5折-9折。</view>
+        <input class="rateInput" value="{{rateValue}}" bindinput="rateChange" maxlength="4" type="digit" focus="{{rateFocus}}"  />
+        <view class="subtitle">特色介绍</view>
+        <textarea class="summary" value="{{summary}}" placeholder="您的店铺介绍" bindinput="onSummaryChange"/>
+    </view>
+    <view class="footer">
+        <button class="primaryBtn" bindtap="submitForm">提交审核</button>
+    </view>
+</view>

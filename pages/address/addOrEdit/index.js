@@ -16,7 +16,14 @@ Page({
             this.setData({
                 id
             })
+            wx.setNavigationBarTitle({
+                title: '编辑收获地址'
+            })
             this.getData()
+        }else{
+            wx.setNavigationBarTitle({
+                title: '新增收获地址'
+            })
         }
 
         this.initValidate();
@@ -68,6 +75,7 @@ Page({
                         duration: 1000
                     })
                     setTimeout(()=>{
+                        wx.setStorageSync('currentAddressId',res.list[0].addressId)
                         wx.navigateBack()
                     },1000)
 
@@ -106,7 +114,6 @@ Page({
         this.WxValidate = new WxValidate(rules, messages)
     },
     bindRegionChange: function (e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
         this.setData({
             region: e.detail.value
         })

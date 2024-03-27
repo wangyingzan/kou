@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "共享会员店",
+  "usingComponents": {
+    "Step": "/component/step/index",
+    "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-popup": "@vant/weapp/popup/index"
+  }
+}

@@ -38,4 +38,6 @@
         </view>
     </view>
 </view>
+<FooterLimit wx:if="{{list.length < (page * size)}}"/>
+
 

@@ -1,0 +1,28 @@
+<Step stepNum="3" />
+<view class="container">
+    <block wx:if="{{entryStatus === 1}}">
+        <image class="icon" src="/static/images/icon_waring.png"/>
+        <view class="statusText">审核中</view>
+        <view class="subtitle">注：审核通过以后将直接展示最新折扣信息</view>
+        <view class="footer">
+            <navigator url="/pages/my/store/index" open-type="redirect" hover-class="none" class="primaryBtn" >返回</navigator>
+        </view>
+    </block>
+    <block wx:if="{{entryStatus === 2}}">
+        <image class="icon" src="/static/images/icon_success_02.png"/>
+        <view class="statusText">审核成功</view>
+        <view class="subtitle">折扣信息修改审核已通过，现在可以进入您的店铺了</view>
+        <view class="footer">
+            <navigator url="/pages/my/store/index" open-type="redirect"  hover-class="none" class="primaryBtn" >进入我的店铺</navigator>
+        </view>
+    </block>
+    <block wx:if="{{entryStatus === 3}}">
+        <image class="icon" src="/static/images/icon_error.png"/>
+        <view class="statusText">审核失败</view>
+        <view class="subtitle">折扣信息修改审核未通过，请重新提交信息</view>
+        <view class="refusal">拒绝原因：{{refuseReason}}</view>
+        <view class="footer">
+            <navigator url="./rate?recordId={{recordId}}" hover-class="none" class="primaryBtn" >返回修改</navigator>
+        </view>
+    </block>
+</view>

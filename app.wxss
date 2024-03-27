@@ -1,6 +1,6 @@
 /**app.wxss**/
 
-view, image, text, navigator {
+view, image, text, navigator,textarea {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -11,6 +11,8 @@ button:after{
 }
 page{
     background: #f5f5f5;
+    padding-bottom: calc(50px + constant(safe-area-inset-bottom)) ; /*兼容 IOS<11.2*/
+    padding-bottom: calc(50px + env(safe-area-inset-bottom)); /*兼容 IOS>11.2*/
 }
 .container {
     height: 100%;

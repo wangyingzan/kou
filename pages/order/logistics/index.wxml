@@ -1,41 +1,28 @@
-<view class="container">
-    <view class="box">
-        <view class="goodsInfo">
-            <!--        <view class="title">-->
-            <!--            <view class="left">-->
-            <!--                <image class="icon" src="/static/images/icon_store.png" />-->
-            <!--                {{orderData.shopName}}-->
-            <!--            </view>-->
 
-            <!--            &lt;!&ndash;1-待付款；2-待发货；3-待收货；4-待评价；5-已完成；6-退款中；7-已退款；8-已取消；9-待自提&ndash;&gt;-->
-            <!--            <view class="status red" wx:if="{{orderData.orderStatusCode === 1}}" >待付款</view>-->
-            <!--            <view class="status red" wx:elif="{{orderData.orderStatusCode === 2}}" >待发货</view>-->
-            <!--            <view class="status red" wx:elif="{{orderData.orderStatusCode === 3}}">卖家已发货</view>-->
-            <!--            <view class="status red" wx:elif="{{orderData.orderStatusCode === 4}}">待评价</view>-->
-            <!--            <view class="status" wx:elif="{{orderData.orderStatusCode === 5}}">已完成</view>-->
-            <!--            <view class="status" wx:elif="{{orderData.orderStatusCode === 6}}">退款中</view>-->
-            <!--            <view class="status" wx:elif="{{orderData.orderStatusCode === 7}}">已退款</view>-->
-            <!--            <view class="status" wx:elif="{{orderData.orderStatusCode === 8}}">已取消</view>-->
-            <!--            <view class="status" wx:elif="{{orderData.orderStatusCode === 9}}">待自提</view>-->
-
-
-            <!--        </view>-->
-            <view class="goods" wx:for="{{orderData.itemData}}" wx:key="goodsId">
+<view class="goodsBox">
+    <swiper class="swiperBox" indicator-dots="{{orderData.itemData.length > 1}}" 	indicator-color="#D8D8D8" indicator-active-color="#05C160">
+        <swiper-item wx:for="{{orderData.itemData}}" wx:key="goodsId">
+            <view class="goods" >
                 <image src="{{item.goodsImg}}" class="img"/>
                 <view class="goodsInfo">
+                    <view class="status">已发货</view>
                     <view class="name">{{item.goodsName}}</view>
-                    <view class="info">{{item.packageDesc}}</view>
-                    <view class="spec">规格：<text class="num">×{{item.count}}</text>
-                    </view>
-                    <view class="tips">
-                        <view class="tip">官方正品</view>
-                        <view class="tip">24小时内发货</view>
-                    </view>
+                    <view class="info line2">{{item.packageDesc}}</view>
+                    <view class="tip" wx:if="{{orderData.itemData.length > 1}}">包含多件商品</view>
+                    <!--                        <view class="spec">规格：<text class="num">×{{item.count}}</text>-->
+                    <!--                        </view>-->
+                    <!--                        <view class="tips">-->
+                    <!--                            <view class="tip">官方正品</view>-->
+                    <!--                            <view class="tip">24小时内发货</view>-->
+                    <!--                        </view>-->
                 </view>
-                <view class="goodsMoney">¥{{item.totalAmount}}</view>
+                <!--                    <view class="goodsMoney">¥{{item.totalAmount}}</view>-->
             </view>
-        </view>
-    </view>
+        </swiper-item>
+    </swiper>
+</view>
+
+<view class="container">
 
     <view class="box">
         <view class="logisticsBox">

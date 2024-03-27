@@ -14,7 +14,7 @@
             <view class="oldPrice deleted">原价{{goods.marketPrice}}</view>
         </view>
         <view class="right">
-            <view class="title">专享价</view>
+            <image src="/static/images/name.png" class="title" />
             <view>{{goods.freeShippingDesc}}</view>
             <image src="/static/images/detailbg01.png" class="rightBg"/>
         </view>
@@ -26,15 +26,15 @@
         <view class="subtitle">{{goods.remark}}</view>
         <view class="tabs">
             <view class="item">
-                <view class="name">冷藏</view>
+                <view class="name">{{goods.storageMethod}}</view>
                 <view class="des">储存条件</view>
             </view>
             <view class="item">
-                <view class="name">口服下</view>
+                <view class="name">{{goods.brand}}</view>
                 <view class="des">品牌</view>
             </view>
             <view class="item">
-                <view class="name">开袋既烹</view>
+                <view class="name">{{goods.eatingMethod}}</view>
                 <view class="des">食用方式</view>
             </view>
         </view>
@@ -72,7 +72,7 @@
                             size="{{8}}"
                             gutter="{{2}}"
                             readonly
-                            class="grade"
+                            custom-class="grade"
                             color="#FFBB05"
                             void-icon="star"
                             void-color="#D8D8D8"
@@ -94,9 +94,7 @@
     <Like goodsId="{{goods.goodsId}}" />
 </view>
 
-<view class="base">
-    我是有底限的~
-</view>
+<FooterLimit />
 
 <view class="tabBar" >
     <navigator open-type="switchTab" url="/pages/home/index" class="item">
@@ -118,7 +116,7 @@
 <van-popup show="{{ modalFlag }}" round closeable position="bottom" bind:close="modalClose">
     <view class="goodsBox">
         <view class="goods">
-            <image class="goodsImg" src="/static/images/goodsImg.png" />
+            <image class="goodsImg" src="{{goods.imgData[0]}}" />
             <view class="content">
                 <view class="name line1">{{goods.goodsName}}</view>
                 <view class="subtitle line1">{{goods.remark}}</view>
@@ -131,7 +129,7 @@
             </view>
         </view>
         <view class="goodsNum">
-            数量： <van-stepper class="stepper" integer value="{{ goodsNum }}" async-change bind:change="goodsNumChange" />
+            数量： <van-stepper class="stepper" integer max="{{goods.purchaseLimit === -1? 10000:goods.purchaseLimi}}" value="{{ goodsNum }}" async-change bind:change="goodsNumChange" />
         </view>
         <van-button color="#05C160" block bindtap="confirmOrder" data-type="2">确定</van-button>
     </view>

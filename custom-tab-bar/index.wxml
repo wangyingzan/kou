@@ -1,0 +1,19 @@
+<van-tabbar active="{{ active }}" bind:change="onChange" custom-class="tab-bar"  inactive-color="#000000"
+            active-color="#023B1D">
+    <van-tabbar-item wx:for="{{ list }}" wx:key="index" icon="{{ item.icon }}" info="{{item.text ==='购物车'?goodsNum:''}}"
+                    >
+        <image
+                slot="icon"
+                src="{{ item.iconPath }}"
+                mode="aspectFit"
+                style="width: 24px; height: 24px;"
+        />
+        <image
+                slot="icon-active"
+                src="{{ item.selectedIconPath }}"
+                mode="aspectFit"
+                style="width: 24px; height: 24px;"
+        />
+        {{ item.text }}
+    </van-tabbar-item>
+</van-tabbar>

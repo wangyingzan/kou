@@ -1,0 +1,28 @@
+<view class="stepBox">
+    <view class="item  {{stepNum === 1 ? 'current': stepNum > 1 ? 'finish': ''}} ">
+        <view class="numberBox">
+            <view class="number">
+                1
+            </view>
+        </view>
+        <view class="name">基本信息</view>
+    </view>
+    <view class="interval" />
+    <view class="item {{stepNum === 2 ? 'current': stepNum > 2 ? 'finish': ''}}" >
+        <view class="numberBox">
+            <view class="number">
+                2
+            </view>
+        </view>
+        <view class="name">折扣信息</view>
+    </view>
+    <view class="interval" />
+    <view class="item {{stepNum === 3 ? 'current': stepNum > 3 ? 'finish': ''}}">
+        <view class="numberBox">
+            <view class="number">
+               3
+            </view>
+        </view>
+        <view class="name">官方审核</view>
+    </view>
+</view>

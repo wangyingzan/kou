@@ -1,0 +1,63 @@
+.stepBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26rpx;
+}
+.stepBox .item{
+    width: 190rpx;
+    text-align: center;
+}
+.stepBox .item .numberBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60rpx;
+    height: 60rpx;
+    margin: auto;
+    background: rgba(153, 153, 153, 0.2);
+    border-radius: 50%;
+}
+.stepBox .item .numberBox .number{
+    width: 44rpx;
+    height: 44rpx;
+    text-align: center;
+    line-height: 44rpx;
+    color: #fff;
+    font-size: 28rpx;
+    background: #999999;
+    border-radius: 50%;
+}
+.stepBox .item.finish .numberBox{
+    background: rgba(66, 168, 116, .1);
+}
+.stepBox .item.finish .numberBox .number{
+    background: #42A874;
+}
+.stepBox .item.current .numberBox{
+    background: rgba(5, 193, 96, 0.2);
+}
+.stepBox .item.current .numberBox .number{
+    background: #05C160;
+}
+
+
+
+.stepBox .item.current .name{
+    color: #05C160;
+    font-weight: bold;
+}
+
+
+
+.stepBox .item .name{
+    font-size: 28rpx;
+    color: #999999;
+    margin-top: 16rpx;
+}
+
+.interval{
+    flex: 1;
+    border-top: 2rpx dashed #CCCCCC;
+}
+

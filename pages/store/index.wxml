@@ -2,7 +2,7 @@
 <van-sticky >
     <view>
         <view class="head">
-            <navigator class="location" url="/pages/store/cityList/index" hover-class="none">{{currentCity.name}}</navigator>
+            <navigator   class="location line1" url="/pages/store/cityList/index" hover-class="none">{{currentCity.name}}</navigator>
             <view class='searchBox'>
                 <input class="search" placeholder-class="place" bindinput="storeNameChange" placeholder="输入店铺名称"/>
                 <icon type="search" color="#4DC185" size="29rpx" />
@@ -19,7 +19,6 @@
 
 </van-sticky>
 <view class="container">
-
     <view class="list">
         <navigator url="/pages/store/detail/index?id={{item.storeId}}" class="store" wx:for="{{list}}" wx:key="storeId">
             <image class="img" src="{{item.storeImg}}"/>
@@ -30,8 +29,9 @@
                 <view >{{item.address}}</view>
             </view>
             <view class="distance"> <image class="icon" src="/static/images/icon_dis.png"/> {{item.distance}}</view>
-            <image src="/static/images/icon_arrow.png" class="arrow" > > </image>
+            <image src="/static/images/icon_arrow.png" class="arrow" />
         </navigator>
     </view>
 </view>
+<FooterLimit wx:if="{{list.length < (page * size)}}"/>
 

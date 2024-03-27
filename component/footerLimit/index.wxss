@@ -1,0 +1,6 @@
+.base{
+    font-size: 24rpx;
+    text-align: center;
+    color: #999999;
+    padding: 23rpx 0;
+}

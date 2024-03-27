@@ -1,0 +1,66 @@
+<Step stepNum="1" />
+
+<form catchsubmit="formSubmit">
+    <view class="container">
+        <view class="box addressInfo">
+            <view class="boxTitle">地址信息填写</view>
+            <view class="address" style="padding-right: 90rpx" catchtap="openMap">
+                <view class="left">店铺地址</view>
+                <block wx:if="{{region.length}}">
+                    {{region[0]}}，{{region[1]}}，{{region[2]}}
+                </block>
+                <text wx:else style="color: #ccc">请选择门店地址</text>
+                <image src="/static/images/icon_dis.png"  class="map"/>
+            </view>
+            <view class="item">
+                <view class="left">详细地址</view>
+                <input placeholder="请具体到街道、门牌号" placeholder-class="placeholder" value="{{params.details}}" name="Details"/>
+            </view>
+            <view class="item">
+                <view class="left">店铺名称</view>
+                <input placeholder="展示给消费者" placeholder-class="placeholder" value="{{params.storeName}}" name="StoreName"/>
+            </view>
+            <view class="item">
+                <view class="left">联系电话</view>
+                <input placeholder="消费者咨询沟通" placeholder-class="placeholder" value="{{params.servicePhone}}" name="ServicePhone"/>
+            </view>
+        </view>
+        <view class="box">
+            <view class="boxTitle">选择营业时间</view>
+            <view class="timeBox">
+                <view class="name">上午</view>
+                <view class="time" data-name="morningTimeStart" bindtap="showTimeModal">{{morningTimeStart}}</view>
+                <view class="division">—</view>
+                <view class="time" data-name="morningTimeEnd" bindtap="showTimeModal">{{morningTimeEnd}}</view>
+            </view>
+            <view class="timeBox">
+                <view class="name">下午</view>
+                <view class="time" data-name="afternoonTimeStart" bindtap="showTimeModal">{{afternoonTimeStart}}</view>
+                <view class="division">—</view>
+                <view class="time" data-name="afternoonTimeEnd" bindtap="showTimeModal">{{afternoonTimeEnd}}</view>
+            </view>
+        </view>
+        <view class="box">
+            <view class="boxTitle">店铺门头照片</view>
+            <view class="hint">请于门店外拍摄完整的门头照片，招牌文字清晰可见，照片清晰无水印、与经营场景相符照片。</view>
+            <van-uploader preview-size="140rpx" file-list="{{ storefrontList }}" bind:delete="storefrontDelete" disabled="{{!!commentId}}" multiple max-count="1" data-name="storefront" bind:after-read="storefrontAfterRead" />
+        </view>
+        <view class="box">
+            <view class="boxTitle">店铺内部环境照片</view>
+            <view class="hint">请拍摄门店内的服务设施和场所环境，照片清晰无水印、与经营场景相符照片。</view>
+            <van-uploader file-list="{{ storeInfoList }}" bind:delete="deleteImg" disabled="{{!!commentId}}" multiple max-count="4" bind:after-read="afterRead" />
+        </view>
+        <view class="footer">
+            <button class="primaryBtn" form-type="submit">下一步</button>
+        </view>
+    </view>
+</form>
+<van-popup show="{{ timeModalFlag }}" round position="bottom" bind:close="timeModalClose">
+    <van-datetime-picker
+            type="time"
+            value="{{ currentDate }}"
+            bind:confirm="confirmTime"
+            bind:cancel="timeModalClose"
+    />
+</van-popup>
+

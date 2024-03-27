@@ -1,5 +1,5 @@
-const utils = require("../../../../utils/util.js")
-const api = require("../../../../config/api.js")
+const utils = require("../../../utils/util.js")
+const api = require("../../../config/api.js")
 
 Page({
     data: {
@@ -43,11 +43,11 @@ Page({
             });
             this.getList();
         } else {
-            wx.showToast({
-                title: '没有更多了',
-                icon: 'none',
-                duration: 2000
-            });
+            // wx.showToast({
+            //     title: '没有更多了',
+            //     icon: 'none',
+            //     duration: 2000
+            // });
             return false;
         }
     },

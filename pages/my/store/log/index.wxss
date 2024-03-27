@@ -1,3 +1,4 @@
+
 .container {
     padding: 24rpx;
 }
@@ -54,4 +55,10 @@
     color: #999;
     border-color: #999;
 
+}
+.right{
+    font-size: 28rpx;
+    line-height: 48px;
+    /* 辅助色/绿 */
+    color: #4DC185;
 }

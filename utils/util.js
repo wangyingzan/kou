@@ -13,7 +13,29 @@ const formatTime = date => {
 
   return `${[year, month, day].map(formatNumber).join('-')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
+/** 格式话成时分秒格式 */
+const formatTimeToClock = date => {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
 
+  return `${[hour, minute, second].map(formatNumber).join(':')}`
+}
+/** 格式话成*月*日 */
+const formatTimeDate = date => {
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${formatNumber(month)}月${formatNumber(day)}日`
+}
+/** 格式话成星期 */
+const formatTimeWeek = date => {
+  const today = new Date();
+  const day = today.getDay();
+
+// 将数字转换为星期几字符串
+  const weekDays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+  return weekDays[day]
+}
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : `0${n}`
@@ -65,6 +87,11 @@ function request(Method, data = {},) {
                   url: '/pages/my/index',
                 });
               }
+              break;
+            case "PleaseApplyEntry" : //门店未入驻
+              wx.redirectTo({
+                url: '/pages/my/store/entry/index',
+              });
               break;
             case 10021 : //token过期
               if(!expireTime || nowTime - parseInt(expireTime) > 5000){
@@ -150,5 +177,8 @@ module.exports = {
   request,
   md5,
   replaceSpecialChar,
+  formatTimeToClock,
+  formatTimeDate,
+  formatTimeWeek,
   getSign
 }

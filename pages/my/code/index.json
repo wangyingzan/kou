@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "会员验证二维码",
+  "usingComponents": {
+    "Like": "/component/like/index"
+  }
+}

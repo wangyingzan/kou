@@ -15,6 +15,8 @@ Component({
     ready: function() {
         console.log("====3333=");
         this.getGuestList()
+
+        console.log("this.getTabBar()",this.getTabBar())
     },
     methods: {
         getGuestList: function(){

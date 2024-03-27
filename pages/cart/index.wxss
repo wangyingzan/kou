@@ -16,6 +16,7 @@ page{
 }
 .header .navTitle .title{
     font-size: 36rpx;
+    font-weight: bold;
     text-align: center;
     color: #222222;
 }
@@ -76,11 +77,16 @@ page{
     bottom: 32rpx;
     right: 28rpx;
 }
-
-.footerBox{
+.footer{
     position: fixed;
-    bottom: 0;
+    bottom: 50px;
     right: 0;
+    width: 100vw;
+    padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+    padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+}
+.footerBox{
+
     width: 100%;
     display: flex;
     align-items: center;
@@ -89,6 +95,7 @@ page{
     background: #fff;
     padding: 0 24rpx;
     z-index: 10001;
+
 }
 .footerBox .allCheckbox{
     font-size: 24rpx;

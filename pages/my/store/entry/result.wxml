@@ -1,0 +1,28 @@
+<Step stepNum="3" />
+<view class="container">
+    <block wx:if="{{entryStatus === 1}}">
+        <image class="icon" src="/static/images/icon_waring.png"/>
+        <view class="statusText">审核中</view>
+        <view class="subtitle">店铺资料审核需要1-3个工作日，请耐心等待</view>
+        <view class="footer">
+            <navigator url="/pages/my/index" open-type="switchTab" hover-class="none" class="primaryBtn" >返回</navigator>
+        </view>
+    </block>
+    <block wx:if="{{entryStatus === 2}}">
+        <image class="icon" src="/static/images/icon_success_02.png"/>
+        <view class="statusText">审核成功</view>
+        <view class="subtitle">店铺资料审核已通过，现在可以进入您的店铺了</view>
+        <view class="footer">
+            <navigator url="/pages/my/store/index" open-type="redirect" hover-class="none" class="primaryBtn" >进入我的店铺</navigator>
+        </view>
+    </block>
+    <block wx:if="{{entryStatus === 3}}">
+        <image class="icon" src="/static/images/icon_error.png"/>
+        <view class="statusText">审核失败</view>
+        <view class="subtitle">店铺资料审核未通过，请重新提交信息</view>
+        <view class="refusal">拒绝原因：{{refuseReason}}</view>
+        <view class="footer">
+            <navigator url="/pages/my/store/entry/step01" hover-class="none" class="primaryBtn" >返回修改</navigator>
+        </view>
+    </block>
+</view>

@@ -12,6 +12,7 @@ page{
     align-items: center;
     background: #fff;
     padding: 0 26rpx;
+    padding-top: 13rpx;
 }
 .head .location{
     position: relative;
@@ -97,7 +98,7 @@ page{
     color: #4DC185
 }
 .list .store .distance .icon{
-    width: 23rpx;
+    width: 28rpx;
     height: 28rpx;
     margin-right: 8rpx;
 }

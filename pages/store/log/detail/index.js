@@ -1,5 +1,5 @@
-const utils = require("../../../../../utils/util.js")
-const api = require("../../../../../config/api.js")
+const utils = require("../../../../utils/util.js")
+const api = require("../../../../config/api.js")
 import Dialog from '@vant/weapp/dialog/dialog';
 Page({
     data: {
@@ -113,6 +113,7 @@ Page({
             Dialog.confirm({
                 title: '评价成功',
                 message: '感谢您的评价',
+                confirmButtonColor:'#4DC185',
                 cancelButtonText: '返回',
             }).then(() => {
 
@@ -149,25 +150,21 @@ Page({
         })
     },
     uploadFile: function(file){
-        wx.request(({
-            url: file.tempFilePath,
-            method: 'GET',
-            responseType: 'arraybuffer',
-            success: (res)=>{
-                console.log("123213",res.data);
-                const base64 = wx.arrayBufferToBase64(res.data)
-                utils.request(api.uploadUrl,{
-                    "FileName": "图片名称.png",   //图片名称
-                    "ImageType": 2,               //图片类型 0-普通；1-商品；2-评论；3-头像；4-微信头像;8-小程序码
-                    "FileBase": base64               //图片 base64
-                }).then((res)=>{
-                    // 上传完成需要更新 fileList
-                    const { fileList = [] } = this.data;
-                    const {imgDomain ,imgUrl } =res;
-                    fileList.push({ ...file, url: imgDomain+imgUrl });
-                    this.setData({ fileList });
-                })
-            }
-        }))
+        return new Promise((resolve, reject)=>{
+            wx.getFileSystemManager().readFile({
+                filePath: file.tempFilePath,
+                success:(res)=>{
+                    const base64 = wx.arrayBufferToBase64(res.data)
+                    utils.request(api.uploadUrl,{
+                        "FileName": "微信图片.png",   //图片名称
+                        "ImageType": 2,               //图片类型 0-普通；1-商品；2-评论；3-头像；4-微信头像;8-小程序码
+                        "FileBase": base64               //图片 base64
+                    }).then((res)=>{
+                        resolve(res)
+                    })
+                }
+            })
+        })
+
     },
 });

@@ -1,0 +1,19 @@
+<image src="/static/images/entry_bg.png" class="bg"/>
+<view class="content">
+    <view class="name">入驻流程</view>
+    <view class="item">
+        <view class="title">1.提交店铺信息</view>
+        <view class="subtitle">填写店铺信息、门头、位置和客服电话等</view>
+    </view>
+    <view class="item">
+        <view class="title">2.提交折扣信息</view>
+        <view class="subtitle">填写折扣说明，在区间内选择折扣力度</view>
+    </view>
+    <view class="item">
+        <view class="title">3.官方审核</view>
+        <view class="subtitle">等待官方审核（1-3个工作日）</view>
+    </view>
+</view>
+<view class="footer">
+    <navigator hover-class="none" url="/pages/my/store/entry/step01" class="primaryBtn" >立即入驻</navigator>
+</view>

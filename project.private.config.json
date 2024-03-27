@@ -9,6 +9,104 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/order/evaluates/index",
+          "pathName": "pages/order/evaluates/index",
+          "query": "status=0&orderNo=WX_2403232337433306",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我得订单",
+          "pathName": "pages/order/list/index",
+          "query": "status=0",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "物流详情",
+          "pathName": "pages/order/logistics/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "goodsIds=33&goodsNum=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/cart/index",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/my/store/entry/index",
+          "pathName": "pages/my/store/entry/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/detail/index",
+          "pathName": "pages/order/detail/index",
+          "query": "orderNo=WX_2403211531235672",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/my/store/code/index",
+          "pathName": "pages/my/store/code/index",
+          "query": "storeId=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "用户到店扫码",
+          "pathName": "pages/my/code/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "会员到店记录",
+          "pathName": "pages/my/store/log/index",
+          "query": "storeId=2",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "会员到店记录",
+          "pathName": "pages/my/store/log/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "入驻成功",
+          "pathName": "pages/my/store/entry/result",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "入驻第二步",
+          "pathName": "pages/my/store/entry/step02",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "入驻第一步",
+          "pathName": "pages/my/store/entry/step01",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "我的店铺",
           "pathName": "pages/my/store/index",
           "query": "",
@@ -277,5 +375,5 @@
       ]
     }
   },
-  "libVersion": "2.22.1"
+  "libVersion": "3.3.4"
 }

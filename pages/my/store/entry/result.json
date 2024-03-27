@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "共享会员店",
+  "usingComponents": {
+    "Step": "/component/step/index"
+  }
+}

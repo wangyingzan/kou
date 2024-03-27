@@ -4,6 +4,7 @@
         <view class="title line1">{{data.goodsName}}</view>
         <text class="vipPrice">会员价:￥{{data.vipPrice}}</text>
         <view class="price">￥{{data.salePrice}}</view>
-        <image class="cart" catchtap="addCard" src="/static/images/icon_cart.png" />
+        <image  wx:if="{{data.purchaseLimit === 0}}" class="cart" catchtap="addCard" src="/static/images/icon_cart_disabled.png" />
+        <image  wx:else class="cart" catchtap="addCard" src="/static/images/icon_cart.png" />
     </view>
 </view>
